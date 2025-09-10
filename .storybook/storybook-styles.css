@@ -1,0 +1,31 @@
+/* Estilos mínimos para Storybook - sin interferir con el layout */
+
+/* Solo aplicar box-sizing para consistencia */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Estilos básicos para los componentes */
+button {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  margin: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+input, textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  margin: 0;
+}
+
+/* Focus visible para accesibilidad */
+*:focus-visible {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+  border-radius: 0.125rem;
+}
