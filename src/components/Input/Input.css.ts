@@ -32,6 +32,75 @@ export const inputStyles = recipe({
   },
 
   variants: {
+    color: {
+      sky: {
+        vars: {
+          '--color-main': vars.color.sky,
+          '--color-hover': vars.color.skyHover,
+          '--color-light': vars.color.skyLight,
+          '--color-lighter': vars.color.skyLighter,
+        }
+      },
+      lavender: {
+        vars: {
+          '--color-main': vars.color.lavender,
+          '--color-hover': vars.color.lavenderHover,
+          '--color-light': vars.color.lavenderLight,
+          '--color-lighter': vars.color.lavenderLighter,
+        }
+      },
+      sage: {
+        vars: {
+          '--color-main': vars.color.sage,
+          '--color-hover': vars.color.sageHover,
+          '--color-light': vars.color.sageLight,
+          '--color-lighter': vars.color.sageLighter,
+        }
+      },
+      amber: {
+        vars: {
+          '--color-main': vars.color.amber,
+          '--color-hover': vars.color.amberHover,
+          '--color-light': vars.color.amberLight,
+          '--color-lighter': vars.color.amberLighter,
+        }
+      },
+      coral: {
+        vars: {
+          '--color-main': vars.color.coral,
+          '--color-hover': vars.color.coralHover,
+          '--color-light': vars.color.coralLight,
+          '--color-lighter': vars.color.coralLighter,
+        }
+      },
+    },
+    
+    variant: {
+      filled: {
+        backgroundColor: 'var(--color-lighter)',
+        borderColor: 'var(--color-light)',
+        ':focus': {
+          borderColor: 'var(--color-main)',
+          backgroundColor: vars.color.white,
+          boxShadow: `0 0 0 3px var(--color-light)`,
+        },
+        ':hover:not(:disabled)': {
+          borderColor: 'var(--color-hover)',
+        },
+      },
+      outline: {
+        backgroundColor: vars.color.background,
+        borderColor: 'var(--color-light)',
+        ':focus': {
+          borderColor: 'var(--color-main)',
+          boxShadow: `0 0 0 3px var(--color-light)`,
+        },
+        ':hover:not(:disabled)': {
+          borderColor: 'var(--color-hover)',
+        },
+      },
+    },
+
     size: {
       sm: {
         height: vars.spacing['8'], // 32px
@@ -52,29 +121,12 @@ export const inputStyles = recipe({
         fontSize: vars.fontSize.lg,
       },
     },
-
-    variant: {
-      default: {},
-      error: {
-        borderColor: vars.color.error,
-        ':focus': {
-          borderColor: vars.color.error,
-          boxShadow: `0 0 0 3px ${vars.color.errorLight}`,
-        },
-      },
-      success: {
-        borderColor: vars.color.success,
-        ':focus': {
-          borderColor: vars.color.success,
-          boxShadow: `0 0 0 3px ${vars.color.successLight}`,
-        },
-      },
-    },
   },
 
   defaultVariants: {
+    color: 'sky',
+    variant: 'outline',
     size: 'md',
-    variant: 'default',
   },
 })
 
@@ -111,7 +163,7 @@ export const inputLabelStyles = recipe({
       true: {
         '::after': {
           content: ' *',
-          color: vars.color.error,
+          color: vars.color.coral,
         },
       },
     },
@@ -136,20 +188,26 @@ export const inputMessageStyles = recipe({
   },
 
   variants: {
-    variant: {
-      default: {
-        color: vars.color.textMuted,
+    color: {
+      sky: {
+        color: vars.color.sky,
       },
-      error: {
-        color: vars.color.error,
+      lavender: {
+        color: vars.color.lavender,
       },
-      success: {
-        color: vars.color.success,
+      sage: {
+        color: vars.color.sage,
+      },
+      amber: {
+        color: vars.color.amber,
+      },
+      coral: {
+        color: vars.color.coral,
       },
     },
   },
 
   defaultVariants: {
-    variant: 'default',
+    color: 'sky',
   },
 })

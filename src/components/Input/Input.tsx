@@ -1,10 +1,11 @@
-import { forwardRef, ReactNode } from 'react'
+import { forwardRef, ReactNode, useId } from 'react'
 import { clsx } from 'clsx'
 import { inputStyles, inputGroupStyles, inputLabelStyles, inputMessageStyles } from './Input.css'
 
 export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
+  color?: 'sky' | 'lavender' | 'sage' | 'amber' | 'coral'
+  variant?: 'filled' | 'outline'
   size?: 'sm' | 'md' | 'lg'
-  variant?: 'default' | 'error' | 'success'
   label?: string
   helperText?: string
   errorMessage?: string
@@ -16,8 +17,9 @@ export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElem
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   (
     {
+      color = 'sky',
+      variant = 'outline',
       size = 'md',
-      variant = 'default',
       label,
       helperText,
       errorMessage,
@@ -31,16 +33,17 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     },
     ref
   ) => {
+    const generatedId = useId()
+    const inputId = props.id || generatedId
     const hasError = Boolean(errorMessage)
-    const inputVariant = hasError ? 'error' : variant
-    const messageVariant = hasError ? 'error' : variant
     const message = errorMessage || helperText
+    const messageColor = hasError ? 'coral' : color
 
     return (
       <div className={inputGroupStyles({ fullWidth })}>
         {label && (
           <label
-            htmlFor={props.id}
+            htmlFor={inputId}
             className={inputLabelStyles({ required, disabled })}
           >
             {label}
@@ -48,23 +51,75 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         )}
         
         <div className='relative'>
+          {leftIcon && (
+            <div 
+              style={{
+                position: 'absolute',
+                left: size === 'sm' ? '12px' : size === 'md' ? '16px' : '24px',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                zIndex: 1,
+                fontSize: size === 'sm' ? '14px' : size === 'md' ? '16px' : '18px',
+                color: disabled ? '#cac5bd' : undefined,
+                pointerEvents: 'none',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                height: '16px',
+                lineHeight: 1,
+              }}
+            >
+              {leftIcon}
+            </div>
+          )}
+          
           <input
             ref={ref}
+            id={inputId}
             disabled={disabled}
             required={required}
             className={clsx(
               inputStyles({
+                color: hasError ? 'coral' : color,
+                variant,
                 size,
-                variant: inputVariant,
               }),
               className
             )}
+            style={{
+              paddingLeft: leftIcon ? 
+                (size === 'sm' ? '36px' : size === 'md' ? '44px' : '56px') : undefined,
+              paddingRight: rightIcon ? 
+                (size === 'sm' ? '36px' : size === 'md' ? '44px' : '56px') : undefined,
+            }}
             {...props}
           />
+          
+          {rightIcon && (
+            <div 
+              style={{
+                position: 'absolute',
+                right: size === 'sm' ? '12px' : size === 'md' ? '16px' : '24px',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                zIndex: 1,
+                fontSize: size === 'sm' ? '14px' : size === 'md' ? '16px' : '18px',
+                color: disabled ? '#cac5bd' : undefined,
+                pointerEvents: 'none',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                height: '16px',
+                lineHeight: 1,
+              }}
+            >
+              {rightIcon}
+            </div>
+          )}
         </div>
 
         {message && (
-          <span className={inputMessageStyles({ variant: messageVariant })}>
+          <span className={inputMessageStyles({ color: messageColor })}>
             {message}
           </span>
         )}

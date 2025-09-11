@@ -49,29 +49,25 @@ describe('Input', () => {
   it('applies different sizes correctly', () => {
     const { rerender } = render(<Input size='sm' placeholder='Small' />)
     let input = screen.getByPlaceholderText('Small')
-    expect(input).toHaveClass()
+    expect(input.className).toContain('size_sm')
 
     rerender(<Input size='md' placeholder='Medium' />)
     input = screen.getByPlaceholderText('Medium')
-    expect(input).toHaveClass()
+    expect(input.className).toContain('size_md')
 
     rerender(<Input size='lg' placeholder='Large' />)
     input = screen.getByPlaceholderText('Large')
-    expect(input).toHaveClass()
+    expect(input.className).toContain('size_lg')
   })
 
   it('applies variant classes correctly', () => {
-    const { rerender } = render(<Input variant='default' placeholder='Default' />)
-    let input = screen.getByPlaceholderText('Default')
-    expect(input).toHaveClass()
+    const { rerender } = render(<Input variant='outline' placeholder='Outline' />)
+    let input = screen.getByPlaceholderText('Outline')
+    expect(input.className).toContain('variant_outline')
 
-    rerender(<Input variant='error' placeholder='Error' />)
-    input = screen.getByPlaceholderText('Error')
-    expect(input).toHaveClass()
-
-    rerender(<Input variant='success' placeholder='Success' />)
-    input = screen.getByPlaceholderText('Success')
-    expect(input).toHaveClass()
+    rerender(<Input variant='filled' placeholder='Filled' />)
+    input = screen.getByPlaceholderText('Filled')
+    expect(input.className).toContain('variant_filled')
   })
 
   it('prioritizes error message over helper text', () => {

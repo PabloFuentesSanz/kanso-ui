@@ -26,7 +26,7 @@ const customRender = (
   options?: Omit<RenderOptions, 'wrapper'> & {
     theme?: 'light' | 'dark'
   }
-) => {
+): ReturnType<typeof render> => {
   const { theme, ...renderOptions } = options || {}
   
   const Wrapper = ({ children }: { children: React.ReactNode }) => (

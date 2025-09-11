@@ -53,37 +53,37 @@ describe('Button', () => {
   })
 
   it('applies variant classes correctly', () => {
-    const { rerender } = render(<Button variant='primary'>Primary</Button>)
+    const { rerender } = render(<Button variant='filled'>Filled</Button>)
     let button = screen.getByRole('button')
-    expect(button).toHaveClass()
+    expect(button.className).toContain('filled')
 
-    rerender(<Button variant='secondary'>Secondary</Button>)
+    rerender(<Button variant='ghost'>Ghost</Button>)
     button = screen.getByRole('button')
-    expect(button).toHaveClass()
+    expect(button.className).toContain('ghost')
 
     rerender(<Button variant='outline'>Outline</Button>)
     button = screen.getByRole('button')
-    expect(button).toHaveClass()
+    expect(button.className).toContain('outline')
   })
 
   it('applies size classes correctly', () => {
     const { rerender } = render(<Button size='sm'>Small</Button>)
     let button = screen.getByRole('button')
-    expect(button).toHaveClass()
+    expect(button.className).toContain('size_sm')
 
     rerender(<Button size='md'>Medium</Button>)
     button = screen.getByRole('button')
-    expect(button).toHaveClass()
+    expect(button.className).toContain('size_md')
 
     rerender(<Button size='lg'>Large</Button>)
     button = screen.getByRole('button')
-    expect(button).toHaveClass()
+    expect(button.className).toContain('size_lg')
   })
 
   it('applies fullWidth class when fullWidth is true', () => {
     render(<Button fullWidth>Full width</Button>)
     const button = screen.getByRole('button')
-    expect(button).toHaveClass()
+    expect(button.className).toContain('fullWidth_true')
   })
 
   it('meets accessibility standards', async () => {

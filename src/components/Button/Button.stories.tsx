@@ -9,37 +9,42 @@ const meta: Meta<typeof Button> = {
     layout: 'centered',
     docs: {
       description: {
-        component: 'Un componente Button flexible con múltiples variantes, tamaños y estados.'
+        component: 'A flexible Button component with multiple variants, sizes, and states.'
       }
     }
   },
   tags: ['autodocs'],
   argTypes: {
+    color: {
+      control: 'select',
+      options: ['sky', 'lavender', 'sage', 'amber', 'coral'],
+      description: 'Color scheme of the button'
+    },
     variant: {
       control: 'select',
-      options: ['primary', 'secondary', 'outline', 'ghost', 'destructive'],
-      description: 'Variante visual del botón'
+      options: ['filled', 'outline', 'ghost'],
+      description: 'Style variant of the button'
     },
     size: {
       control: 'select',
       options: ['sm', 'md', 'lg'],
-      description: 'Tamaño del botón'
+      description: 'Size of the button'
     },
     fullWidth: {
       control: 'boolean',
-      description: 'Si el botón debe ocupar todo el ancho disponible'
+      description: 'Whether the button should take full width'
     },
     loading: {
       control: 'boolean',
-      description: 'Estado de carga del botón'
+      description: 'Loading state of the button'
     },
     disabled: {
       control: 'boolean',
-      description: 'Si el botón está deshabilitado'
+      description: 'Whether the button is disabled'
     },
     children: {
       control: 'text',
-      description: 'Contenido del botón'
+      description: 'Button content'
     }
   },
   args: {
@@ -58,42 +63,98 @@ export const Default: Story = {
   },
 }
 
-export const Primary: Story = {
+// Color Variants - Filled Style
+export const SkyFilled: Story = {
   args: {
-    variant: 'primary',
-    children: 'Primary Button',
+    color: 'sky',
+    variant: 'filled',
+    children: 'Sky Button',
   },
 }
 
-export const Secondary: Story = {
+export const LavenderFilled: Story = {
   args: {
-    variant: 'secondary',
-    children: 'Secondary Button',
+    color: 'lavender',
+    variant: 'filled',
+    children: 'Lavender Button',
   },
 }
 
-export const Outline: Story = {
+export const SageFilled: Story = {
   args: {
+    color: 'sage',
+    variant: 'filled',
+    children: 'Sage Button',
+  },
+}
+
+export const AmberFilled: Story = {
+  args: {
+    color: 'amber',
+    variant: 'filled',
+    children: 'Amber Button',
+  },
+}
+
+export const CoralFilled: Story = {
+  args: {
+    color: 'coral',
+    variant: 'filled',
+    children: 'Coral Button',
+  },
+}
+
+// Outline Variants
+export const SkyOutline: Story = {
+  args: {
+    color: 'sky',
     variant: 'outline',
-    children: 'Outline Button',
+    children: 'Sky Outline',
   },
 }
 
-export const Ghost: Story = {
+export const LavenderOutline: Story = {
   args: {
+    color: 'lavender',
+    variant: 'outline',
+    children: 'Lavender Outline',
+  },
+}
+
+export const SageOutline: Story = {
+  args: {
+    color: 'sage',
+    variant: 'outline',
+    children: 'Sage Outline',
+  },
+}
+
+// Ghost Variants
+export const SkyGhost: Story = {
+  args: {
+    color: 'sky',
     variant: 'ghost',
-    children: 'Ghost Button',
+    children: 'Sky Ghost',
   },
 }
 
-export const Destructive: Story = {
+export const AmberGhost: Story = {
   args: {
-    variant: 'destructive',
-    children: 'Destructive Button',
+    color: 'amber',
+    variant: 'ghost',
+    children: 'Amber Ghost',
   },
 }
 
-// Tamaños
+export const CoralGhost: Story = {
+  args: {
+    color: 'coral',
+    variant: 'ghost',
+    children: 'Coral Ghost',
+  },
+}
+
+// Sizes
 export const Small: Story = {
   args: {
     size: 'sm',
@@ -163,27 +224,54 @@ export const WithBothIcons: Story = {
   },
 }
 
-// Todas las variantes juntas
-export const AllVariants: Story = {
+// All color combinations
+export const AllColorCombinations: Story = {
   render: () => (
-    <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-      <Button variant='primary'>Primary</Button>
-      <Button variant='secondary'>Secondary</Button>
-      <Button variant='outline'>Outline</Button>
-      <Button variant='ghost'>Ghost</Button>
-      <Button variant='destructive'>Destructive</Button>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+      <div>
+        <h4 style={{ margin: '0 0 1rem 0', color: '#666' }}>Filled Variants</h4>
+        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+          <Button color='sky' variant='filled'>Sky</Button>
+          <Button color='lavender' variant='filled'>Lavender</Button>
+          <Button color='sage' variant='filled'>Sage</Button>
+          <Button color='amber' variant='filled'>Amber</Button>
+          <Button color='coral' variant='filled'>Coral</Button>
+        </div>
+      </div>
+      
+      <div>
+        <h4 style={{ margin: '0 0 1rem 0', color: '#666' }}>Outline Variants</h4>
+        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+          <Button color='sky' variant='outline'>Sky</Button>
+          <Button color='lavender' variant='outline'>Lavender</Button>
+          <Button color='sage' variant='outline'>Sage</Button>
+          <Button color='amber' variant='outline'>Amber</Button>
+          <Button color='coral' variant='outline'>Coral</Button>
+        </div>
+      </div>
+      
+      <div>
+        <h4 style={{ margin: '0 0 1rem 0', color: '#666' }}>Ghost Variants</h4>
+        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+          <Button color='sky' variant='ghost'>Sky</Button>
+          <Button color='lavender' variant='ghost'>Lavender</Button>
+          <Button color='sage' variant='ghost'>Sage</Button>
+          <Button color='amber' variant='ghost'>Amber</Button>
+          <Button color='coral' variant='ghost'>Coral</Button>
+        </div>
+      </div>
     </div>
   ),
   parameters: {
     docs: {
       description: {
-        story: 'Todas las variantes del botón en una sola vista'
+        story: 'All possible combinations of colors and variants'
       }
     }
   }
 }
 
-// Todos los tamaños
+// All sizes
 export const AllSizes: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
@@ -195,7 +283,7 @@ export const AllSizes: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Todos los tamaños del botón'
+        story: 'All button sizes'
       }
     }
   }

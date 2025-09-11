@@ -1,6 +1,14 @@
 {
   "permissions": {
-    "allow": ["Bash(npm run icons:generate:*)", "Bash(npm run typecheck:*)"],
+    "allow": [
+      "Bash(npm run icons:generate:*)",
+      "Bash(npm run typecheck:*)",
+      "Bash(npm run build:*)",
+      "Bash(npm run test:*)",
+      "Bash(npm test)",
+      "Bash(npm install:*)",
+      "Bash(npm cache clean:*)"
+    ],
     "deny": [],
     "ask": []
   }

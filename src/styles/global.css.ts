@@ -55,13 +55,13 @@ globalStyle('input, textarea, select', {
 })
 
 globalStyle('a', {
-  color: vars.color.primary,
+  color: vars.color.sky,
   textDecoration: 'underline',
   transition: vars.transition.colors,
 })
 
 globalStyle('a:hover', {
-  color: vars.color.primaryHover,
+  color: vars.color.skyHover,
 })
 
 globalStyle('a:focus', {

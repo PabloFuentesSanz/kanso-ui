@@ -3,42 +3,50 @@ import { vars, themeClass } from './tokens.css'
 
 export const darkTheme = createTheme(vars, {
   color: {
-    // Primary palette (keep same for consistency)
-    primary: '#007bff',
-    primaryHover: '#0056b3',
-    primaryActive: '#004085',
-    primaryLight: '#1a3a5c',
-    primaryLighter: '#0d1d2e',
+    // Sky Blue - Dark mode version
+    sky: '#4a9eff',
+    skyHover: '#6bb3ff',
+    skyActive: '#2a85e6',
+    skyLight: '#1e3a5c',
+    skyLighter: '#0d1d2e',
     
-    // Secondary palette
-    secondary: '#6c757d',
-    secondaryHover: '#868e96',
-    secondaryActive: '#9ca3af',
-    secondaryLight: '#374151',
-    secondaryLighter: '#1f2937',
+    // Lavender - Dark mode version
+    lavender: '#a584c9',
+    lavenderHover: '#b89dd5',
+    lavenderActive: '#926bb8',
+    lavenderLight: '#3a2d4a',
+    lavenderLighter: '#1f1825',
     
-    // Success palette
-    success: '#10b981',
-    successHover: '#059669',
-    successActive: '#047857',
-    successLight: '#065f46',
-    successLighter: '#022c22',
+    // Sage - Dark mode version
+    sage: '#6fbf73',
+    sageHover: '#85cc89',
+    sageActive: '#5aa55f',
+    sageLight: '#2d4a2f',
+    sageLighter: '#1a2e1b',
     
-    // Warning palette
-    warning: '#f59e0b',
-    warningHover: '#d97706',
-    warningActive: '#b45309',
-    warningLight: '#92400e',
-    warningLighter: '#451a03',
+    // Amber - Dark mode version
+    amber: '#ffb347',
+    amberHover: '#ffc067',
+    amberActive: '#ff9f27',
+    amberLight: '#4a3d2e',
+    amberLighter: '#2e2419',
     
-    // Error/Danger palette
-    error: '#ef4444',
-    errorHover: '#dc2626',
-    errorActive: '#b91c1c',
-    errorLight: '#991b1b',
-    errorLighter: '#450a0a',
+    // Coral - Dark mode version
+    coral: '#ff7a89',
+    coralHover: '#ff94a1',
+    coralActive: '#ff5f72',
+    coralLight: '#4a2d30',
+    coralLighter: '#2e191b',
     
-    // Neutral/Gray palette (inverted for dark theme)
+    // Nature-inspired Pastels - Dark mode versions
+    peach: '#ff9aa5',
+    mint: '#8fccb5',
+    lilac: '#c4a2d4',
+    cream: '#e6e69a',
+    rose: '#ffaeb8',
+    seafoam: '#9dcccd',
+    
+    // Refined Neutral/Gray palette (inverted for dark theme)
     white: '#000000',
     gray50: '#1a1a1a',
     gray100: '#2a2a2a',
@@ -69,9 +77,9 @@ export const darkTheme = createTheme(vars, {
     borderLight: '#475569',
     borderDark: '#1e293b',
     
-    // Focus and interaction
-    focus: '#3b82f6',
-    focusRing: 'rgba(59, 130, 246, 0.25)',
+    // Focus and interaction (using sky blue)
+    focus: '#4a9eff',
+    focusRing: 'rgba(74, 158, 255, 0.3)',
   },
   
   // Keep the same spacing, fontSize, fontWeight, lineHeight, borderRadius as light theme

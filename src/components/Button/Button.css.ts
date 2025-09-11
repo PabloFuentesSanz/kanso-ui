@@ -32,72 +32,86 @@ export const buttonStyles = recipe({
   },
   
   variants: {
+    color: {
+      sky: {
+        vars: {
+          '--color-main': vars.color.sky,
+          '--color-hover': vars.color.skyHover,
+          '--color-active': vars.color.skyActive,
+          '--color-light': vars.color.skyLight,
+          '--color-lighter': vars.color.skyLighter,
+        }
+      },
+      lavender: {
+        vars: {
+          '--color-main': vars.color.lavender,
+          '--color-hover': vars.color.lavenderHover,
+          '--color-active': vars.color.lavenderActive,
+          '--color-light': vars.color.lavenderLight,
+          '--color-lighter': vars.color.lavenderLighter,
+        }
+      },
+      sage: {
+        vars: {
+          '--color-main': vars.color.sage,
+          '--color-hover': vars.color.sageHover,
+          '--color-active': vars.color.sageActive,
+          '--color-light': vars.color.sageLight,
+          '--color-lighter': vars.color.sageLighter,
+        }
+      },
+      amber: {
+        vars: {
+          '--color-main': vars.color.amber,
+          '--color-hover': vars.color.amberHover,
+          '--color-active': vars.color.amberActive,
+          '--color-light': vars.color.amberLight,
+          '--color-lighter': vars.color.amberLighter,
+        }
+      },
+      coral: {
+        vars: {
+          '--color-main': vars.color.coral,
+          '--color-hover': vars.color.coralHover,
+          '--color-active': vars.color.coralActive,
+          '--color-light': vars.color.coralLight,
+          '--color-lighter': vars.color.coralLighter,
+        }
+      },
+    },
+    
     variant: {
-      primary: {
-        backgroundColor: vars.color.primary,
+      filled: {
+        backgroundColor: 'var(--color-main)',
         color: vars.color.white,
-        
         ':hover:not(:disabled)': {
-          backgroundColor: vars.color.primaryHover,
+          backgroundColor: 'var(--color-hover)',
         },
-        
         ':active:not(:disabled)': {
-          backgroundColor: vars.color.primaryActive,
+          backgroundColor: 'var(--color-active)',
         },
       },
-      
-      secondary: {
-        backgroundColor: vars.color.secondary,
-        color: vars.color.white,
-        
-        ':hover:not(:disabled)': {
-          backgroundColor: vars.color.secondaryHover,
-        },
-        
-        ':active:not(:disabled)': {
-          backgroundColor: vars.color.secondaryActive,
-        },
-      },
-      
       outline: {
         backgroundColor: 'transparent',
-        color: vars.color.primary,
-        border: `1px solid ${vars.color.primary}`,
-        
+        color: 'var(--color-main)',
+        border: '1px solid var(--color-main)',
         ':hover:not(:disabled)': {
-          backgroundColor: vars.color.primary,
+          backgroundColor: 'var(--color-main)',
           color: vars.color.white,
         },
-        
         ':active:not(:disabled)': {
-          backgroundColor: vars.color.primaryActive,
-          borderColor: vars.color.primaryActive,
+          backgroundColor: 'var(--color-active)',
+          borderColor: 'var(--color-active)',
         },
       },
-      
       ghost: {
         backgroundColor: 'transparent',
-        color: vars.color.primary,
-        
+        color: 'var(--color-main)',
         ':hover:not(:disabled)': {
-          backgroundColor: vars.color.primaryLighter,
+          backgroundColor: 'var(--color-lighter)',
         },
-        
         ':active:not(:disabled)': {
-          backgroundColor: vars.color.primaryLight,
-        },
-      },
-      
-      destructive: {
-        backgroundColor: vars.color.error,
-        color: vars.color.white,
-        
-        ':hover:not(:disabled)': {
-          backgroundColor: vars.color.errorHover,
-        },
-        
-        ':active:not(:disabled)': {
-          backgroundColor: vars.color.errorActive,
+          backgroundColor: 'var(--color-light)',
         },
       },
     },
@@ -142,7 +156,8 @@ export const buttonStyles = recipe({
   },
   
   defaultVariants: {
-    variant: 'primary',
+    color: 'sky',
+    variant: 'filled',
     size: 'md',
     fullWidth: false,
     loading: false,

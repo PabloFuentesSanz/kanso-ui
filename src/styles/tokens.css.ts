@@ -2,75 +2,83 @@ import { createTheme } from '@vanilla-extract/css'
 
 export const [themeClass, vars] = createTheme({
   color: {
-    // Primary palette
-    primary: '#007bff',
-    primaryHover: '#0056b3',
-    primaryActive: '#004085',
-    primaryLight: '#b3d7ff',
-    primaryLighter: '#e6f2ff',
+    // Sky Blue - Calm and serene
+    sky: '#a8d8ea',
+    skyHover: '#6bb3d9',
+    skyActive: '#4a9bc9',
+    skyLight: '#d4edff',
+    skyLighter: '#f0f9ff',
     
-    // Secondary palette
-    secondary: '#6c757d',
-    secondaryHover: '#545b62',
-    secondaryActive: '#454c53',
-    secondaryLight: '#e2e3e5',
-    secondaryLighter: '#f8f9fa',
+    // Lavender - Elegant and peaceful
+    lavender: '#c4a7d4',
+    lavenderHover: '#a886be',
+    lavenderActive: '#8d6ba8',
+    lavenderLight: '#e6ddf1',
+    lavenderLighter: '#f7f4fa',
     
-    // Success palette
-    success: '#28a745',
-    successHover: '#1e7e34',
-    successActive: '#155724',
-    successLight: '#c3e6cb',
-    successLighter: '#f0f9f0',
+    // Sage - Natural and balanced
+    sage: '#a8e6b0',
+    sageHover: '#7fd88a',
+    sageActive: '#5cc969',
+    sageLight: '#d7f5da',
+    sageLighter: '#f1fcf2',
     
-    // Warning palette
-    warning: '#ffc107',
-    warningHover: '#e0a800',
-    warningActive: '#d39e00',
-    warningLight: '#ffeaa7',
-    warningLighter: '#fffbf0',
+    // Amber - Warm and inviting (Plattio inspired)
+    amber: '#ffc067',
+    amberHover: '#ffa640',
+    amberActive: '#ff8f1c',
+    amberLight: '#ffe2b8',
+    amberLighter: '#fff7ed',
     
-    // Error/Danger palette
-    error: '#dc3545',
-    errorHover: '#c82333',
-    errorActive: '#a71e2a',
-    errorLight: '#f5c6cb',
-    errorLighter: '#fdf7f7',
+    // Coral - Vibrant and energetic (Ryoko inspired)
+    coral: '#ff6b7a',
+    coralHover: '#ff3c4f',
+    coralActive: '#ff1a30',
+    coralLight: '#ffc2c7',
+    coralLighter: '#fff0f1',
     
-    // Neutral/Gray palette
+    // Nature-inspired Pastels
+    peach: '#ffb3ba',
+    mint: '#bae1cc',
+    lilac: '#d4b5e8',
+    cream: '#ffffba',
+    rose: '#ffd1dc',
+    seafoam: '#b5e7e0',
+    
+    // Refined Neutral/Gray palette (warmer, softer)
     white: '#ffffff',
-    gray50: '#fafafa',
-    gray100: '#f5f5f5',
-    gray200: '#eeeeee',
-    gray300: '#e0e0e0',
-    gray400: '#bdbdbd',
-    gray500: '#9e9e9e',
-    gray600: '#757575',
-    gray700: '#616161',
-    gray800: '#424242',
-    gray900: '#212121',
-    black: '#000000',
+    gray50: '#fdfbf7',
+    gray100: '#f7f5f0',
+    gray200: '#f0ede8',
+    gray300: '#e5e1da',
+    gray400: '#cac5bd',
+    gray500: '#a8a199',
+    gray600: '#827a70',
+    gray700: '#68605a',
+    gray800: '#4a433e',
+    gray900: '#2d2924',
+    black: '#1a1715',
     
-    // Text colors
-    textPrimary: '#212529',
-    textSecondary: '#6c757d',
-    textMuted: '#868e96',
-    textDisabled: '#adb5bd',
+    // Softer text colors
+    textPrimary: '#2d2924',
+    textSecondary: '#68605a',
+    textMuted: '#a8a199',
+    textDisabled: '#cac5bd',
     textInverse: '#ffffff',
     
-    // Background colors
+    // Warm background colors
     background: '#ffffff',
-    backgroundAlt: '#f8f9fa',
-    backgroundOverlay: 'rgba(0, 0, 0, 0.5)',
+    backgroundAlt: '#fdfbf7',
+    backgroundOverlay: 'rgba(45, 41, 36, 0.5)',
     
-    // Border colors
-    border: '#dee2e6',
-    borderLight: '#f1f3f4',
-    borderDark: '#adb5bd',
+    // Subtle border colors
+    border: '#e5e1da',
+    borderLight: '#f0ede8',
+    borderDark: '#cac5bd',
     
-    // Focus and interaction
-    focus: '#007bff',
-    focusRing: 'rgba(0, 123, 255, 0.25)',
+    // Focus and interaction (using sky blue)
+    focus: '#a8d8ea',
+    focusRing: 'rgba(168, 216, 234, 0.3)',
   },
   
   spacing: {

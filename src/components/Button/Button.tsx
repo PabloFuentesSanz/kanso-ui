@@ -4,7 +4,8 @@ import { buttonStyles, buttonIconStyles } from './Button.css'
 
 export interface ButtonProps
   extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'disabled'> {
-  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'destructive'
+  color?: 'sky' | 'lavender' | 'sage' | 'amber' | 'coral'
+  variant?: 'filled' | 'outline' | 'ghost'
   size?: 'sm' | 'md' | 'lg'
   fullWidth?: boolean
   loading?: boolean
@@ -17,7 +18,8 @@ export interface ButtonProps
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
-      variant = 'primary',
+      color = 'sky',
+      variant = 'filled',
       size = 'md',
       fullWidth = false,
       loading = false,
@@ -38,6 +40,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         disabled={isDisabled}
         className={clsx(
           buttonStyles({
+            color,
             variant,
             size,
             fullWidth,
