@@ -29,16 +29,11 @@ import 'kanso-ui/styles'
 function App() {
   return (
     <div>
-      <Button color="sky" variant="filled">
+      <Button color='sky' variant='filled'>
         Hello World
       </Button>
-      
-      <Input 
-        color="lavender" 
-        variant="outline"
-        label="Email" 
-        placeholder="john@example.com" 
-      />
+
+      <Input color='lavender' variant='outline' label='Email' placeholder='john@example.com' />
     </div>
   )
 }
@@ -46,25 +41,26 @@ function App() {
 
 ## 🎨 Color Palette
 
-| Color | Description |
-|-------|-------------|
-| `sky` | Calm blue tones |
-| `lavender` | Gentle purple hues |
-| `sage` | Natural green shades |
-| `amber` | Warm orange tones |
-| `coral` | Vibrant red accents |
+| Color      | Description          |
+| ---------- | -------------------- |
+| `sky`      | Calm blue tones      |
+| `lavender` | Gentle purple hues   |
+| `sage`     | Natural green shades |
+| `amber`    | Warm orange tones    |
+| `coral`    | Vibrant red accents  |
 
 ## 📦 Components
 
 ### Button
 
 ```tsx
-<Button color="sage" variant="outline" size="lg">
+<Button color='sage' variant='outline' size='lg'>
   Click me
 </Button>
 ```
 
 **Props:**
+
 - `color`: `'sky' | 'lavender' | 'sage' | 'amber' | 'coral'`
 - `variant`: `'filled' | 'outline' | 'ghost'`
 - `size`: `'sm' | 'md' | 'lg'`
@@ -74,25 +70,19 @@ function App() {
 ### Input
 
 ```tsx
-<Input 
-  color="amber"
-  variant="filled"
-  label="Username"
-  leftIcon="👤"
-  rightIcon="✅"
-/>
+<Input color='amber' variant='filled' label='Username' leftIcon='👤' rightIcon='✅' />
 ```
 
 **Props:**
+
 - `color`: `'sky' | 'lavender' | 'sage' | 'amber' | 'coral'`
-- `variant`: `'filled' | 'outline'`  
+- `variant`: `'filled' | 'outline'`
 - `size`: `'sm' | 'md' | 'lg'`
 - `label`: `string`
 - `helperText`: `string`
 - `errorMessage`: `string`
 - `leftIcon`: `ReactNode`
 - `rightIcon`: `ReactNode`
-
 
 ## 🛠 Development
 
@@ -115,7 +105,7 @@ npm run typecheck
 
 ## 📖 Documentation
 
-Visit our [Storybook documentation](https://your-storybook-url.com) to explore all components and examples.
+Visit our [Storybook documentation](https://kanso-ui.vercel.app/?path=/story/00-introduction--get-started) to explore all components and examples.
 
 ## 🤝 Contributing
 
@@ -123,8 +113,8 @@ We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) f
 
 ## 📄 License
 
-MIT © [Pablo](https://github.com/yourusername)
+MIT © [Pablo](https://github.com/pablofuentessanz)
 
 ---
 
-*Kanso (簡素) - Japanese aesthetic principle emphasizing simplicity and naturalness.*
+_Kanso (簡素) - Japanese aesthetic principle emphasizing simplicity and naturalness._
