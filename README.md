@@ -24,7 +24,7 @@ npm install kanso-ui
 
 ```tsx
 import { Button, Input } from 'kanso-ui'
-import 'kanso-ui/styles'
+import 'kanso-ui/dist/index.css'
 
 function App() {
   return (
