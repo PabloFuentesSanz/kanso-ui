@@ -1,0 +1,2 @@
+export { Kirei, KireiHeader, KireiBody, KireiFooter, Card, CardHeader, CardBody, CardFooter } from './Kirei'
+export type { KireiProps, KireiHeaderProps, KireiBodyProps, KireiFooterProps } from './Kirei'

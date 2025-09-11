@@ -74,41 +74,6 @@ import { lightTheme, darkTheme } from 'kanso-ui'
 | `amber`    | Warm orange tones    |
 | `coral`    | Vibrant red accents  |
 
-## 📦 Components
-
-### Button
-
-```tsx
-<Button color='sage' variant='outline' size='lg'>
-  Click me
-</Button>
-```
-
-**Props:**
-
-- `color`: `'sky' | 'lavender' | 'sage' | 'amber' | 'coral'`
-- `variant`: `'filled' | 'outline' | 'ghost'`
-- `size`: `'sm' | 'md' | 'lg'`
-- `fullWidth`: `boolean`
-- `loading`: `boolean`
-
-### Input
-
-```tsx
-<Input color='amber' variant='filled' label='Username' leftIcon='👤' rightIcon='✅' />
-```
-
-**Props:**
-
-- `color`: `'sky' | 'lavender' | 'sage' | 'amber' | 'coral'`
-- `variant`: `'filled' | 'outline'`
-- `size`: `'sm' | 'md' | 'lg'`
-- `label`: `string`
-- `helperText`: `string`
-- `errorMessage`: `string`
-- `leftIcon`: `ReactNode`
-- `rightIcon`: `ReactNode`
-
 ## 🛠 Development
 
 ```bash
@@ -130,7 +95,7 @@ npm run typecheck
 
 ## 📖 Documentation
 
-Visit our [Storybook documentation](https://kanso-ui.vercel.app/?path=/story/00-introduction--get-started) to explore all components and examples.
+Visit our [Storybook documentation](https://kanso-ui.vercel.app/?path=/story/introduction--get-started) to explore all components and examples.
 
 ## 🤝 Contributing
 
