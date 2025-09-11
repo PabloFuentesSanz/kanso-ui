@@ -23,20 +23,45 @@ npm install kanso-ui
 ## 💡 Quick Start
 
 ```tsx
-import { Button, Input } from 'kanso-ui'
+import { Button, Input, lightTheme } from 'kanso-ui'
 import 'kanso-ui/dist/index.css'
 
 function App() {
   return (
-    <div>
-      <Button color='sky' variant='filled'>
+    <div className={lightTheme}>
+      <Button color="sky" variant="filled">
         Hello World
       </Button>
 
-      <Input color='lavender' variant='outline' label='Email' placeholder='john@example.com' />
+      <Input 
+        color="lavender" 
+        variant="outline" 
+        label="Email" 
+        placeholder="john@example.com" 
+      />
     </div>
   )
 }
+```
+
+**⚠️ Important:** You must apply the `lightTheme` class to make CSS variables available.
+
+## 🎨 Themes
+
+Kanso UI uses CSS-in-JS with Vanilla Extract. You need to apply a theme class to activate the color variables:
+
+```tsx
+import { lightTheme, darkTheme } from 'kanso-ui'
+
+// Apply to your root app
+<div className={lightTheme}>
+  {/* Your components */}
+</div>
+
+// Or for dark theme
+<div className={darkTheme}>
+  {/* Your components */}
+</div>
 ```
 
 ## 🎨 Color Palette

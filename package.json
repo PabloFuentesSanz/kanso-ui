@@ -1,6 +1,6 @@
 {
   "name": "kanso-ui",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A modern, minimalist React component library with TypeScript, Vanilla Extract, and Storybook. Features pastel colors and flexible design system.",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
