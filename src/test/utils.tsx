@@ -13,11 +13,7 @@ interface TestProviderProps {
 }
 
 const TestProvider = ({ children, theme = 'light' }: TestProviderProps) => {
-  return (
-    <div className={theme === 'dark' ? 'dark-theme' : 'light-theme'}>
-      {children}
-    </div>
-  )
+  return <div className={theme === 'dark' ? 'dark-theme' : 'light-theme'}>{children}</div>
 }
 
 // Render personalizado que incluye el proveedor de tema
@@ -28,7 +24,7 @@ const customRender = (
   }
 ): ReturnType<typeof render> => {
   const { theme, ...renderOptions } = options || {}
-  
+
   const Wrapper = ({ children }: { children: React.ReactNode }) => (
     <TestProvider theme={theme}>{children}</TestProvider>
   )
@@ -42,8 +38,16 @@ export const runAxeTest = async (container: Element) => {
   expect(results).toHaveNoViolations()
 }
 
-// Re-exportar todo de testing-library
-export * from '@testing-library/react'
+// Re-exportar testing-library functions individually to avoid react-refresh warning
+export {
+  screen,
+  waitFor,
+  fireEvent,
+  act,
+  cleanup,
+  renderHook,
+  within,
+} from '@testing-library/react'
 export { userEvent } from '@testing-library/user-event'
 
 // Exportar nuestro render personalizado como el render por defecto

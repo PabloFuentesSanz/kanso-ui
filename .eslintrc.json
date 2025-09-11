@@ -5,7 +5,7 @@
   },
   "extends": [
     "eslint:recommended",
-    "@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
     "plugin:jsx-a11y/recommended",
@@ -52,9 +52,20 @@
       }
     },
     {
-      "files": ["**/*.test.*", "**/*.spec.*"],
+      "files": ["**/*.test.*", "**/*.spec.*", "src/test/**/*"],
       "env": {
         "jest": true
+      },
+      "rules": {
+        "react-refresh/only-export-components": "off",
+        "@typescript-eslint/no-explicit-any": "off"
+      }
+    },
+    {
+      "files": ["src/types/**/*.d.ts"],
+      "rules": {
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/triple-slash-reference": "off"
       }
     }
   ]

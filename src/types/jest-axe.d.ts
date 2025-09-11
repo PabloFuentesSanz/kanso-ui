@@ -1,6 +1,6 @@
 declare module 'jest-axe' {
-  export function axe(container: Element): Promise<any>
-  export const toHaveNoViolations: any
+  export function axe(container: Element): Promise<unknown>
+  export const toHaveNoViolations: unknown
 }
 
 declare global {
@@ -9,7 +9,7 @@ declare global {
       toHaveNoViolations(): void
     }
     interface AsymmetricMatchersContaining {
-      toHaveNoViolations(): any
+      toHaveNoViolations(): unknown
     }
   }
 }

@@ -3,10 +3,8 @@ import { cleanup } from '@testing-library/react'
 import * as matchers from '@testing-library/jest-dom/matchers'
 import 'axe-core'
 
-// Extender expect con matchers de testing-library
 expect.extend(matchers)
 
-// Limpiar después de cada test
 afterEach(() => {
   cleanup()
 })
