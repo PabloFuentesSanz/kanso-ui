@@ -1,14 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { Input } from './Input'
+import { Tatami } from '../Tatami'
+import { Kanji } from '../Kanji'
 
 const meta: Meta<typeof Input> = {
-  title: 'Components/Input',
+  title: 'Components/Input (Nyuryoku) 🎌',
   component: Input,
   parameters: {
     layout: 'centered',
     docs: {
       description: {
-        component: 'A flexible Input component with customizable colors, variants, sizes, and states.'
+        component: 'Nyuryoku (入力) - A flexible input component inspired by Japanese form aesthetics. Supports various colors, variants, sizes, and states for elegant data entry.'
       }
     }
   },
@@ -16,7 +18,7 @@ const meta: Meta<typeof Input> = {
   argTypes: {
     color: {
       control: 'select',
-      options: ['sky', 'lavender', 'sage', 'amber', 'coral'],
+      options: ['sky', 'lavender', 'wasabi', 'sage', 'amber', 'coral'],
       description: 'Color scheme of the input'
     },
     variant: {
@@ -74,47 +76,47 @@ type Story = StoryObj<typeof meta>
 // Basic Examples
 export const Default: Story = {
   args: {
-    placeholder: 'Enter some text...',
+    placeholder: 'Enter text: テキスト入力',
   },
 }
 
 export const WithLabel: Story = {
   args: {
-    label: 'Email Address',
-    placeholder: 'john@example.com',
+    label: 'Email: メール',
+    placeholder: 'tanaka@example.com',
   },
 }
 
 export const WithHelperText: Story = {
   args: {
-    label: 'Password',
+    label: 'Password: パスワード',
     type: 'password',
-    placeholder: 'Enter your password',
-    helperText: 'Password must be at least 8 characters',
+    placeholder: 'Enter password: パスワード入力',
+    helperText: 'Password must be at least 8 characters: ８文字以上',
   },
 }
 
 export const Required: Story = {
   args: {
-    label: 'Username',
-    placeholder: 'Enter username',
+    label: 'Username: ユーザー名',
+    placeholder: 'Enter username: ユーザー名入力',
     required: true,
   },
 }
 
 export const WithError: Story = {
   args: {
-    label: 'Email',
-    placeholder: 'john@example.com',
-    errorMessage: 'Please enter a valid email address',
+    label: 'Email: メール',
+    placeholder: 'tanaka@example.com',
+    errorMessage: 'Please enter a valid email: 正しいメールを入力',
     defaultValue: 'invalid-email',
   },
 }
 
 export const Disabled: Story = {
   args: {
-    label: 'Disabled Input',
-    placeholder: 'This input is disabled',
+    label: 'Disabled: 無効',
+    placeholder: 'This input is disabled: このフィールドは無効',
     disabled: true,
   },
 }
@@ -124,9 +126,9 @@ export const SkyFilled: Story = {
   args: {
     color: 'sky',
     variant: 'filled',
-    label: 'Sky Input',
-    placeholder: 'Sky filled input',
-    helperText: 'This is a sky colored input',
+    label: 'Sky: 空',
+    placeholder: 'Sky filled input: 空の入力',
+    helperText: 'This is a sky colored input: 空色のフィールド',
   },
 }
 
@@ -134,19 +136,19 @@ export const LavenderFilled: Story = {
   args: {
     color: 'lavender',
     variant: 'filled',
-    label: 'Lavender Input',
-    placeholder: 'Lavender filled input',
-    helperText: 'This is a lavender colored input',
+    label: 'Lavender: ラベンダー',
+    placeholder: 'Lavender filled input: ラベンダーの入力',
+    helperText: 'This is a lavender colored input: ラベンダー色のフィールド',
   },
 }
 
 export const SageFilled: Story = {
   args: {
-    color: 'sage',
+    color: 'wasabi',
     variant: 'filled',
-    label: 'Sage Input',
-    placeholder: 'Sage filled input',
-    helperText: 'This is a sage colored input',
+    label: 'Sage: 賢者',
+    placeholder: 'Sage filled input: 賢者の入力',
+    helperText: 'This is a sage colored input: 賢者色のフィールド',
   },
 }
 
@@ -154,9 +156,9 @@ export const AmberFilled: Story = {
   args: {
     color: 'amber',
     variant: 'filled',
-    label: 'Amber Input',
-    placeholder: 'Amber filled input',
-    helperText: 'This is an amber colored input',
+    label: 'Amber: 琥珀',
+    placeholder: 'Amber filled input: 琥珀の入力',
+    helperText: 'This is an amber colored input: 琥珀色のフィールド',
   },
 }
 
@@ -164,9 +166,9 @@ export const CoralFilled: Story = {
   args: {
     color: 'coral',
     variant: 'filled',
-    label: 'Coral Input',
-    placeholder: 'Coral filled input',
-    helperText: 'This is a coral colored input',
+    label: 'Coral: 珊瑚',
+    placeholder: 'Coral filled input: 珊瑚の入力',
+    helperText: 'This is a coral colored input: 珊瑚色のフィールド',
   },
 }
 
@@ -175,8 +177,8 @@ export const SkyOutline: Story = {
   args: {
     color: 'sky',
     variant: 'outline',
-    label: 'Sky Outline',
-    placeholder: 'Sky outline input',
+    label: 'Sky Outline: 空の輪郭',
+    placeholder: 'Sky outline input: 空の輪郭入力',
   },
 }
 
@@ -191,7 +193,7 @@ export const LavenderOutline: Story = {
 
 export const SageOutline: Story = {
   args: {
-    color: 'sage',
+    color: 'wasabi',
     variant: 'outline',
     label: 'Sage Outline',
     placeholder: 'Sage outline input',
@@ -202,24 +204,24 @@ export const SageOutline: Story = {
 export const Small: Story = {
   args: {
     size: 'sm',
-    label: 'Small Input',
-    placeholder: 'Small size',
+    label: 'Small: 小',
+    placeholder: 'Small size: 小サイズ',
   },
 }
 
 export const Medium: Story = {
   args: {
     size: 'md',
-    label: 'Medium Input',
-    placeholder: 'Medium size',
+    label: 'Medium: 中',
+    placeholder: 'Medium size: 中サイズ',
   },
 }
 
 export const Large: Story = {
   args: {
     size: 'lg',
-    label: 'Large Input',
-    placeholder: 'Large size',
+    label: 'Large: 大',
+    placeholder: 'Large size: 大サイズ',
   },
 }
 
@@ -228,9 +230,9 @@ export const EmailInput: Story = {
   args: {
     type: 'email',
     color: 'sky',
-    label: 'Email Address',
-    placeholder: 'john@example.com',
-    helperText: 'We\'ll never share your email',
+    label: 'Email Address: メールアドレス',
+    placeholder: 'tanaka@example.com',
+    helperText: 'We will never share your email: メールは公開しません',
   },
 }
 
@@ -238,17 +240,17 @@ export const PasswordInput: Story = {
   args: {
     type: 'password',
     color: 'lavender',
-    label: 'Password',
-    placeholder: 'Enter your password',
-    helperText: 'Must be at least 8 characters',
+    label: 'Password: パスワード',
+    placeholder: 'Enter your password: パスワード入力',
+    helperText: 'Must be at least 8 characters: ８文字以上',
   },
 }
 
 export const NumberInput: Story = {
   args: {
     type: 'number',
-    color: 'sage',
-    label: 'Age',
+    color: 'wasabi',
+    label: 'Age: 年齢',
     placeholder: '25',
     min: 0,
     max: 120,
@@ -258,34 +260,34 @@ export const NumberInput: Story = {
 // All Color Combinations
 export const AllColorCombinations: Story = {
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', width: '400px' }}>
-      <div>
-        <h4 style={{ margin: '0 0 1rem 0', color: '#666' }}>Filled Variants</h4>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-          <Input color='sky' variant='filled' label='Sky' placeholder='Sky filled input' />
-          <Input color='lavender' variant='filled' label='Lavender' placeholder='Lavender filled input' />
-          <Input color='sage' variant='filled' label='Sage' placeholder='Sage filled input' />
-          <Input color='amber' variant='filled' label='Amber' placeholder='Amber filled input' />
-          <Input color='coral' variant='filled' label='Coral' placeholder='Coral filled input' />
-        </div>
-      </div>
-      
-      <div>
-        <h4 style={{ margin: '0 0 1rem 0', color: '#666' }}>Outline Variants</h4>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-          <Input color='sky' variant='outline' label='Sky' placeholder='Sky outline input' />
-          <Input color='lavender' variant='outline' label='Lavender' placeholder='Lavender outline input' />
-          <Input color='sage' variant='outline' label='Sage' placeholder='Sage outline input' />
-          <Input color='amber' variant='outline' label='Amber' placeholder='Amber outline input' />
-          <Input color='coral' variant='outline' label='Coral' placeholder='Coral outline input' />
-        </div>
-      </div>
-    </div>
+    <Tatami display="flex" direction="column" gap="xl" w="auto" maxW="md">
+      <Tatami>
+        <Kanji as="h4" size="lg" weight="semibold" color="secondary">Filled Variants - 堕塗りスタイル</Kanji>
+        <Tatami display="flex" direction="column" gap="md">
+          <Input color='sky' variant='filled' label='Sky: 空' placeholder='Sky filled input: 空の入力' />
+          <Input color='lavender' variant='filled' label='Lavender: ラベンダー' placeholder='Lavender filled input: ラベンダーの入力' />
+          <Input color='wasabi' variant='filled' label='Sage: 賢者' placeholder='Sage filled input: 賢者の入力' />
+          <Input color='amber' variant='filled' label='Amber: 琥珀' placeholder='Amber filled input: 琥珀の入力' />
+          <Input color='coral' variant='filled' label='Coral: 珊瑚' placeholder='Coral filled input: 珊瑚の入力' />
+        </Tatami>
+      </Tatami>
+
+      <Tatami>
+        <Kanji as="h4" size="lg" weight="semibold" color="secondary">Outline Variants - 輪郭スタイル</Kanji>
+        <Tatami display="flex" direction="column" gap="md">
+          <Input color='sky' variant='outline' label='Sky: 空' placeholder='Sky outline input: 空の輪郭入力' />
+          <Input color='lavender' variant='outline' label='Lavender: ラベンダー' placeholder='Lavender outline input: ラベンダーの輪郭入力' />
+          <Input color='wasabi' variant='outline' label='Sage: 賢者' placeholder='Sage outline input: 賢者の輪郭入力' />
+          <Input color='amber' variant='outline' label='Amber: 琥珀' placeholder='Amber outline input: 琥珀の輪郭入力' />
+          <Input color='coral' variant='outline' label='Coral: 珊瑚' placeholder='Coral outline input: 珊瑚の輪郭入力' />
+        </Tatami>
+      </Tatami>
+    </Tatami>
   ),
   parameters: {
     docs: {
       description: {
-        story: 'All possible combinations of colors and variants'
+        story: 'All possible combinations of colors and variants with Japanese aesthetic - すべての色とバリアントの組み合わせ'
       }
     }
   }
@@ -294,16 +296,16 @@ export const AllColorCombinations: Story = {
 // All Sizes
 export const AllSizes: Story = {
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: '300px' }}>
-      <Input size='sm' color='sky' label='Small' placeholder='Small input' />
-      <Input size='md' color='lavender' label='Medium' placeholder='Medium input' />
-      <Input size='lg' color='sage' label='Large' placeholder='Large input' />
-    </div>
+    <Tatami display="flex" direction="column" gap="lg" w="auto" maxW="sm">
+      <Input size='sm' color='sky' label='Small: 小' placeholder='Small input: 小さな入力' />
+      <Input size='md' color='lavender' label='Medium: 中' placeholder='Medium input: 中央の入力' />
+      <Input size='lg' color='wasabi' label='Large: 大' placeholder='Large input: 大きな入力' />
+    </Tatami>
   ),
   parameters: {
     docs: {
       description: {
-        story: 'All input sizes with different colors'
+        story: 'All input sizes with different colors - さまざまなサイズと色'
       }
     }
   }
@@ -320,7 +322,7 @@ export const InputStates: Story = {
         helperText='This input is working properly'
       />
       <Input 
-        color='sage' 
+        color='wasabi' 
         label='With Helper Text' 
         placeholder='Success state' 
         helperText='This input looks good!'
@@ -371,7 +373,7 @@ export const WithRightIcon: Story = {
 
 export const WithBothIcons: Story = {
   args: {
-    color: 'sage',
+    color: 'wasabi',
     label: 'Amount',
     type: 'number',
     placeholder: '0.00',
@@ -403,7 +405,7 @@ export const IconExamples: Story = {
         defaultValue='john@example.com'
       />
       <Input 
-        color='sage'
+        color='wasabi'
         variant='outline'
         label='Phone Number'
         type='tel'

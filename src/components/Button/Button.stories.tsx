@@ -1,15 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { fn } from '@storybook/test'
 import { Button } from './Button'
+import { Tatami } from '../Tatami'
+import { Kanji } from '../Kanji'
 
 const meta: Meta<typeof Button> = {
-  title: 'Components/Button',
+  title: 'Components/Button (Botan) 🚀',
   component: Button,
   parameters: {
     layout: 'centered',
     docs: {
       description: {
-        component: 'A flexible Button component with multiple variants, sizes, and states.'
+        component: 'Botan (ボタン) - A flexible button component with elegant Japanese-inspired styling. Multiple variants, sizes, and states for every interaction need.'
       }
     }
   },
@@ -17,7 +19,7 @@ const meta: Meta<typeof Button> = {
   argTypes: {
     color: {
       control: 'select',
-      options: ['sky', 'lavender', 'sage', 'amber', 'coral'],
+      options: ['sky', 'lavender', 'wasabi', 'sage', 'amber', 'coral'],
       description: 'Color scheme of the button'
     },
     variant: {
@@ -49,7 +51,7 @@ const meta: Meta<typeof Button> = {
   },
   args: {
     onClick: fn(),
-    children: 'Button'
+    children: 'Button: ボタン'
   },
 }
 
@@ -59,7 +61,7 @@ type Story = StoryObj<typeof meta>
 // Historias básicas
 export const Default: Story = {
   args: {
-    children: 'Button',
+    children: 'Default: デフォルト',
   },
 }
 
@@ -68,7 +70,7 @@ export const SkyFilled: Story = {
   args: {
     color: 'sky',
     variant: 'filled',
-    children: 'Sky Button',
+    children: 'Sky: 空',
   },
 }
 
@@ -76,15 +78,15 @@ export const LavenderFilled: Story = {
   args: {
     color: 'lavender',
     variant: 'filled',
-    children: 'Lavender Button',
+    children: 'Lavender: ラベンダー',
   },
 }
 
 export const SageFilled: Story = {
   args: {
-    color: 'sage',
+    color: 'wasabi',
     variant: 'filled',
-    children: 'Sage Button',
+    children: 'Sage: 賢者',
   },
 }
 
@@ -92,7 +94,7 @@ export const AmberFilled: Story = {
   args: {
     color: 'amber',
     variant: 'filled',
-    children: 'Amber Button',
+    children: 'Amber: 琥珀',
   },
 }
 
@@ -100,7 +102,7 @@ export const CoralFilled: Story = {
   args: {
     color: 'coral',
     variant: 'filled',
-    children: 'Coral Button',
+    children: 'Coral: 珊瑚',
   },
 }
 
@@ -109,7 +111,7 @@ export const SkyOutline: Story = {
   args: {
     color: 'sky',
     variant: 'outline',
-    children: 'Sky Outline',
+    children: 'Sky Outline: 空の輪郭',
   },
 }
 
@@ -117,15 +119,15 @@ export const LavenderOutline: Story = {
   args: {
     color: 'lavender',
     variant: 'outline',
-    children: 'Lavender Outline',
+    children: 'Lavender Outline: ラベンダーの輪郭',
   },
 }
 
 export const SageOutline: Story = {
   args: {
-    color: 'sage',
+    color: 'wasabi',
     variant: 'outline',
-    children: 'Sage Outline',
+    children: 'Sage Outline: 賢者の輪郭',
   },
 }
 
@@ -134,7 +136,7 @@ export const SkyGhost: Story = {
   args: {
     color: 'sky',
     variant: 'ghost',
-    children: 'Sky Ghost',
+    children: 'Sky Ghost: 空の幽霊',
   },
 }
 
@@ -142,7 +144,7 @@ export const AmberGhost: Story = {
   args: {
     color: 'amber',
     variant: 'ghost',
-    children: 'Amber Ghost',
+    children: 'Amber Ghost: 琥珀の幽霊',
   },
 }
 
@@ -150,7 +152,7 @@ export const CoralGhost: Story = {
   args: {
     color: 'coral',
     variant: 'ghost',
-    children: 'Coral Ghost',
+    children: 'Coral Ghost: 珊瑚の幽霊',
   },
 }
 
@@ -158,21 +160,21 @@ export const CoralGhost: Story = {
 export const Small: Story = {
   args: {
     size: 'sm',
-    children: 'Small Button',
+    children: 'Small: 小',
   },
 }
 
 export const Medium: Story = {
   args: {
     size: 'md',
-    children: 'Medium Button',
+    children: 'Medium: 中',
   },
 }
 
 export const Large: Story = {
   args: {
     size: 'lg',
-    children: 'Large Button',
+    children: 'Large: 大',
   },
 }
 
@@ -180,21 +182,21 @@ export const Large: Story = {
 export const Loading: Story = {
   args: {
     loading: true,
-    children: 'Loading Button',
+    children: 'Loading: 読み込み中',
   },
 }
 
 export const Disabled: Story = {
   args: {
     disabled: true,
-    children: 'Disabled Button',
+    children: 'Disabled: 無効',
   },
 }
 
 export const FullWidth: Story = {
   args: {
     fullWidth: true,
-    children: 'Full Width Button',
+    children: 'Full Width: 全幅',
   },
   parameters: {
     layout: 'padded',
@@ -205,14 +207,14 @@ export const FullWidth: Story = {
 export const WithLeftIcon: Story = {
   args: {
     leftIcon: '←',
-    children: 'Back',
+    children: 'Back: 戻る',
   },
 }
 
 export const WithRightIcon: Story = {
   args: {
     rightIcon: '→',
-    children: 'Next',
+    children: 'Next: 次へ',
   },
 }
 
@@ -220,52 +222,52 @@ export const WithBothIcons: Story = {
   args: {
     leftIcon: '←',
     rightIcon: '→',
-    children: 'Both Icons',
+    children: 'Both Icons: 両方',
   },
 }
 
 // All color combinations
 export const AllColorCombinations: Story = {
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-      <div>
-        <h4 style={{ margin: '0 0 1rem 0', color: '#666' }}>Filled Variants</h4>
-        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-          <Button color='sky' variant='filled'>Sky</Button>
-          <Button color='lavender' variant='filled'>Lavender</Button>
-          <Button color='sage' variant='filled'>Sage</Button>
-          <Button color='amber' variant='filled'>Amber</Button>
-          <Button color='coral' variant='filled'>Coral</Button>
-        </div>
-      </div>
-      
-      <div>
-        <h4 style={{ margin: '0 0 1rem 0', color: '#666' }}>Outline Variants</h4>
-        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-          <Button color='sky' variant='outline'>Sky</Button>
-          <Button color='lavender' variant='outline'>Lavender</Button>
-          <Button color='sage' variant='outline'>Sage</Button>
-          <Button color='amber' variant='outline'>Amber</Button>
-          <Button color='coral' variant='outline'>Coral</Button>
-        </div>
-      </div>
-      
-      <div>
-        <h4 style={{ margin: '0 0 1rem 0', color: '#666' }}>Ghost Variants</h4>
-        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-          <Button color='sky' variant='ghost'>Sky</Button>
-          <Button color='lavender' variant='ghost'>Lavender</Button>
-          <Button color='sage' variant='ghost'>Sage</Button>
-          <Button color='amber' variant='ghost'>Amber</Button>
-          <Button color='coral' variant='ghost'>Coral</Button>
-        </div>
-      </div>
-    </div>
+    <Tatami display="flex" direction="column" gap="xl">
+      <Tatami>
+        <Kanji as="h4" size="lg" weight="semibold" color="secondary">Filled Variants - 塩塗りスタイル</Kanji>
+        <Tatami display="flex" gap="md" wrap="wrap">
+          <Button color='sky' variant='filled'>Sky: 空</Button>
+          <Button color='lavender' variant='filled'>Lavender: ラベンダー</Button>
+          <Button color='wasabi' variant='filled'>Wasabi: わさび</Button>
+          <Button color='amber' variant='filled'>Amber: 琥珀</Button>
+          <Button color='coral' variant='filled'>Coral: 珊瑚</Button>
+        </Tatami>
+      </Tatami>
+
+      <Tatami>
+        <Kanji as="h4" size="lg" weight="semibold" color="secondary">Outline Variants - 輪郭スタイル</Kanji>
+        <Tatami display="flex" gap="md" wrap="wrap">
+          <Button color='sky' variant='outline'>Sky: 空</Button>
+          <Button color='lavender' variant='outline'>Lavender: ラベンダー</Button>
+          <Button color='wasabi' variant='outline'>Wasabi: わさび</Button>
+          <Button color='amber' variant='outline'>Amber: 琥珀</Button>
+          <Button color='coral' variant='outline'>Coral: 珊瑚</Button>
+        </Tatami>
+      </Tatami>
+
+      <Tatami>
+        <Kanji as="h4" size="lg" weight="semibold" color="secondary">Ghost Variants - ゴーストスタイル</Kanji>
+        <Tatami display="flex" gap="md" wrap="wrap">
+          <Button color='sky' variant='ghost'>Sky: 空</Button>
+          <Button color='lavender' variant='ghost'>Lavender: ラベンダー</Button>
+          <Button color='wasabi' variant='ghost'>Wasabi: わさび</Button>
+          <Button color='amber' variant='ghost'>Amber: 琥珀</Button>
+          <Button color='coral' variant='ghost'>Coral: 珊瑚</Button>
+        </Tatami>
+      </Tatami>
+    </Tatami>
   ),
   parameters: {
     docs: {
       description: {
-        story: 'All possible combinations of colors and variants'
+        story: 'All possible combinations of colors and variants with Japanese aesthetic - すべての色とバリアントの組み合わせ'
       }
     }
   }
@@ -274,16 +276,16 @@ export const AllColorCombinations: Story = {
 // All sizes
 export const AllSizes: Story = {
   render: () => (
-    <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-      <Button size='sm'>Small</Button>
-      <Button size='md'>Medium</Button>
-      <Button size='lg'>Large</Button>
-    </div>
+    <Tatami display="flex" gap="lg" align="center">
+      <Button size='sm'>Small: 小</Button>
+      <Button size='md'>Medium: 中</Button>
+      <Button size='lg'>Large: 大</Button>
+    </Tatami>
   ),
   parameters: {
     docs: {
       description: {
-        story: 'All button sizes'
+        story: 'All button sizes from small to large - 小から大までのサイズ'
       }
     }
   }

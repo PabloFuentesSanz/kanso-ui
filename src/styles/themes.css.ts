@@ -17,7 +17,14 @@ export const darkTheme = createTheme(vars, {
     lavenderLight: '#3a2d4a',
     lavenderLighter: '#1f1825',
     
-    // Sage - Dark mode version
+    // Wasabi - Dark mode version (natural and balanced)
+    wasabi: '#6fbf73',
+    wasabiHover: '#85cc89',
+    wasabiActive: '#5aa55f',
+    wasabiLight: '#2d4a2f',
+    wasabiLighter: '#1a2e1b',
+
+    // Legacy sage alias (deprecated - use wasabi)
     sage: '#6fbf73',
     sageHover: '#85cc89',
     sageActive: '#5aa55f',

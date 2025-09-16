@@ -16,7 +16,14 @@ export const [themeClass, vars] = createTheme({
     lavenderLight: '#e6ddf1',
     lavenderLighter: '#f7f4fa',
     
-    // Sage - Natural and balanced
+    // Wasabi - Natural and balanced (わさび)
+    wasabi: '#a8e6b0',
+    wasabiHover: '#7fd88a',
+    wasabiActive: '#5cc969',
+    wasabiLight: '#d7f5da',
+    wasabiLighter: '#f1fcf2',
+
+    // Legacy sage alias (deprecated - use wasabi)
     sage: '#a8e6b0',
     sageHover: '#7fd88a',
     sageActive: '#5cc969',

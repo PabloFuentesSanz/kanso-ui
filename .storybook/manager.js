@@ -3,7 +3,7 @@ import { create } from '@storybook/theming'
 import logo from './bigLogo.png'
 
 const kansoTheme = create({
-  base: 'light',
+  base: 'dark',
   brandTitle: 'Kanso UI',
   brandImage: logo,
   brandUrl: 'https://github.com/pablofuentessanz/kanso-ui',
