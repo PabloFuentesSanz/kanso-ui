@@ -1,18 +1,26 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { Bento, BentoItem } from './Bento'
-import { Button } from '../Button'
-import { Kirei, KireiHeader, KireiBody, KireiFooter } from '../Kirei'
+import { Tatami } from '../Tatami'
 import { Kanji } from '../Kanji'
 
 const meta: Meta<typeof Bento> = {
-  title: 'Layout/Bento (Grid) 🍱',
+  title: 'Components/Bento (Grid)',
   component: Bento,
   parameters: {
     layout: 'padded',
     docs: {
       description: {
-        component:
-          'Bento (弁当) - A flexible grid layout system inspired by Japanese lunch boxes. Use it to create organized, modular layouts.',
+        component: `
+### Bento (弁当) - Harmony in structure.
+
+A flexible grid layout system inspired by traditional Japanese lunch boxes.
+Just as a Bento box organizes a meal into balanced compartments, the Bento component organizes your content into harmonious grids.
+
+It supports:
+- **Responsive layouts**
+- **Gap management via Kanso spacing tokens**
+- **Col/Row spanning for complex dashboards**
+        `,
       },
     },
   },
@@ -22,21 +30,13 @@ const meta: Meta<typeof Bento> = {
       control: 'select',
       options: ['1', '2', '3', '4', '5', '6', '12'],
       description: 'Number of columns in the grid',
+      table: { defaultValue: { summary: '3' } }
     },
     gap: {
       control: 'select',
       options: ['none', 'xs', 'sm', 'md', 'lg', 'xl'],
-      description: 'Spacing between grid items',
-    },
-    align: {
-      control: 'select',
-      options: ['start', 'center', 'end', 'stretch'],
-      description: 'Vertical alignment of items',
-    },
-    justify: {
-      control: 'select',
-      options: ['start', 'center', 'end', 'stretch'],
-      description: 'Horizontal alignment of items',
+      description: 'Spacing between items',
+      table: { defaultValue: { summary: 'md' } }
     },
   },
 }
@@ -44,241 +44,131 @@ const meta: Meta<typeof Bento> = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-// Basic Examples
-export const Default: Story = {
-  render: () => (
-    <Bento columns='3' gap='md'>
+export const Basic: Story = {
+  args: {
+    columns: '3',
+    gap: 'md',
+  },
+  render: (args) => (
+    <Bento {...args}>
       <BentoItem>
-        <Kirei color='sky' variant='filled'>
-          <KireiBody>
-            <Kanji as="h3" size="lg" weight="semibold">Sky Gallery - 空の間</Kanji>
-            <Kanji>Beautiful sky-themed content showcasing serenity and vastness.</Kanji>
-          </KireiBody>
-        </Kirei>
+        <Tatami bg="sakura" rounded="md" p="md" display="flex" align="center" justify="center" shadow="sm" style={{ height: '100px' }}>
+             <Kanji weight="medium" color="white">Sakura 300</Kanji>
+        </Tatami>
       </BentoItem>
       <BentoItem>
-        <Kirei color='lavender' variant='filled'>
-          <KireiBody>
-            <Kanji as="h3" size="lg" weight="semibold">Lavender Room - ラベンダー室</Kanji>
-            <Kanji>Elegant lavender-themed content for peaceful moments.</Kanji>
-          </KireiBody>
-        </Kirei>
+        <Tatami bg="wasabi" rounded="md" p="md" display="flex" align="center" justify="center" shadow="sm" style={{ height: '100px' }}>
+             <Kanji weight="medium" color="white">Wasabi 300</Kanji>
+        </Tatami>
       </BentoItem>
       <BentoItem>
-        <Kirei color='sage' variant='filled'>
-          <KireiBody>
-            <Kanji as="h3" size="lg" weight="semibold">Sage Garden - セージ庭</Kanji>
-            <Kanji>Natural sage-themed content bringing harmony and balance.</Kanji>
-          </KireiBody>
-        </Kirei>
+        <Tatami bg="sora" rounded="md" p="md" display="flex" align="center" justify="center" shadow="sm" style={{ height: '100px' }}>
+             <Kanji weight="medium" color="white">Sora 300</Kanji>
+        </Tatami>
       </BentoItem>
     </Bento>
   ),
 }
 
-export const Dashboard: Story = {
+export const SpanningColumns: Story = {
   render: () => (
-    <Bento columns='12' gap='lg'>
-      <BentoItem span='8'>
-        <Kirei color='amber' variant='filled' height='full' style={{ minHeight: '300px' }}>
-          <KireiBody
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >
-            <div style={{ textAlign: 'center' }}>
-              <Kanji as="h3" size="2xl" weight="semibold">Main Dashboard - メインダッシュボード</Kanji>
-              <Kanji>Primary content section for your business analytics and insights.</Kanji>
-            </div>
-          </KireiBody>
-        </Kirei>
+    <Bento columns="3" gap="md">
+      <BentoItem span="2">
+        <Tatami bg="sora" rounded="md" p="md" display="flex" align="center" justify="center" shadow="sm" style={{ height: '100px' }}>
+            <Kanji weight="bold" color="white">Sora (Sky) - Pastel</Kanji>
+        </Tatami>
       </BentoItem>
-      <BentoItem span='4' rowSpan='2'>
-        <Kirei color='coral' variant='filled' height='full' padding='none'>
-          <KireiHeader accent>
-            <Kanji as="h3" size="lg" weight="semibold">Navigation - ナビゲーション</Kanji>
-          </KireiHeader>
-        </Kirei>
-      </BentoItem>
-      <BentoItem span='4'>
-        <Kirei color='sky' variant='elevated' padding='none'>
-          <KireiHeader accent>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <Kanji as="h3" size="md" weight="medium">Active Users - アクティブユーザー</Kanji>
-            </div>
-          </KireiHeader>
-          <KireiBody>
-            <div
-              style={{ fontSize: '2.5rem', fontWeight: 'bold', margin: '0.5rem 0' }}
-              aria-label='Users: 1,234'
-            >
-              1,234
-            </div>
-            <Kanji size="sm" color="secondary">+12% from last month</Kanji>
-          </KireiBody>
-        </Kirei>
-      </BentoItem>
-      <BentoItem span='4'>
-        <Kirei color='lavender' variant='elevated' padding='none'>
-          <KireiHeader accent>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <Kanji as="h3" size="md" weight="medium">Revenue - 収益</Kanji>
-            </div>
-          </KireiHeader>
-          <KireiBody>
-            <div
-              style={{ fontSize: '2.5rem', fontWeight: 'bold', margin: '0.5rem 0' }}
-              aria-label='Revenue: $45.2K'
-            >
-              $45.2K
-            </div>
-            <Kanji size="sm" color="secondary">+8% from last month</Kanji>
-          </KireiBody>
-        </Kirei>
-      </BentoItem>
-    </Bento>
-  ),
-  parameters: {
-    docs: {
-      description: {
-        story:
-          'Complex dashboard layout using Bento grid with Kirei cards for consistent styling and proper accessibility',
-      },
-    },
-  },
-}
-
-export const ResponsiveCards: Story = {
-  render: () => {
-    const colors = ['sky', 'lavender', 'sage', 'amber'] as const
-
-    return (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-        <section>
-          <Kanji as="h3" size="xl" weight="semibold">Desktop Layout - デスクトップレイアウト (4 columns)</Kanji>
-          <Bento columns='4' gap='md'>
-            {Array.from({ length: 8 }, (_, i) => (
-              <BentoItem key={`desktop-${i}`}>
-                <Kirei color={colors[i % 4]} variant='outlined'>
-                  <KireiBody>
-                    <Kanji as="h4" size="md" weight="medium">Gallery {i + 1} - ギャラリー</Kanji>
-                    <Kanji size="sm">Responsive layout showcasing Japanese design principles.</Kanji>
-                  </KireiBody>
-                </Kirei>
-              </BentoItem>
-            ))}
-          </Bento>
-        </section>
-
-        <section>
-          <Kanji as="h3" size="xl" weight="semibold">Mobile Layout - モバイルレイアウト (1 column)</Kanji>
-          <Bento columns='1' gap='sm'>
-            {Array.from({ length: 4 }, (_, i) => (
-              <BentoItem key={`mobile-${i}`}>
-                <Kirei color={colors[i]} variant='outlined'>
-                  <KireiBody>
-                    <Kanji as="h4" size="md" weight="medium">Mobile Gallery {i + 1} - モバイル</Kanji>
-                    <Kanji size="sm">Stacked layout optimized for smaller screens.</Kanji>
-                  </KireiBody>
-                </Kirei>
-              </BentoItem>
-            ))}
-          </Bento>
-        </section>
-      </div>
-    )
-  },
-}
-
-export const WithComponents: Story = {
-  render: () => (
-    <Bento columns='3' gap='lg'>
       <BentoItem>
-        <Kirei color='sky' variant='elevated' padding='none' height='full'>
-          <KireiHeader accent>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <span aria-hidden='true'>⚡</span>
-              <Kanji as="h3" size="md" weight="semibold">Actions - アクション</Kanji>
-            </div>
-          </KireiHeader>
-          <KireiBody>
-            <Kanji style={{ marginBottom: '1rem' }}>Quick actions panel for essential operations.</Kanji>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-              <Button color='sky' variant='filled'>
-                Primary Action
-              </Button>
-              <Button color='sage' variant='outline'>
-                Secondary
-              </Button>
-            </div>
-          </KireiBody>
-        </Kirei>
+        <Tatami bg="soraLight" rounded="md" p="md" display="flex" align="center" justify="center" shadow="sm" style={{ height: '100px' }}>
+            <Kanji weight="medium" color="sora">Sora Light</Kanji>
+        </Tatami>
       </BentoItem>
-      <BentoItem span='2'>
-        <Kirei color='sage' variant='elevated' padding='none' height='full'>
-          <KireiHeader accent>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <span aria-hidden='true'>📝</span>
-              <Kanji as="h3" size="md" weight="semibold">Content Area - コンテンツエリア</Kanji>
-            </div>
-          </KireiHeader>
-          <KireiBody>
-            <Kanji>
-              This section spans 2 columns in our Bento grid. Perfect for main content areas, forms,
-              or detailed information with Japanese design principles.
-            </Kanji>
-            <Kanji>
-              The Bento system makes it easy to create organized, modular layouts that feel natural
-              and balanced like a traditional bento box.
-            </Kanji>
-          </KireiBody>
-          <KireiFooter>
-            <Button color='sage' variant='outline' size='sm'>
-              Cancel
-            </Button>
-            <Button color='sage' variant='filled' size='sm'>
-              Save
-            </Button>
-          </KireiFooter>
-        </Kirei>
+      
+      <BentoItem>
+        <Tatami bg="soraLight" rounded="md" p="md" display="flex" align="center" justify="center" shadow="sm" style={{ height: '100px' }}>
+             <Kanji weight="medium" color="sora">Sora Light</Kanji>
+        </Tatami>
+      </BentoItem>
+      <BentoItem span="2">
+        <Tatami bg="soraDark" rounded="md" p="md" display="flex" align="center" justify="center" shadow="sm" style={{ height: '100px' }}>
+            <Kanji weight="bold" color="white">Sora Medium (500)</Kanji>
+        </Tatami>
       </BentoItem>
     </Bento>
   ),
 }
 
-// All Gap Sizes
-export const GapSizes: Story = {
-  render: () => {
-    const colors = ['sky', 'lavender', 'sage', 'amber'] as const
+export const DashboardLayout: Story = {
+  name: 'Harmony Dashboard',
+  render: () => (
+    <div style={{ maxWidth: '800px' }}>
+         <h3 style={{ marginBottom: '1rem', fontFamily: 'sans-serif', color: '#444' }}>Analytics Dashboard</h3>
+         
+         <Bento columns="4" gap="md">
+            {/* Main KPI */}
+            <BentoItem span="2" rowSpan="2">
+              <Tatami bg="indigo" h="full" rounded="lg" p="lg" display="flex" direction="column" align="center" justify="center" shadow="md">
+                   <Kanji size="3xl" weight="bold" color="white">¥ 2.4M</Kanji>
+                   <Kanji size="sm" color="white" style={{ opacity: 0.9 }}>Total Revenue</Kanji>
+              </Tatami>
+            </BentoItem>
+            
+            {/* Small stats */}
+            <BentoItem>
+               <Tatami bg="wasabi" h="full" rounded="lg" p="md" display="flex" direction="column" align="center" justify="center" shadow="sm" style={{ minHeight: '100px' }}>
+                   <Kanji size="xl" weight="bold" color="white">+12%</Kanji>
+                   <Kanji size="xs" color="white">Growth</Kanji>
+               </Tatami>
+            </BentoItem>
+            <BentoItem>
+               <Tatami bg="mikan" h="full" rounded="lg" p="md" display="flex" direction="column" align="center" justify="center" shadow="sm" style={{ minHeight: '100px' }}>
+                   <Kanji size="xl" weight="bold" color="white">346</Kanji>
+                   <Kanji size="xs" color="white">New Users</Kanji>
+               </Tatami>
+            </BentoItem>
+            
+             {/* Wide bottom */}
+            <BentoItem span="2">
+               <Tatami bg="sumiLight" h="full" rounded="lg" p="md" display="flex" align="center" justify="between" shadow="sm" style={{ height: '80px' }}>
+                  <Kanji size="sm" color="sumi">System Status</Kanji>
+                  <Tatami px="sm" py="xs" bg="wasabi" rounded="full">
+                      <Kanji size="xs" weight="bold" color="white">Operational</Kanji>
+                  </Tatami>
+               </Tatami>
+            </BentoItem>
+         </Bento>
+    </div>
+  )
+}
 
-    return (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-        {(['none', 'xs', 'sm', 'md', 'lg', 'xl'] as const).map(gap => (
-          <section key={gap}>
-            <Kanji
-              as="h4"
-              size="lg"
-              weight="semibold"
-              style={{ marginBottom: '1rem' }}
-            >
-              Gap Size: {gap} - 間隙
-            </Kanji>
-            <Bento columns='4' gap={gap}>
-              {Array.from({ length: 4 }, (_, i) => (
-                <BentoItem key={`${gap}-${i}`}>
-                  <Kirei color={colors[i]} variant='default' padding='sm'>
-                    <KireiBody>
-                      <Kanji size="sm" align="center">Element {i + 1}</Kanji>
-                    </KireiBody>
-                  </Kirei>
-                </BentoItem>
-              ))}
-            </Bento>
-          </section>
-        ))}
-      </div>
-    )
-  },
+export const ColorsOfJapan: Story = {
+  render: () => (
+    <Bento columns="5" gap="sm">
+      <BentoItem>
+          <Tatami bg="sakura" p="md" rounded="md" display="flex" align="center" justify="center" shadow="sm" style={{ aspectRatio: '1/1' }}>
+              <Kanji size="xs" weight="bold" color="white">Sakura</Kanji>
+          </Tatami>
+      </BentoItem>
+      <BentoItem>
+          <Tatami bg="wasabi" p="md" rounded="md" display="flex" align="center" justify="center" shadow="sm" style={{ aspectRatio: '1/1' }}>
+              <Kanji size="xs" weight="bold" color="white">Wasabi</Kanji>
+          </Tatami>
+      </BentoItem>
+      <BentoItem>
+          <Tatami bg="sora" p="md" rounded="md" display="flex" align="center" justify="center" shadow="sm" style={{ aspectRatio: '1/1' }}>
+              <Kanji size="xs" weight="bold" color="white">Sora</Kanji>
+          </Tatami>
+      </BentoItem>
+      <BentoItem>
+          <Tatami bg="mikan" p="md" rounded="md" display="flex" align="center" justify="center" shadow="sm" style={{ aspectRatio: '1/1' }}>
+              <Kanji size="xs" weight="bold" color="white">Mikan</Kanji>
+          </Tatami>
+      </BentoItem>
+      <BentoItem>
+          <Tatami bg="akane" p="md" rounded="md" display="flex" align="center" justify="center" shadow="sm" style={{ aspectRatio: '1/1' }}>
+              <Kanji size="xs" weight="bold" color="white">Akane</Kanji>
+          </Tatami>
+      </BentoItem>
+    </Bento>
+  )
 }

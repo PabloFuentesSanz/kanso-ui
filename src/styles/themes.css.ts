@@ -1,114 +1,77 @@
 import { createTheme } from '@vanilla-extract/css'
-import { vars, themeClass } from './tokens.css'
+import { vars, palette } from './tokens.css'
+
+// Helper to invert scales for dark mode
+// Simple logical inversion: 25<->950, 50<->900, 100<->800, etc.
+const invert = (p: typeof palette) => {
+  const inverted: Record<string, string> = {}
+  
+  const families = ['sakura', 'wasabi', 'sora', 'indigo', 'mikan', 'akane', 'fuji', 'sumi']
+  const scales = ['25', '50', '100', '200', '300', '400', '500', '600', '700', '800', '900', '950']
+  const reverseScales = [...scales].reverse()
+
+  families.forEach(family => {
+    scales.forEach((scale, index) => {
+      const key = `${family}${scale}` as keyof typeof p
+      const reverseKey = `${family}${reverseScales[index]}` as keyof typeof p
+      inverted[key] = p[reverseKey]
+    })
+  })
+
+  return inverted
+}
+
+const invertedColors = invert(palette)
 
 export const darkTheme = createTheme(vars, {
   color: {
-    // Sky Blue - Dark mode version
-    sky: '#4a9eff',
-    skyHover: '#6bb3ff',
-    skyActive: '#2a85e6',
-    skyLight: '#1e3a5c',
-    skyLighter: '#0d1d2e',
+    ...palette, // Start with default palette
+    ...invertedColors, // Overlay inverted scales
     
-    // Lavender - Dark mode version
-    lavender: '#a584c9',
-    lavenderHover: '#b89dd5',
-    lavenderActive: '#926bb8',
-    lavenderLight: '#3a2d4a',
-    lavenderLighter: '#1f1825',
+    // Semantic Overrides for Dark Mode
+    primary: palette.sora400, // Lighter for dark background
+    secondary: palette.sumi400,
+    success: palette.wasabi400,
+    warning: palette.mikan400,
+    error: palette.akane400,
     
-    // Wasabi - Dark mode version (natural and balanced)
-    wasabi: '#6fbf73',
-    wasabiHover: '#85cc89',
-    wasabiActive: '#5aa55f',
-    wasabiLight: '#2d4a2f',
-    wasabiLighter: '#1a2e1b',
-
-    // Legacy sage alias (deprecated - use wasabi)
-    sage: '#6fbf73',
-    sageHover: '#85cc89',
-    sageActive: '#5aa55f',
-    sageLight: '#2d4a2f',
-    sageLighter: '#1a2e1b',
+    // Legacy mapping (simplified)
+    sky: palette.sora400,
+    lavender: palette.fuji400,
+    wasabi: palette.wasabi400,
+    amber: palette.mikan400,
+    coral: palette.akane400,
+    peach: palette.sakura400,
+    mint: palette.wasabi300,
+    seafoam: palette.sora300,
     
-    // Amber - Dark mode version
-    amber: '#ffb347',
-    amberHover: '#ffc067',
-    amberActive: '#ff9f27',
-    amberLight: '#4a3d2e',
-    amberLighter: '#2e2419',
+    // Backgrounds
+    background: palette.sumi950,
+    backgroundAlt: palette.sumi900,
+    backgroundOverlay: 'rgba(2, 6, 23, 0.8)',
     
-    // Coral - Dark mode version
-    coral: '#ff7a89',
-    coralHover: '#ff94a1',
-    coralActive: '#ff5f72',
-    coralLight: '#4a2d30',
-    coralLighter: '#2e191b',
+    // Text
+    textPrimary: palette.sumi50,
+    textSecondary: palette.sumi300,
+    textMuted: palette.sumi500,
+    textInverse: palette.sumi950,
     
-    // Nature-inspired Pastels - Dark mode versions
-    peach: '#ff9aa5',
-    mint: '#8fccb5',
-    lilac: '#c4a2d4',
-    cream: '#e6e69a',
-    rose: '#ffaeb8',
-    seafoam: '#9dcccd',
+    // Borders
+    border: palette.sumi700,
+    borderLight: palette.sumi800,
+    borderDark: palette.sumi600,
     
-    // Refined Neutral/Gray palette (inverted for dark theme)
-    white: '#000000',
-    gray50: '#1a1a1a',
-    gray100: '#2a2a2a',
-    gray200: '#3a3a3a',
-    gray300: '#4a4a4a',
-    gray400: '#6a6a6a',
-    gray500: '#8a8a8a',
-    gray600: '#aaaaaa',
-    gray700: '#cacaca',
-    gray800: '#dadada',
-    gray900: '#f5f5f5',
-    black: '#ffffff',
-    
-    // Text colors
-    textPrimary: '#f8fafc',
-    textSecondary: '#e2e8f0',
-    textMuted: '#94a3b8',
-    textDisabled: '#64748b',
-    textInverse: '#0f172a',
-    
-    // Background colors
-    background: '#0f172a',
-    backgroundAlt: '#1e293b',
-    backgroundOverlay: 'rgba(15, 23, 42, 0.8)',
-    
-    // Border colors
-    border: '#334155',
-    borderLight: '#475569',
-    borderDark: '#1e293b',
-    
-    // Focus and interaction (using sky blue)
-    focus: '#4a9eff',
-    focusRing: 'rgba(74, 158, 255, 0.3)',
+    // Focus
+    focus: palette.sora400,
+    focusRing: 'rgba(56, 189, 248, 0.3)',
   },
   
-  // Keep the same spacing, fontSize, fontWeight, lineHeight, borderRadius as light theme
+  // Inherit others
   spacing: vars.spacing,
   fontSize: vars.fontSize,
   fontWeight: vars.fontWeight,
   lineHeight: vars.lineHeight,
   borderRadius: vars.borderRadius,
-  
-  // Adjust shadows for dark theme
-  shadow: {
-    none: 'none',
-    sm: '0 1px 2px 0 rgba(0, 0, 0, 0.3)',
-    default: '0 1px 3px 0 rgba(0, 0, 0, 0.4), 0 1px 2px 0 rgba(0, 0, 0, 0.3)',
-    md: '0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3)',
-    lg: '0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3)',
-    xl: '0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.2)',
-    '2xl': '0 25px 50px -12px rgba(0, 0, 0, 0.6)',
-    inner: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.3)',
-  },
-  
+  shadow: vars.shadow,
   transition: vars.transition,
 })
-
-export const lightTheme = themeClass

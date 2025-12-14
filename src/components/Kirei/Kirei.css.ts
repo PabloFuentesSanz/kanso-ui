@@ -21,37 +21,37 @@ export const kireiStyles = recipe({
     color: {
       sky: {
         vars: {
-          '--color-accent': vars.color.sky,
-          '--color-accent-light': vars.color.skyLight,
-          '--color-accent-lighter': vars.color.skyLighter,
+          '--color-accent': vars.color.sora400,
+          '--color-accent-light': vars.color.sora200,
+          '--color-accent-lighter': vars.color.sora50,
         }
       },
       lavender: {
         vars: {
-          '--color-accent': vars.color.lavender,
-          '--color-accent-light': vars.color.lavenderLight,
-          '--color-accent-lighter': vars.color.lavenderLighter,
+          '--color-accent': vars.color.fuji400,
+          '--color-accent-light': vars.color.fuji200,
+          '--color-accent-lighter': vars.color.fuji50,
         }
       },
       sage: {
         vars: {
-          '--color-accent': vars.color.sage,
-          '--color-accent-light': vars.color.sageLight,
-          '--color-accent-lighter': vars.color.sageLighter,
+          '--color-accent': vars.color.wasabi400,
+          '--color-accent-light': vars.color.wasabi200,
+          '--color-accent-lighter': vars.color.wasabi50,
         }
       },
       amber: {
         vars: {
-          '--color-accent': vars.color.amber,
-          '--color-accent-light': vars.color.amberLight,
-          '--color-accent-lighter': vars.color.amberLighter,
+          '--color-accent': vars.color.mikan400, // Mikan is Orange/Amber
+          '--color-accent-light': vars.color.mikan200,
+          '--color-accent-lighter': vars.color.mikan50,
         }
       },
       coral: {
         vars: {
-          '--color-accent': vars.color.coral,
-          '--color-accent-light': vars.color.coralLight,
-          '--color-accent-lighter': vars.color.coralLighter,
+          '--color-accent': vars.color.akane400, // Akane is Red/Coral
+          '--color-accent-light': vars.color.akane200,
+          '--color-accent-lighter': vars.color.akane50,
         }
       },
     },

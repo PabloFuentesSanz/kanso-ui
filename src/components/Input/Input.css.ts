@@ -3,130 +3,118 @@ import { vars } from '../../styles/tokens.css'
 
 export const inputStyles = recipe({
   base: {
-    display: 'flex',
-    width: '100%',
-    borderRadius: vars.borderRadius.md,
-    border: `1px solid ${vars.color.border}`,
-    backgroundColor: vars.color.background,
+    fontFamily: 'inherit',
     fontSize: vars.fontSize.base,
-    fontWeight: vars.fontWeight.normal,
-    lineHeight: vars.lineHeight.normal,
-    color: vars.color.textPrimary,
-    transition: vars.transition.all,
+    padding: `${vars.spacing['2']} ${vars.spacing['3']}`,
+    borderRadius: vars.borderRadius.md,
+    border: `1px solid ${vars.color.sumi300}`,
     outline: 'none',
-
-    '::placeholder': {
-      color: vars.color.textMuted,
-    },
+    width: '100%',
+    transition: vars.transition.all,
+    backgroundColor: vars.color.yuki,
+    color: vars.color.sumi900,
 
     ':focus': {
-      borderColor: vars.color.focus,
-      boxShadow: `0 0 0 3px ${vars.color.focusRing}`,
+      borderColor: vars.color.sora500,
+      boxShadow: `0 0 0 2px ${vars.color.sora100}`,
+    },
+    
+    '::placeholder': {
+       color: vars.color.sumi400
     },
 
     ':disabled': {
-      cursor: 'not-allowed',
-      opacity: 0.6,
-      backgroundColor: vars.color.gray100,
-    },
+        cursor: 'not-allowed',
+        backgroundColor: vars.color.sumi50,
+        opacity: 0.7
+    }
   },
 
   variants: {
     color: {
-      sky: {
-        vars: {
-          '--color-main': vars.color.sky,
-          '--color-hover': vars.color.skyHover,
-          '--color-light': vars.color.skyLight,
-          '--color-lighter': vars.color.skyLighter,
+      sakura: {
+        ':focus': {
+            borderColor: vars.color.sakura500,
+            boxShadow: `0 0 0 2px ${vars.color.sakura100}`,
         }
       },
-      lavender: {
-        vars: {
-          '--color-main': vars.color.lavender,
-          '--color-hover': vars.color.lavenderHover,
-          '--color-light': vars.color.lavenderLight,
-          '--color-lighter': vars.color.lavenderLighter,
+      wasabi: {
+         ':focus': {
+            borderColor: vars.color.wasabi500,
+            boxShadow: `0 0 0 2px ${vars.color.wasabi100}`,
         }
       },
-      sage: {
-        vars: {
-          '--color-main': vars.color.sage,
-          '--color-hover': vars.color.sageHover,
-          '--color-light': vars.color.sageLight,
-          '--color-lighter': vars.color.sageLighter,
+      sora: { /* Default */ },
+      indigo: {
+         ':focus': {
+            borderColor: vars.color.indigo500,
+            boxShadow: `0 0 0 2px ${vars.color.indigo100}`,
         }
       },
-      amber: {
-        vars: {
-          '--color-main': vars.color.amber,
-          '--color-hover': vars.color.amberHover,
-          '--color-light': vars.color.amberLight,
-          '--color-lighter': vars.color.amberLighter,
+      mikan: {
+         ':focus': {
+            borderColor: vars.color.mikan500,
+            boxShadow: `0 0 0 2px ${vars.color.mikan100}`,
         }
       },
-      coral: {
-        vars: {
-          '--color-main': vars.color.coral,
-          '--color-hover': vars.color.coralHover,
-          '--color-light': vars.color.coralLight,
-          '--color-lighter': vars.color.coralLighter,
+      akane: {
+         ':focus': {
+            borderColor: vars.color.akane500,
+            boxShadow: `0 0 0 2px ${vars.color.akane100}`,
+        }
+      },
+      fuji: {
+         ':focus': {
+            borderColor: vars.color.fuji500,
+            boxShadow: `0 0 0 2px ${vars.color.fuji100}`,
+        }
+      },
+      sumi: {
+         ':focus': {
+            borderColor: vars.color.sumi500,
+            boxShadow: `0 0 0 2px ${vars.color.sumi100}`,
         }
       },
     },
-    
     variant: {
-      filled: {
-        backgroundColor: 'var(--color-lighter)',
-        borderColor: 'var(--color-light)',
-        ':focus': {
-          borderColor: 'var(--color-main)',
-          backgroundColor: vars.color.white,
-          boxShadow: `0 0 0 3px var(--color-light)`,
+        outline: { /* Default */ },
+        filled: {
+             backgroundColor: vars.color.sumi50,
+             border: '1px solid transparent',
+             ':focus': {
+                 backgroundColor: vars.color.yuki,
+                 border: `1px solid currentColor` 
+             }
         },
-        ':hover:not(:disabled)': {
-          borderColor: 'var(--color-hover)',
-        },
-      },
-      outline: {
-        backgroundColor: vars.color.background,
-        borderColor: 'var(--color-light)',
-        ':focus': {
-          borderColor: 'var(--color-main)',
-          boxShadow: `0 0 0 3px var(--color-light)`,
-        },
-        ':hover:not(:disabled)': {
-          borderColor: 'var(--color-hover)',
-        },
-      },
+        flushed: {
+            border: 'none',
+            borderBottom: `1px solid ${vars.color.sumi300}`,
+            borderRadius: 0,
+            paddingLeft: 0,
+            paddingRight: 0,
+            ':focus': {
+                boxShadow: 'none',
+                borderBottomColor: 'currentColor'
+            }
+        }
     },
-
     size: {
-      sm: {
-        height: vars.spacing['8'], // 32px
-        paddingLeft: vars.spacing['3'], // 12px
-        paddingRight: vars.spacing['3'],
-        fontSize: vars.fontSize.sm,
-      },
-      md: {
-        height: vars.spacing['10'], // 40px
-        paddingLeft: vars.spacing['4'], // 16px
-        paddingRight: vars.spacing['4'],
-        fontSize: vars.fontSize.base,
-      },
-      lg: {
-        height: vars.spacing['12'], // 48px
-        paddingLeft: vars.spacing['6'], // 24px
-        paddingRight: vars.spacing['6'],
-        fontSize: vars.fontSize.lg,
-      },
-    },
+        sm: {
+             padding: `${vars.spacing['1']} ${vars.spacing['2']}`,
+             fontSize: vars.fontSize.sm
+        },
+        md: { /* Default */ },
+        lg: {
+            padding: `${vars.spacing['3']} ${vars.spacing['4']}`,
+            fontSize: vars.fontSize.lg
+        }
+    }
   },
 
   defaultVariants: {
-    color: 'sky',
+    color: 'sora',
     variant: 'outline',
-    size: 'md',
+    size: 'md'
   },
 })
 
@@ -137,15 +125,12 @@ export const inputGroupStyles = recipe({
     flexDirection: 'column',
     gap: vars.spacing['1'],
   },
-
   variants: {
     fullWidth: {
-      true: {
-        width: '100%',
-      },
+      true: { width: '100%' },
+      false: { width: 'auto' }
     },
   },
-
   defaultVariants: {
     fullWidth: true,
   },
@@ -155,26 +140,24 @@ export const inputLabelStyles = recipe({
   base: {
     fontSize: vars.fontSize.sm,
     fontWeight: vars.fontWeight.medium,
-    color: vars.color.textPrimary,
+    color: vars.color.sumi800,
   },
-
   variants: {
     required: {
       true: {
         '::after': {
           content: ' *',
-          color: vars.color.coral,
+          color: vars.color.akane500,
         },
       },
     },
     disabled: {
       true: {
-        color: vars.color.textMuted,
+        color: vars.color.sumi400,
         cursor: 'not-allowed',
       },
     },
   },
-
   defaultVariants: {
     required: false,
     disabled: false,
@@ -186,28 +169,19 @@ export const inputMessageStyles = recipe({
     fontSize: vars.fontSize.sm,
     lineHeight: vars.lineHeight.tight,
   },
-
   variants: {
     color: {
-      sky: {
-        color: vars.color.sky,
-      },
-      lavender: {
-        color: vars.color.lavender,
-      },
-      sage: {
-        color: vars.color.sage,
-      },
-      amber: {
-        color: vars.color.amber,
-      },
-      coral: {
-        color: vars.color.coral,
-      },
+      sakura: { color: vars.color.sakura500 },
+      wasabi: { color: vars.color.wasabi500 },
+      sora: { color: vars.color.sora500 },
+      indigo: { color: vars.color.indigo500 },
+      mikan: { color: vars.color.mikan500 },
+      akane: { color: vars.color.akane500 },
+      fuji: { color: vars.color.fuji500 },
+      sumi: { color: vars.color.sumi500 },
     },
   },
-
   defaultVariants: {
-    color: 'sky',
+    color: 'sora',
   },
 })

@@ -1,16 +1,46 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { Tatami } from './components/Tatami'
 import { Kanji } from './components/Kanji'
-import { vars } from './styles/tokens.css'
+import { vars, palette } from './styles/tokens.css'
 
 const meta: Meta = {
-  title: 'Design System/Colors (Iro) 🎨',
+  title: 'Design System/Iro (Colors) 🎨',
   parameters: {
     layout: 'padded',
     docs: {
       description: {
-        component:
-          'Iro (色) - Our Japanese-inspired color palette. Each color is carefully chosen to evoke specific emotions and create harmony in your designs.',
+        component: `
+**Our Japanese-inspired color system (Nihon no Iro).** Designed to evoke nature, seasons, and harmony.
+
+### How to use
+
+**1. In TypeScript / Vanilla Extract**
+Use the \`vars\` object for type-safety and autocompletion.
+
+\`\`\`ts
+import { vars } from './styles/tokens.css';
+
+// In a .css.ts file
+const myStyle = style({
+  color: vars.color.sakura500
+});
+
+// Or inline styles in React
+<div style={{ backgroundColor: vars.color.wasabi500 }}>
+  Content
+</div>
+\`\`\`
+
+**2. In Plain CSS**
+Use the standard CSS variable syntax.
+
+\`\`\`css
+.my-class {
+  background-color: var(--kanso-color-sakura500);
+  color: var(--kanso-color-sumi900);
+}
+\`\`\`
+`,
       },
     },
   },
@@ -20,379 +50,241 @@ const meta: Meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-// Helper function to convert hex to RGB
-const hexToRgb = (hex: string) => {
-  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
-  return result
-    ? {
-        r: parseInt(result[1], 16),
-        g: parseInt(result[2], 16),
-        b: parseInt(result[3], 16),
-      }
-    : null
-}
+// Color families aligned with our tokens
+const families = [
+  {
+    name: 'Sakura (桜)',
+    key: 'sakura',
+    description: 'Cherry Blossom - Soft, fleeting pinks representing spring and renewal.',
+  },
+  {
+    name: 'Wasabi (山葵)',
+    key: 'wasabi',
+    description: 'Wasabi - Fresh, sharp greens representing nature and vitality.',
+  },
+  {
+    name: 'Sora (空)',
+    key: 'sora',
+    description: 'Sky - Vast, calm blues representing openness and freedom.',
+  },
+  {
+    name: 'Indigo (藍)',
+    key: 'indigo',
+    description: 'Indigo - Deep, traditional blues representing depth and stability.',
+  },
+  {
+    name: 'Mikan (蜜柑)',
+    key: 'mikan',
+    description: 'Mandarin - Warm, energetic oranges representing luck and happiness.',
+  },
+  {
+    name: 'Akane (茜)',
+    key: 'akane',
+    description: 'Madder - Vivid, passionate reds representing sun and life.',
+  },
+  {
+    name: 'Fuji (藤)',
+    key: 'fuji',
+    description: 'Wisteria - Elegant, mysterious purples representing nobility.',
+  },
+  {
+    name: 'Sumi (墨)',
+    key: 'sumi',
+    description: 'Ink - Grayscale neutrals representing shadow and silence.',
+  },
+]
 
-// Color card component
-const ColorCard = ({
+const scales = ['25', '50', '100', '200', '300', '400', '500', '600', '700', '800', '900', '950']
+
+const CopyableColor = ({
+  color,
   name,
-  nameJapanese,
-  description,
-  hex,
-  cssVar,
-  colorKey,
+  variable,
 }: {
+  color: string
   name: string
-  nameJapanese: string
-  description: string
-  hex: string
-  cssVar: string
-  colorKey: string
+  variable: string
 }) => {
-  const rgb = hexToRgb(hex)
-  const rgbString = rgb ? `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})` : ''
-
-  const copyToClipboard = (text: string) => {
+  const handleCopy = (text: string) => {
     navigator.clipboard.writeText(text)
+    // In a real app we might show a toast here
+    // console.log(`Copied: ${text}`)
   }
 
+  // Create CSS variable name from the JS variable path: vars.color.sakura500 -> --kanso-color-sakura500
+  // Note: This logic assumes our contract map in tokens.css.ts.
+  // For 'vars.color.sakura500' -> 'sakura500'
+  const keyName = variable.split('.').pop()
+  const cssVar = `--kanso-color-${keyName}`
+
+  // Ensure color is a string for copy ease. It should be hex.
   return (
     <Tatami
-      p='lg'
-      bg='white'
-      rounded='lg'
-      shadow='md'
-      border='sm'
-      borderColor='primary'
-      style={{ minWidth: '280px' }}
+      display='flex'
+      direction='column'
+      gap='xs'
+      style={{ width: '140px' }} // Slightly wider for actions
     >
-      {/* Color Swatch */}
-
-      {/* Color Info */}
-      <Tatami display='flex' direction='column' gap='sm'>
-        <Tatami h='60px' bg={colorKey} rounded='md' >
-          <Kanji as='h3' size='lg' weight='semibold' color='white'>
-            {name}: {nameJapanese}
+      <Tatami
+        rounded='md'
+        shadow='sm'
+        style={{
+          height: '80px',
+          backgroundColor: color,
+          cursor: 'pointer',
+          transition: 'transform 0.2s',
+          border: '1px solid rgba(0,0,0,0.05)',
+        }}
+        onClick={() => handleCopy(color)}
+        title={`Click to copy HEX: ${color}`}
+      />
+      <Tatami display='flex' direction='column' gap='xs' p='xs'>
+        <Tatami display='flex' align='center' gap='xs'>
+          <div
+            style={{
+              width: '10px',
+              height: '10px',
+              borderRadius: '50%',
+              backgroundColor: color,
+              border: '1px solid black',
+            }}
+          />
+          <Kanji size='xs' weight='bold'>
+            {name}
           </Kanji>
         </Tatami>
-        <Kanji size='sm' color='secondary'>
-          {description}
-        </Kanji>
 
-        {/* Color Values */}
-        <Tatami display='flex' direction='column' gap='xs' mt='md'>
-          <Tatami
-            display='flex'
-            justify='between'
-            align='center'
-            p='xs'
-            bg='gray'
-            rounded='sm'
-            style={{ cursor: 'pointer' }}
-            onClick={() => copyToClipboard(hex)}
-          >
-            <Kanji size='sm' weight='medium'>
-              HEX:
-            </Kanji>
-            <Kanji size='sm' family='mono'>
-              {hex}
-            </Kanji>
-          </Tatami>
-
-          <Tatami
-            display='flex'
-            justify='between'
-            align='center'
-            p='xs'
-            bg='gray'
-            rounded='sm'
-            style={{ cursor: 'pointer' }}
-            onClick={() => copyToClipboard(rgbString)}
-          >
-            <Kanji size='sm' weight='medium'>
-              RGB:
-            </Kanji>
-            <Kanji size='sm' family='mono'>
-              {rgbString}
-            </Kanji>
-          </Tatami>
-
-          <Tatami
-            display='flex'
-            justify='between'
-            align='center'
-            p='xs'
-            bg='gray'
-            rounded='sm'
-            style={{ cursor: 'pointer' }}
-            onClick={() => copyToClipboard(`color="${colorKey}"`)}
-          >
-            <Kanji size='sm' weight='medium'>
-              Class:
-            </Kanji>
-            <Kanji size='sm' family='mono'>
-              color="{colorKey}"
-            </Kanji>
-          </Tatami>
-
-          <Tatami
-            display='flex'
-            justify='between'
-            align='center'
-            p='xs'
-            bg='gray'
-            rounded='sm'
-            style={{ cursor: 'pointer' }}
-            onClick={() => copyToClipboard(cssVar)}
-          >
-            <Kanji size='sm' weight='medium'>
-              CSS Var:
-            </Kanji>
-            <Kanji size='sm' family='mono'>
-              {cssVar}
-            </Kanji>
-          </Tatami>
+        {/* Copy Options */}
+        <Tatami
+          style={{
+            fontSize: '10px',
+            cursor: 'pointer',
+            padding: '2px',
+            backgroundColor: 'rgba(0,0,0,0.03)',
+            borderRadius: '4px',
+          }}
+          onClick={() => handleCopy(variable)}
+          title='Copy TypeScript Variable (for Vanilla Extract)'
+        >
+          <Kanji size='xs' family='mono' color='secondary'>
+            {variable}
+          </Kanji>
         </Tatami>
 
-        <Kanji size='xs' color='muted' align='center' mt='sm'>
-          Click any value to copy
-        </Kanji>
+        <Tatami
+          style={{
+            fontSize: '10px',
+            cursor: 'pointer',
+            padding: '2px',
+            backgroundColor: 'rgba(0,0,0,0.03)',
+            borderRadius: '4px',
+          }}
+          onClick={() => handleCopy(`var(${cssVar})`)}
+          title='Copy CSS Variable (for plain CSS)'
+        >
+          <Kanji size='xs' family='mono' color='muted'>{`var(${cssVar})`}</Kanji>
+        </Tatami>
       </Tatami>
     </Tatami>
   )
 }
 
-// Main color palette - we'll update these names to be more Japanese
-const mainColors = [
-  {
-    name: 'Sky',
-    nameJapanese: '空',
-    description: 'Calm and serene like morning sky',
-    hex: vars.color.sky,
-    cssVar: 'vars.color.sky',
-    colorKey: 'sky',
-  },
-  {
-    name: 'Lavender',
-    nameJapanese: 'ラベンダー',
-    description: 'Elegant and peaceful purple',
-    hex: vars.color.lavender,
-    cssVar: 'vars.color.lavender',
-    colorKey: 'lavender',
-  },
-  {
-    name: 'Wasabi',
-    nameJapanese: 'わさび',
-    description: 'Natural and balanced green',
-    hex: vars.color.wasabi,
-    cssVar: 'vars.color.wasabi',
-    colorKey: 'wasabi',
-  },
-  {
-    name: 'Amber',
-    nameJapanese: '琥珀',
-    description: 'Warm and inviting golden color',
-    hex: vars.color.amber,
-    cssVar: 'vars.color.amber',
-    colorKey: 'amber',
-  },
-  {
-    name: 'Coral',
-    nameJapanese: '珊瑚',
-    description: 'Vibrant and energetic coral red',
-    hex: vars.color.coral,
-    cssVar: 'vars.color.coral',
-    colorKey: 'coral',
-  },
-]
-
-// Additional nature-inspired colors
-const accentColors = [
-  {
-    name: 'Peach',
-    nameJapanese: '桃',
-    description: 'Soft peach blossom',
-    hex: vars.color.peach,
-    cssVar: 'vars.color.peach',
-    colorKey: 'peach',
-  },
-  {
-    name: 'Mint',
-    nameJapanese: 'ミント',
-    description: 'Fresh mint green',
-    hex: vars.color.mint,
-    cssVar: 'vars.color.mint',
-    colorKey: 'mint',
-  },
-  {
-    name: 'Lilac',
-    nameJapanese: 'ライラック',
-    description: 'Delicate lilac purple',
-    hex: vars.color.lilac,
-    cssVar: 'vars.color.lilac',
-    colorKey: 'lilac',
-  },
-  {
-    name: 'Cream',
-    nameJapanese: 'クリーム',
-    description: 'Warm cream color',
-    hex: vars.color.cream,
-    cssVar: 'vars.color.cream',
-    colorKey: 'cream',
-  },
-  {
-    name: 'Rose',
-    nameJapanese: 'バラ',
-    description: 'Gentle rose pink',
-    hex: vars.color.rose,
-    cssVar: 'vars.color.rose',
-    colorKey: 'rose',
-  },
-  {
-    name: 'Seafoam',
-    nameJapanese: '海泡',
-    description: 'Ocean seafoam blue-green',
-    hex: vars.color.seafoam,
-    cssVar: 'vars.color.seafoam',
-    colorKey: 'seafoam',
-  },
-]
-
-export const MainColorPalette: Story = {
+export const ColorPalette: Story = {
   render: () => (
-    <Tatami display='flex' direction='column' gap='xl'>
+    <Tatami display='flex' direction='column' gap='2xl'>
       <Tatami>
-        <Kanji as='h1' size='3xl' weight='bold' textAlign='center' mb='lg'>
-          Color Palette: 色彩パレット
+        <Kanji
+          as='h1'
+          size='3xl'
+          weight='bold'
+          className={undefined}
+          style={{ marginBottom: vars.spacing['4'] }}
+        >
+          Nihon no Iro (日本の色)
         </Kanji>
-        <Kanji size='lg' textAlign='center' color='secondary' mb='xl'>
-          Our five main colors inspired by Japanese aesthetics and nature
+        <Kanji size='lg' color='secondary'>
+          A curated palette inspired by traditional Japanese colors and seasons.
         </Kanji>
       </Tatami>
 
-      <Tatami display='flex' gap='lg' wrap='wrap' justify='center'>
-        {mainColors.map(color => (
-          <ColorCard key={color.colorKey} {...color} />
+      {families.map(family => (
+        <Tatami key={family.key} display='flex' direction='column' gap='md'>
+          <Tatami>
+            <Kanji as='h2' size='xl' weight='bold' color='primary'>
+              {family.name}
+            </Kanji>
+            <Kanji color='secondary'>{family.description}</Kanji>
+          </Tatami>
+
+          <Tatami display='flex' gap='md' wrap='wrap'>
+            {scales.map(scale => {
+              const paletteKey = `${family.key}${scale}` as keyof typeof palette
+              const hexValue = palette[paletteKey]
+              const variableName = `vars.color.${paletteKey}`
+
+              return (
+                <CopyableColor key={scale} name={scale} color={hexValue} variable={variableName} />
+              )
+            })}
+          </Tatami>
+        </Tatami>
+      ))}
+
+      <Tatami>
+        <Kanji as='h2' size='xl' weight='bold' style={{ marginBottom: vars.spacing['4'] }}>
+          Special Colors
+        </Kanji>
+        <Tatami display='flex' gap='md' wrap='wrap'>
+          <CopyableColor name='Yuki (White)' color={palette.yuki} variable='vars.color.yuki' />
+        </Tatami>
+      </Tatami>
+    </Tatami>
+  ),
+}
+
+export const SemanticUsage: Story = {
+  render: () => (
+    <Tatami display='flex' direction='column' gap='xl'>
+      <Tatami>
+        <Kanji as='h2' size='2xl' weight='bold'>
+          Semantic Aliases
+        </Kanji>
+        <Kanji style={{ marginBottom: vars.spacing['6'] }}>
+          These colors adapt to the active theme (Light/Dark).
+        </Kanji>
+      </Tatami>
+
+      <Tatami
+        display='grid'
+        style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '1rem' }}
+      >
+        {[
+          { name: 'Primary', token: 'primary', desc: 'Main actions (Sora)' },
+          { name: 'Secondary', token: 'secondary', desc: 'Secondary actions (Sumi)' },
+          { name: 'Success', token: 'success', desc: 'Positive feedback (Wasabi)' },
+          { name: 'Warning', token: 'warning', desc: 'Attention needed (Mikan)' },
+          { name: 'Error', token: 'error', desc: 'Critical issues (Akane)' },
+          { name: 'Background', token: 'background', desc: 'Page background' },
+          { name: 'Text Primary', token: 'textPrimary', desc: 'Main text' },
+        ].map(item => (
+          <Tatami key={item.token} p='md' border='sm' borderColor='border' rounded='md'>
+            <Tatami
+              rounded='sm'
+              style={{
+                height: '60px',
+                marginBottom: vars.spacing['2'],
+                backgroundColor: vars.color[item.token],
+              }}
+            />
+            <Kanji weight='bold'>{item.name}</Kanji>
+            <Kanji size='sm' color='muted'>
+              {item.desc}
+            </Kanji>
+            <Kanji size='xs' family='mono' style={{ marginTop: vars.spacing['1'] }}>
+              vars.color.{item.token}
+            </Kanji>
+          </Tatami>
         ))}
-      </Tatami>
-    </Tatami>
-  ),
-}
-
-export const AccentColors: Story = {
-  render: () => (
-    <Tatami display='flex' direction='column' gap='xl'>
-      <Tatami>
-        <Kanji as='h2' size='2xl' weight='bold' textAlign='center' mb='lg'>
-          Accent Colors: アクセントカラー
-        </Kanji>
-        <Kanji size='lg' textAlign='center' color='secondary' mb='xl'>
-          Additional nature-inspired colors for variety and expression
-        </Kanji>
-      </Tatami>
-
-      <Tatami display='flex' gap='lg' wrap='wrap' justify='center'>
-        {accentColors.map(color => (
-          <ColorCard key={color.colorKey} {...color} />
-        ))}
-      </Tatami>
-    </Tatami>
-  ),
-}
-
-export const ColorUsageGuide: Story = {
-  render: () => (
-    <Tatami display='flex' direction='column' gap='xl' maxW='2xl' mx='auto'>
-      <Kanji as='h2' size='2xl' weight='bold' textAlign='center'>
-        Usage Guide: 使用ガイド
-      </Kanji>
-
-      <Tatami display='flex' direction='column' gap='lg'>
-        <Tatami p='lg' bg='primary' rounded='lg' color='sky'>
-          <Kanji as='h3' size='lg' weight='semibold' mb='md'>
-            Sky (空) - Primary Actions
-          </Kanji>
-          <Kanji>
-            Use for primary buttons, links, and call-to-action elements. Represents clarity, trust,
-            and calmness.
-          </Kanji>
-        </Tatami>
-
-        <Tatami p='lg' bg='primary' rounded='lg' color='lavender'>
-          <Kanji as='h3' size='lg' weight='semibold' mb='md'>
-            Lavender (ラベンダー) - Elegance
-          </Kanji>
-          <Kanji>
-            Perfect for premium features, elegant designs, and sophisticated interfaces. Conveys
-            luxury and refinement.
-          </Kanji>
-        </Tatami>
-
-        <Tatami p='lg' bg='primary' rounded='lg' color='wasabi'>
-          <Kanji as='h3' size='lg' weight='semibold' mb='md'>
-            Wasabi (わさび) - Success & Nature
-          </Kanji>
-          <Kanji>
-            Ideal for success states, environmental themes, and natural elements. Represents growth,
-            harmony, and balance.
-          </Kanji>
-        </Tatami>
-
-        <Tatami p='lg' bg='primary' rounded='lg' color='amber'>
-          <Kanji as='h3' size='lg' weight='semibold' mb='md'>
-            Amber (琥珀) - Warmth & Warning
-          </Kanji>
-          <Kanji>
-            Great for warnings, highlights, and warm inviting elements. Evokes attention without
-            alarm.
-          </Kanji>
-        </Tatami>
-
-        <Tatami p='lg' bg='primary' rounded='lg' color='coral'>
-          <Kanji as='h3' size='lg' weight='semibold' mb='md'>
-            Coral (珊瑚) - Energy & Alerts
-          </Kanji>
-          <Kanji>
-            Use for errors, important alerts, and energetic call-to-actions. Commands attention and
-            conveys urgency.
-          </Kanji>
-        </Tatami>
-      </Tatami>
-    </Tatami>
-  ),
-}
-
-export const AllColors: Story = {
-  render: () => (
-    <Tatami display='flex' direction='column' gap='xl'>
-      <Tatami>
-        <Kanji as='h1' size='3xl' weight='bold' textAlign='center' mb='lg'>
-          Complete Color System: 完全色彩システム
-        </Kanji>
-        <Kanji size='lg' textAlign='center' color='secondary' mb='xl'>
-          All colors in our Japanese-inspired design system
-        </Kanji>
-      </Tatami>
-
-      <Tatami>
-        <Kanji as='h2' size='xl' weight='semibold' mb='lg'>
-          Main Palette: メインパレット
-        </Kanji>
-        <Tatami display='flex' gap='lg' wrap='wrap' justify='center' mb='xl'>
-          {mainColors.map(color => (
-            <ColorCard key={color.colorKey} {...color} />
-          ))}
-        </Tatami>
-      </Tatami>
-
-      <Tatami>
-        <Kanji as='h2' size='xl' weight='semibold' mb='lg'>
-          Accent Colors: アクセントカラー
-        </Kanji>
-        <Tatami display='flex' gap='lg' wrap='wrap' justify='center'>
-          {accentColors.map(color => (
-            <ColorCard key={color.colorKey} {...color} />
-          ))}
-        </Tatami>
       </Tatami>
     </Tatami>
   ),
