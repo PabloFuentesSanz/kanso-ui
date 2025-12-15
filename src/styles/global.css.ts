@@ -61,7 +61,7 @@ globalStyle('a', {
 })
 
 globalStyle('a:hover', {
-  color: vars.color.skyHover,
+  color: vars.color.sora600,
 })
 
 globalStyle('a:focus', {

@@ -9,15 +9,15 @@ export interface TatamiProps extends React.HTMLAttributes<HTMLDivElement> {
   wrap?: 'nowrap' | 'wrap' | 'wrap-reverse'
   justify?: 'start' | 'center' | 'end' | 'between' | 'around' | 'evenly'
   align?: 'start' | 'center' | 'end' | 'stretch' | 'baseline'
-  gap?: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | string
+  gap?: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
 
   // Sizing
-  w?: 'auto' | 'full' | 'screen' | 'fit' | 'min' | 'max' | string
-  h?: 'auto' | 'full' | 'screen' | 'fit' | 'min' | 'max' | string
-  minW?: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | 'full' | string
-  minH?: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | 'full' | string
-  maxW?: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | 'full' | string
-  maxH?: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | 'full' | string
+  w?: 'auto' | 'full' | 'screen' | 'fit' | 'min' | 'max'
+  h?: 'auto' | 'full' | 'screen' | 'fit' | 'min' | 'max'
+  minW?: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | 'full'
+  minH?: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | 'full'
+  maxW?: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | 'full'
+  maxH?: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | 'full'
 
   // Spacing
   p?: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | string
@@ -47,7 +47,7 @@ export interface TatamiProps extends React.HTMLAttributes<HTMLDivElement> {
   // Theme
   color?: 'sky' | 'lavender' | 'sage' | 'wasabi' | 'amber' | 'coral' | string
 
-  children: ReactNode
+  children?: ReactNode
 }
 
 export const Tatami = forwardRef<HTMLDivElement, TatamiProps>(
@@ -114,30 +114,50 @@ export const Tatami = forwardRef<HTMLDivElement, TatamiProps>(
             justify,
             align,
             gap,
-            w,
-            h,
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            w: w as any,
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            h: h as any,
             minW,
             minH,
             maxW,
             maxH,
-            p,
-            px,
-            py,
-            m,
-            mx,
-            my,
-            bg,
-            border,
-            borderColor,
-            rounded,
-            shadow,
-            textAlign,
-            textSize,
-            textWeight,
-            textColor,
-            position,
-            overflow,
-            color,
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            p: p as any,
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            px: px as any,
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            py: py as any,
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            m: m as any,
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            mx: mx as any,
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            my: my as any,
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            bg: bg as any,
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            border: border as any,
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            borderColor: borderColor as any,
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            rounded: rounded as any,
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            shadow: shadow as any,
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            textAlign: textAlign as any,
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            textSize: textSize as any,
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            textWeight: textWeight as any,
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            textColor: textColor as any,
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            position: position as any,
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            overflow: overflow as any,
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            color: color as any,
           }),
           className
         )}

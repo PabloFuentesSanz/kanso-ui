@@ -33,57 +33,95 @@ export const buttonStyles = recipe({
   
   variants: {
     color: {
-      sky: {
+      sakura: {
         vars: {
-          '--color-main': vars.color.sky,
-          '--color-hover': vars.color.skyHover,
-          '--color-active': vars.color.skyActive,
-          '--color-light': vars.color.skyLight,
-          '--color-lighter': vars.color.skyLighter,
+          '--color-main': vars.color.sakura500,
+          '--color-hover': vars.color.sakura600,
+          '--color-active': vars.color.sakura700,
+          '--color-light': vars.color.sakura100,
+          '--color-lighter': vars.color.sakura50,
+          '--color-text': vars.color.sakura900,
         }
       },
-      lavender: {
+      wasabi: {
         vars: {
-          '--color-main': vars.color.lavender,
-          '--color-hover': vars.color.lavenderHover,
-          '--color-active': vars.color.lavenderActive,
-          '--color-light': vars.color.lavenderLight,
-          '--color-lighter': vars.color.lavenderLighter,
+          '--color-main': vars.color.wasabi500,
+          '--color-hover': vars.color.wasabi600,
+          '--color-active': vars.color.wasabi700,
+          '--color-light': vars.color.wasabi100,
+          '--color-lighter': vars.color.wasabi50,
+          '--color-text': vars.color.wasabi900,
         }
       },
-      sage: {
+      sora: {
         vars: {
-          '--color-main': vars.color.sage,
-          '--color-hover': vars.color.sageHover,
-          '--color-active': vars.color.sageActive,
-          '--color-light': vars.color.sageLight,
-          '--color-lighter': vars.color.sageLighter,
+          '--color-main': vars.color.sora500,
+          '--color-hover': vars.color.sora600,
+          '--color-active': vars.color.sora700,
+          '--color-light': vars.color.sora100,
+          '--color-lighter': vars.color.sora50,
+          '--color-text': vars.color.sora900,
         }
       },
-      amber: {
+      indigo: {
         vars: {
-          '--color-main': vars.color.amber,
-          '--color-hover': vars.color.amberHover,
-          '--color-active': vars.color.amberActive,
-          '--color-light': vars.color.amberLight,
-          '--color-lighter': vars.color.amberLighter,
+          '--color-main': vars.color.indigo500,
+          '--color-hover': vars.color.indigo600,
+          '--color-active': vars.color.indigo700,
+          '--color-light': vars.color.indigo100,
+          '--color-lighter': vars.color.indigo50,
+          '--color-text': vars.color.indigo900,
         }
       },
-      coral: {
+      mikan: {
         vars: {
-          '--color-main': vars.color.coral,
-          '--color-hover': vars.color.coralHover,
-          '--color-active': vars.color.coralActive,
-          '--color-light': vars.color.coralLight,
-          '--color-lighter': vars.color.coralLighter,
+          '--color-main': vars.color.mikan500,
+          '--color-hover': vars.color.mikan600,
+          '--color-active': vars.color.mikan700,
+          '--color-light': vars.color.mikan100,
+          '--color-lighter': vars.color.mikan50,
+          '--color-text': vars.color.mikan900,
         }
+      },
+      akane: {
+        vars: {
+          '--color-main': vars.color.akane500,
+          '--color-hover': vars.color.akane600,
+          '--color-active': vars.color.akane700,
+          '--color-light': vars.color.akane100,
+          '--color-lighter': vars.color.akane50,
+          '--color-text': vars.color.akane900,
+        }
+      },
+      fuji: {
+        vars: {
+          '--color-main': vars.color.fuji500,
+          '--color-hover': vars.color.fuji600,
+          '--color-active': vars.color.fuji700,
+          '--color-light': vars.color.fuji100,
+          '--color-lighter': vars.color.fuji50,
+          '--color-text': vars.color.fuji900,
+        }
+      },
+      sumi: { // Neutral/Grayscale
+        vars: {
+          '--color-main': vars.color.sumi500,
+          '--color-hover': vars.color.sumi600,
+          '--color-active': vars.color.sumi700,
+          '--color-light': vars.color.sumi100,
+          '--color-lighter': vars.color.sumi50,
+          '--color-text': vars.color.sumi900,
+        }
+      },
+      custom: {
+        // Variables will be injected via inline style
       },
     },
     
     variant: {
       filled: {
         backgroundColor: 'var(--color-main)',
-        color: vars.color.white,
+        color: vars.color.yuki,
         ':hover:not(:disabled)': {
           backgroundColor: 'var(--color-hover)',
         },
@@ -97,7 +135,7 @@ export const buttonStyles = recipe({
         border: '1px solid var(--color-main)',
         ':hover:not(:disabled)': {
           backgroundColor: 'var(--color-main)',
-          color: vars.color.white,
+          color: vars.color.yuki,
         },
         ':active:not(:disabled)': {
           backgroundColor: 'var(--color-active)',
@@ -156,7 +194,7 @@ export const buttonStyles = recipe({
   },
   
   defaultVariants: {
-    color: 'sky',
+    color: 'sora',
     variant: 'filled',
     size: 'md',
     fullWidth: false,

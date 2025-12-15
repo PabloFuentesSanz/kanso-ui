@@ -17,9 +17,10 @@ const config: StorybookConfig = {
     options: {},
   },
   viteFinal: async (config) => {
-    config.plugins = config.plugins || []
-    config.plugins.push(vanillaExtractPlugin())
-    return config
+    const { mergeConfig } = await import('vite')
+    return mergeConfig(config, {
+      plugins: [vanillaExtractPlugin()],
+    })
   },
 }
 

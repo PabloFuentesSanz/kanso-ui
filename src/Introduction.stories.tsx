@@ -33,23 +33,34 @@ export const GetStarted: Story = {
           style={{
             fontSize: '3rem',
             fontWeight: '700',
-            background: 'linear-gradient(135deg, #fb7185)',
+            background: 'linear-gradient(135deg, #fb7185, #c084fc)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             marginBottom: '1rem',
           }}
         >
-          Kanso UI 🌸
+          Kanso UI (簡素) 🌸
         </h1>
         <p
           style={{
             fontSize: '1.25rem',
             color: '#6b7280',
-            maxWidth: '600px',
+            maxWidth: '700px',
             margin: '0 auto',
           }}
         >
-          A modern, minimalist React component library inspired by Japanese design principles
+          A unique, minimalist React component library emphasizing harmony and simplicity. Inspired
+          by the Japanese philosophy of <em>Kanso</em>—simplicity and naturalness.
+        </p>
+        <p
+          style={{
+            marginTop: '0.5rem',
+            fontSize: '1rem',
+            color: '#9ca3af',
+            fontWeight: '500',
+          }}
+        >
+          Developed fully by <strong>Pablo Fuentes Sanz</strong>.
         </p>
       </div>
 
@@ -70,25 +81,22 @@ export const GetStarted: Story = {
               marginBottom: '1rem',
             }}
           >
-            🎨 Design Philosophy
+            � Philosophy
           </h2>
           <p style={{ marginBottom: '1rem' }}>
-            Kanso embraces the Japanese concept of simplicity and natural beauty. Our components
-            feature:
+            Kanso UI is not just a UI kit; it is a search for <strong>harmony</strong>. We believe
+            that software should feel natural, like a calm garden.
           </p>
           <ul style={{ paddingLeft: '1.5rem', marginBottom: '1.5rem' }}>
             <li>
-              <strong>Pastel Color Palette</strong>: Sky, Lavender, Sage, Amber, and Coral inspired
-              by nature
+              <strong>Minimalism</strong>: Eliminate the unnecessary to let the essential speak.
             </li>
             <li>
-              <strong>Flexible Design</strong>: Mix and match colors with any variant style
+              <strong>Uniqueness</strong>: Distinctive aesthetics inspired by Japanese seasons and
+              nature.
             </li>
             <li>
-              <strong>Accessibility First</strong>: Built with a11y in mind
-            </li>
-            <li>
-              <strong>TypeScript Native</strong>: Fully typed for the best developer experience
+              <strong>Harmony</strong>: Colors and spacing that breathe together.
             </li>
           </ul>
         </div>
@@ -102,29 +110,31 @@ export const GetStarted: Story = {
               marginBottom: '1rem',
             }}
           >
-            🎯 Color System
+            � Nihon no Iro (Colors of Japan)
           </h2>
+          <p style={{ marginBottom: '1rem' }}>
+            Our color system is handcrafted from traditional Japanese colors.
+          </p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
             {[
-              { name: 'Sky', desc: 'Calm blue tones', color: '#7dd3fc' },
-              { name: 'Lavender', desc: 'Gentle purple hues', color: '#c084fc' },
-              { name: 'Sage', desc: 'Natural green shades', color: '#86efac' },
-              { name: 'Amber', desc: 'Warm orange tones', color: '#fbbf24' },
-              { name: 'Coral', desc: 'Vibrant red accents', color: '#fb7185' },
-            ].map(({ name, desc, color }) => (
+              { name: 'Sakura (Cherry Blossom)', hex: '#f63d68', desc: 'Spring renewal' },
+              { name: 'Wasabi (Nature)', hex: '#22c55e', desc: 'Vitality' },
+              { name: 'Sora (Sky)', hex: '#0ea5e9', desc: 'Openness' },
+              { name: 'Indigo (Deep Blue)', hex: '#6366f1', desc: 'Depth' },
+              { name: 'Mikan (Mandarin)', hex: '#f97316', desc: 'Energy' },
+            ].map(({ name, hex, desc }) => (
               <div key={name} style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                 <div
                   style={{
                     width: '24px',
                     height: '24px',
-                    backgroundColor: color,
+                    backgroundColor: hex,
                     borderRadius: '50%',
-                    border: '2px solid white',
-                    boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+                    border: '2px solid rgba(0,0,0,0.1)',
                   }}
                 />
                 <div>
-                  <strong>{name}</strong> - {desc}
+                  <strong>{name}</strong> - <span style={{ color: '#6b7280' }}>{desc}</span>
                 </div>
               </div>
             ))}
@@ -138,6 +148,7 @@ export const GetStarted: Story = {
           padding: '2rem',
           borderRadius: '0.5rem',
           marginBottom: '3rem',
+          border: '1px solid #e5e7eb',
         }}
       >
         <h2
@@ -146,8 +157,10 @@ export const GetStarted: Story = {
           🚀 Getting Started
         </h2>
 
+        <p style={{ marginBottom: '1rem' }}>Ready to bring harmony to your app?</p>
+
         <h3 style={{ fontSize: '1.1rem', fontWeight: '600', marginBottom: '0.5rem' }}>
-          Installation
+          1. Installation
         </h3>
         <pre
           style={{
@@ -163,8 +176,11 @@ export const GetStarted: Story = {
         </pre>
 
         <h3 style={{ fontSize: '1.1rem', fontWeight: '600', marginBottom: '0.5rem' }}>
-          Basic Usage
+          2. Basic Usage
         </h3>
+        <p style={{ marginBottom: '0.5rem', fontSize: '0.9rem', color: '#4b5563' }}>
+          Import the stylesheet and use components. You can use our variables for custom styling.
+        </p>
         <pre
           style={{
             backgroundColor: '#1f2937',
@@ -176,69 +192,39 @@ export const GetStarted: Story = {
             lineHeight: '1.5',
           }}
         >
-          <code>{`import { Button, Input, lightTheme } from 'kanso-ui'
+          <code>{`import { Button, Input, themeClass, vars } from 'kanso-ui'
 import 'kanso-ui/dist/index.css';
 
 function App() {
   return (
-    <div className={lightTheme}>
-      <Button color="sky" variant="filled">
-        Click me!
-      </Button>
+    // Apply the theme class to the root
+    <div className={themeClass}>
+      <h1>Welcome to Kanso</h1>
       
-      <Input 
-        color="lavender" 
-        variant="outline"
-        label="Email" 
-        placeholder="john@example.com" 
-      />
+      <div style={{ display: 'flex', gap: vars.spacing[4] }}>
+          <Button color="sakura" variant="filled">
+            Bloom
+          </Button>
+          
+          <Button color="sora" variant="outline">
+            Fly
+          </Button>
+      </div>
+
+      <div style={{ marginTop: vars.spacing[8] }}>
+          <Input 
+            color="wasabi" 
+            placeholder="Search harmony..." 
+          />
+      </div>
     </div>
   )
 }`}</code>
         </pre>
-        <div
-          style={{
-            backgroundColor: '#eff6ff',
-            borderLeft: '4px solid #3b82f6',
-            padding: '1rem',
-            borderRadius: '0.375rem',
-            marginTop: '1rem',
-            fontSize: '0.9rem',
-            color: '#1e3a8a',
-          }}
-        >
-          <strong>ℹ️ Note:</strong> Kanso UI uses <code>CSS-in-JS</code> with Vanilla Extract. You
-          need to apply a theme class to activate the color variables.
-        </div>
-      </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem' }}>
-        <div>
-          <h2
-            style={{
-              color: '#1f2937',
-              fontSize: '1.5rem',
-              fontWeight: '600',
-              marginBottom: '1rem',
-            }}
-          >
-            🛠 Development
-          </h2>
-          <p style={{ marginBottom: '1rem' }}>Built with modern tools:</p>
-          <ul style={{ paddingLeft: '1.5rem' }}>
-            <li>
-              <strong>TypeScript</strong> for type safety
-            </li>
-            <li>
-              <strong>Vanilla Extract</strong> for CSS-in-JS styling
-            </li>
-            <li>
-              <strong>Storybook</strong> for component development
-            </li>
-            <li>
-              <strong>Vitest</strong> for testing
-            </li>
-          </ul>
+        <div style={{ marginTop: '1.5rem', fontSize: '0.9rem', color: '#6b7280' }}>
+          <strong>Note:</strong> We recommend using <code>vars.color</code> for type-safety when
+          styling your own components.
         </div>
       </div>
 
@@ -248,18 +234,30 @@ function App() {
           marginTop: '4rem',
           padding: '2rem',
           borderTop: '1px solid #e5e7eb',
+          backgroundColor: '#fdf2f8',
         }}
       >
-        <p style={{ color: '#6b7280', fontStyle: 'italic' }}>
-          <em>Kanso (簡素)</em> - Japanese aesthetic principle emphasizing simplicity and
-          naturalness.
+        <p
+          style={{
+            color: '#be185d',
+            fontStyle: 'italic',
+            fontSize: '1.2rem',
+            marginBottom: '1rem',
+          }}
+        >
+          "Eliminate the unnecessary to let the essential speak."
         </p>
-        <p style={{ marginTop: '1rem', fontSize: '1.125rem' }}>
-          <strong>Happy coding with Kanso UI! 🌸</strong>
-          <small>
-            {' '}
-            Powered by <a href='https://github.com/PabloFuentesSanz'>Pablo Fuestes</a>
-          </small>
+        <p style={{ fontSize: '1rem', color: '#374151' }}>
+          Developed with ❤️ by{' '}
+          <a
+            href='https://github.com/PabloFuentesSanz'
+            style={{ color: '#db2777', textDecoration: 'none', fontWeight: 'bold' }}
+          >
+            Pablo Fuentes Sanz
+          </a>
+        </p>
+        <p style={{ fontSize: '0.9rem', color: '#9ca3af', marginTop: '0.5rem' }}>
+          © {new Date().getFullYear()} Kanso UI Project
         </p>
       </div>
     </div>

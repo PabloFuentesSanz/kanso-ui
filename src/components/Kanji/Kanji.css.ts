@@ -5,6 +5,7 @@ export const kanjiStyles = recipe({
   base: {
     margin: 0,
     lineHeight: 'inherit',
+    transition: vars.transition.colors,
   },
 
   variants: {
@@ -27,14 +28,14 @@ export const kanjiStyles = recipe({
 
     // Font weights
     weight: {
-      thin: { fontWeight: '100' },
-      light: { fontWeight: '200' },
+      thin: { fontWeight: vars.fontWeight.thin },
+      light: { fontWeight: vars.fontWeight.light },
       normal: { fontWeight: vars.fontWeight.normal },
       medium: { fontWeight: vars.fontWeight.medium },
       semibold: { fontWeight: vars.fontWeight.semibold },
       bold: { fontWeight: vars.fontWeight.bold },
-      extrabold: { fontWeight: '800' },
-      black: { fontWeight: '900' },
+      extrabold: { fontWeight: vars.fontWeight.extrabold },
+      black: { fontWeight: vars.fontWeight.black },
     },
 
     // Text styling
@@ -78,12 +79,12 @@ export const kanjiStyles = recipe({
 
     // Line height
     leading: {
-      none: { lineHeight: '1' },
-      tight: { lineHeight: '1.25' },
-      snug: { lineHeight: '1.375' },
-      normal: { lineHeight: '1.5' },
-      relaxed: { lineHeight: '1.625' },
-      loose: { lineHeight: '2' },
+      none: { lineHeight: vars.lineHeight.none },
+      tight: { lineHeight: vars.lineHeight.tight },
+      snug: { lineHeight: vars.lineHeight.snug },
+      normal: { lineHeight: vars.lineHeight.normal },
+      relaxed: { lineHeight: vars.lineHeight.relaxed },
+      loose: { lineHeight: vars.lineHeight.loose },
     },
 
     // Letter spacing
@@ -96,17 +97,31 @@ export const kanjiStyles = recipe({
       widest: { letterSpacing: '0.1em' },
     },
 
-    // Text colors
+    // Kanso Color Palette
     color: {
+      // Standard
+      current: { color: 'currentColor' },
+      white: { color: vars.color.yuki },
+      black: { color: vars.color.sumi900 },
+      
+      // Theme Palette
+      sakura: { color: vars.color.sakura500 },
+      wasabi: { color: vars.color.wasabi500 },
+      sora: { color: vars.color.sora500 },
+      indigo: { color: vars.color.indigo500 },
+      mikan: { color: vars.color.mikan500 },
+      akane: { color: vars.color.akane500 },
+      fuji: { color: vars.color.fuji500 },
+      sumi: { color: vars.color.sumi500 },
+
+      // Semantic (Aliases)
       primary: { color: vars.color.textPrimary },
       secondary: { color: vars.color.textSecondary },
       muted: { color: vars.color.textMuted },
-      white: { color: vars.color.white },
-      black: { color: '#000000' },
-      danger: { color: '#ef4444' },
-      warning: { color: '#f59e0b' },
-      success: { color: '#10b981' },
-      info: { color: '#3b82f6' },
+      danger: { color: vars.color.akane500 },
+      warning: { color: vars.color.mikan500 },
+      success: { color: vars.color.wasabi500 },
+      info: { color: vars.color.sora500 },
     },
 
     // Font families
@@ -114,27 +129,34 @@ export const kanjiStyles = recipe({
       sans: { fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif' },
       serif: { fontFamily: 'Georgia, Cambria, "Times New Roman", Times, serif' },
       mono: { fontFamily: 'Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace' },
-      display: { fontFamily: '"Inter Display", system-ui, sans-serif' },
-      handwriting: { fontFamily: '"Caveat", cursive' },
     },
 
     // Gradient text
     gradient: {
       true: {
-        background: 'linear-gradient(45deg, var(--color-accent), var(--color-accent-light))',
+        backgroundClip: 'text',
         WebkitBackgroundClip: 'text',
         WebkitTextFillColor: 'transparent',
-        backgroundClip: 'text',
+        backgroundImage: 'linear-gradient(45deg, var(--gradient-start), var(--gradient-end))'
       },
       false: {},
     },
-
-    // Text shadow
-    shadow: {
-      none: { textShadow: 'none' },
-      sm: { textShadow: '0 1px 2px rgba(0, 0, 0, 0.05)' },
-      md: { textShadow: '0 4px 6px rgba(0, 0, 0, 0.1)' },
-      lg: { textShadow: '0 10px 15px rgba(0, 0, 0, 0.1)' },
+    
+    // Gradient Themes (sets CSS vars)
+    gradientTheme: {
+      sakura: { vars: { '--gradient-start': vars.color.sakura400, '--gradient-end': vars.color.sakura600 } },
+      wasabi: { vars: { '--gradient-start': vars.color.wasabi400, '--gradient-end': vars.color.wasabi600 } },
+      sora: { vars: { '--gradient-start': vars.color.sora400, '--gradient-end': vars.color.sora600 } },
+      indigo: { vars: { '--gradient-start': vars.color.indigo400, '--gradient-end': vars.color.indigo600 } },
+      mikan: { vars: { '--gradient-start': vars.color.mikan400, '--gradient-end': vars.color.mikan600 } },
+      akane: { vars: { '--gradient-start': vars.color.akane400, '--gradient-end': vars.color.akane600 } },
+      fuji: { vars: { '--gradient-start': vars.color.fuji400, '--gradient-end': vars.color.fuji600 } },
+      sumi: { vars: { '--gradient-start': vars.color.sumi400, '--gradient-end': vars.color.sumi600 } },
+      
+      // Multi-color gradients
+      sunset: { vars: { '--gradient-start': vars.color.mikan500, '--gradient-end': vars.color.akane600 } },
+      ocean: { vars: { '--gradient-start': vars.color.sora500, '--gradient-end': vars.color.wasabi500 } },
+      mystic: { vars: { '--gradient-start': vars.color.fuji500, '--gradient-end': vars.color.sakura500 } },
     },
 
     // Truncate text
@@ -145,6 +167,14 @@ export const kanjiStyles = recipe({
         whiteSpace: 'nowrap',
       },
       false: {},
+    },
+
+    // Text shadow
+    shadow: {
+      none: { textShadow: 'none' },
+      sm: { textShadow: '0 1px 2px rgba(0, 0, 0, 0.05)' },
+      md: { textShadow: '0 4px 6px rgba(0, 0, 0, 0.1)' },
+      lg: { textShadow: '0 10px 15px rgba(0, 0, 0, 0.1)' },
     },
 
     // Line clamping
@@ -167,96 +197,17 @@ export const kanjiStyles = recipe({
         WebkitBoxOrient: 'vertical',
         overflow: 'hidden',
       },
-      line4: {
-        display: '-webkit-box',
-        WebkitLineClamp: 4,
-        WebkitBoxOrient: 'vertical',
-        overflow: 'hidden',
-      },
-      line5: {
-        display: '-webkit-box',
-        WebkitLineClamp: 5,
-        WebkitBoxOrient: 'vertical',
-        overflow: 'hidden',
-      },
-      line6: {
-        display: '-webkit-box',
-        WebkitLineClamp: 6,
-        WebkitBoxOrient: 'vertical',
-        overflow: 'hidden',
-      },
-    },
-
-    // Theme colors for gradients and accents
-    theme: {
-      sky: {
-        vars: {
-          '--color-accent': vars.color.sky,
-          '--color-accent-light': vars.color.skyLight,
-          '--color-accent-lighter': vars.color.skyLighter,
-        }
-      },
-      lavender: {
-        vars: {
-          '--color-accent': vars.color.lavender,
-          '--color-accent-light': vars.color.lavenderLight,
-          '--color-accent-lighter': vars.color.lavenderLighter,
-        }
-      },
-      sage: {
-        vars: {
-          '--color-accent': vars.color.sage,
-          '--color-accent-light': vars.color.sageLight,
-          '--color-accent-lighter': vars.color.sageLighter,
-        }
-      },
-      wasabi: {
-        vars: {
-          '--color-accent': vars.color.wasabi,
-          '--color-accent-light': vars.color.wasabiLight,
-          '--color-accent-lighter': vars.color.wasabiLighter,
-        }
-      },
-      amber: {
-        vars: {
-          '--color-accent': vars.color.amber,
-          '--color-accent-light': vars.color.amberLight,
-          '--color-accent-lighter': vars.color.amberLighter,
-        }
-      },
-      coral: {
-        vars: {
-          '--color-accent': vars.color.coral,
-          '--color-accent-light': vars.color.coralLight,
-          '--color-accent-lighter': vars.color.coralLighter,
-        }
-      },
     },
   },
-
-  // Compound variants for combinations
-  compoundVariants: [
-    {
-      variants: { underline: true, strikethrough: true },
-      style: { textDecoration: 'underline line-through' }
-    },
-    {
-      variants: { gradient: true, shadow: 'md' },
-      style: {
-        filter: 'drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1))'
-      }
-    }
-  ],
 
   defaultVariants: {
     size: 'base',
     weight: 'normal',
+    color: 'current',
     italic: false,
     underline: false,
     strikethrough: false,
     uppercase: false,
-    lowercase: false,
-    capitalize: false,
     gradient: false,
     truncate: false,
   },

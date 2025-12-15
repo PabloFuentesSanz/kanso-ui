@@ -2,7 +2,10 @@ import { recipe } from '@vanilla-extract/recipes'
 import { vars } from '../../styles/tokens.css'
 
 export const tatamiStyles = recipe({
-  base: {},
+  base: {
+    boxSizing: 'border-box',
+    transition: vars.transition.default,
+  },
 
   variants: {
     // Layout & Display
@@ -187,9 +190,48 @@ export const tatamiStyles = recipe({
     bg: {
       transparent: { backgroundColor: 'transparent' },
       white: { backgroundColor: vars.color.white },
-      gray: { backgroundColor: vars.color.gray100 },
-      primary: { backgroundColor: 'var(--color-accent-lighter)' },
-      secondary: { backgroundColor: vars.color.gray50 },
+      black: { backgroundColor: vars.color.black },
+      
+      // Neutrals
+      gray: { backgroundColor: vars.color.sumi100 },
+      grayDark: { backgroundColor: vars.color.sumi800 },
+      
+      // Kanso Palette (Pastel/Soft 300-400 range as requested)
+      sakura: { backgroundColor: vars.color.sakura300 },
+      sakuraLight: { backgroundColor: vars.color.sakura50 },
+      sakuraDark: { backgroundColor: vars.color.sakura500 },
+      
+      wasabi: { backgroundColor: vars.color.wasabi300 },
+      wasabiLight: { backgroundColor: vars.color.wasabi50 },
+      wasabiDark: { backgroundColor: vars.color.wasabi500 },
+      
+      sora: { backgroundColor: vars.color.sora300 },
+      soraLight: { backgroundColor: vars.color.sora50 },
+      soraDark: { backgroundColor: vars.color.sora500 },
+      
+      indigo: { backgroundColor: vars.color.indigo300 },
+      indigoLight: { backgroundColor: vars.color.indigo50 },
+      indigoDark: { backgroundColor: vars.color.indigo500 },
+      
+      mikan: { backgroundColor: vars.color.mikan300 },
+      mikanLight: { backgroundColor: vars.color.mikan50 },
+      mikanDark: { backgroundColor: vars.color.mikan500 },
+      
+      akane: { backgroundColor: vars.color.akane300 },
+      akaneLight: { backgroundColor: vars.color.akane50 },
+      akaneDark: { backgroundColor: vars.color.akane500 },
+      
+      fuji: { backgroundColor: vars.color.fuji300 },
+      fujiLight: { backgroundColor: vars.color.fuji50 },
+      fujiDark: { backgroundColor: vars.color.fuji500 },
+      
+      sumi: { backgroundColor: vars.color.sumi300 },
+      sumiLight: { backgroundColor: vars.color.sumi50 },
+      sumiDark: { backgroundColor: vars.color.sumi500 },
+      
+      // Semantic
+      primary: { backgroundColor: vars.color.sora500 },
+      secondary: { backgroundColor: vars.color.sumi500 },
     },
 
     border: {

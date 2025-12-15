@@ -160,7 +160,7 @@ export const Interactive: Story = {
       <Kirei color='amber' variant='outlined'>
         <KireiBody>
           <h4>Static Card</h4>
-          <p>I'm just a regular card without interaction.</p>
+          <p>I&apos;m just a regular card without interaction.</p>
         </KireiBody>
       </Kirei>
     </div>
@@ -281,7 +281,9 @@ export const HeightVariants: Story = {
           <h4>Height: Full</h4>
         </KireiHeader>
         <KireiBody>
-          <p>This card expands to fill 100% of its container's height. Perfect for grid layouts.</p>
+          <p>
+            This card expands to fill 100% of its container&apos;s height. Perfect for grid layouts.
+          </p>
         </KireiBody>
       </Kirei>
 

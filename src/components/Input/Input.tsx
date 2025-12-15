@@ -3,8 +3,8 @@ import { clsx } from 'clsx'
 import { inputStyles, inputGroupStyles, inputLabelStyles, inputMessageStyles } from './Input.css'
 
 export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
-  color?: 'sky' | 'lavender' | 'sage' | 'amber' | 'coral'
-  variant?: 'filled' | 'outline'
+  color?: 'sakura' | 'wasabi' | 'sora' | 'indigo' | 'mikan' | 'akane' | 'fuji' | 'sumi'
+  variant?: 'filled' | 'outline' | 'flushed'
   size?: 'sm' | 'md' | 'lg'
   label?: string
   helperText?: string
@@ -17,7 +17,7 @@ export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElem
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   (
     {
-      color = 'sky',
+      color = 'sora',
       variant = 'outline',
       size = 'md',
       label,
@@ -37,7 +37,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     const inputId = props.id || generatedId
     const hasError = Boolean(errorMessage)
     const message = errorMessage || helperText
-    const messageColor = hasError ? 'coral' : color
+    const messageColor = hasError ? 'akane' : color
 
     return (
       <div className={inputGroupStyles({ fullWidth })}>
@@ -50,7 +50,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           </label>
         )}
         
-        <div className='relative'>
+        <div className='relative' style={{ position: 'relative' }}>
           {leftIcon && (
             <div 
               style={{
@@ -80,7 +80,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             required={required}
             className={clsx(
               inputStyles({
-                color: hasError ? 'coral' : color,
+                color: hasError ? 'akane' : color,
                 variant,
                 size,
               }),
