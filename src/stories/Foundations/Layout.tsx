@@ -24,10 +24,9 @@ const RADII: RadiusRow[] = [
 ];
 
 const BORDERS: BorderRow[] = [
-  { name: 'borderWidth.hair',     cssVar: '--kanso-border-width-hair',     width: '0.5px', color: colorVars.color.ink4,  use: 'Default — quiet separation' },
-  { name: 'borderWidth.hair',     cssVar: '--kanso-border-width-hair',     width: '0.5px', color: colorVars.color.paper3, use: 'Soft divider' },
-  { name: 'borderWidth.emphasis', cssVar: '--kanso-border-width-emphasis', width: '1px',   color: colorVars.color.ink2,   use: 'Emphasis, sparingly' },
-  { name: 'borderWidth.emphasis', cssVar: '--kanso-border-width-emphasis', width: '1px',   color: colorVars.color.accent, use: 'Focused field, active card' },
+  { name: 'borderWidth.hair',     cssVar: '--kanso-border-width-hair',     width: '0.5px', color: colorVars.color.ink4,  use: 'Default hairline — dividers, card edges, hover borders' },
+  { name: 'borderWidth.emphasis', cssVar: '--kanso-border-width-emphasis', width: '1px',   color: colorVars.color.ink2,  use: 'Emphasis — active border, focused field. Use sparingly' },
+  { name: 'borderWidth.tab',      cssVar: '--kanso-border-width-tab',      width: '1.5px', color: colorVars.color.ink,   use: 'Selected tab underline only. Never elsewhere' },
 ];
 
 const MOTION: MotionRow[] = [
@@ -95,8 +94,8 @@ export const Layout = () => (
       description="A 0.5px hairline is the default. 1px is reserved for emphasis. Anything thicker is forbidden."
     >
       <div>
-        {BORDERS.map((b, i) => (
-          <div key={`${b.name}-${i}`} className={s.borderRow}>
+        {BORDERS.map((b) => (
+          <div key={b.name} className={s.borderRow}>
             <span className={s.mono}>
               <CopyToken value={b.name} />
             </span>
