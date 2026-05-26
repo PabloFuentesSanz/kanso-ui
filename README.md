@@ -1,110 +1,70 @@
-# Kanso UI 🌸
+# kanso-ui
 
-A modern, minimalist React component library inspired by Japanese design principles.
+> 寛素 · the quiet system
 
-[![npm version](https://badge.fury.io/js/kanso-ui.svg)](https://badge.fury.io/js/kanso-ui)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+A React component library implementing **KansoUI**, a design system rooted in three principles of Japanese aesthetics: **ma** (間 — space), **wabi** (侘 — humility) and **sabi** (寂 — austerity). The rule that emerges from them: remove until nothing remains that can be removed.
 
-## ✨ Features
+## Status
 
-- 🎨 **Beautiful Pastel Colors** - Sky, Lavender, Sage, Amber, and Coral
-- 🔧 **Flexible Design System** - Mix any color with any variant
-- 🎯 **TypeScript Native** - Fully typed components
-- ♿ **Accessibility First** - Built with a11y in mind
-- 🚀 **Modern Stack** - Vanilla Extract CSS + React 18
-- 📖 **Comprehensive Docs** - Storybook documentation
+`2.0.0` — first release on the new design system. Major bump from the previous 1.0.x line, which was a different incarnation of the library. The **token layer** and the **Foundations documentation** are stable. Components (Button, Input, Card, …) ship in subsequent 2.x releases.
 
-## 🚀 Installation
+## Quick start
 
 ```bash
 npm install kanso-ui
 ```
 
-## 💡 Quick Start
+```ts
+// app entry — main.tsx, _app.tsx, etc.
+import 'kanso-ui/styles';
+import { lightTheme } from 'kanso-ui';
 
-```tsx
-import { Button, Input, lightTheme } from 'kanso-ui'
-import 'kanso-ui/dist/index.css'
+document.documentElement.classList.add(lightTheme);
+```
 
-function App() {
-  return (
-    <div className={lightTheme}>
-      <Button color="sky" variant="filled">
-        Hello World
-      </Button>
+Tokens are exposed as both a typed vanilla-extract surface and stable CSS variables — pick whichever fits your stack:
 
-      <Input 
-        color="lavender" 
-        variant="outline" 
-        label="Email" 
-        placeholder="john@example.com" 
-      />
-    </div>
-  )
+```ts
+// vanilla-extract
+import { vars, colorVars } from 'kanso-ui';
+
+export const card = style({
+  padding: vars.space[4],
+  border: `${vars.borderWidth.hair} solid ${colorVars.color.paper3}`,
+  borderRadius: vars.radius.md,
+  color: colorVars.color.ink2,
+});
+```
+
+```css
+/* plain CSS */
+.card {
+  padding: var(--kanso-space-4);
+  border: var(--kanso-border-width-hair) solid var(--kanso-paper-3);
+  border-radius: var(--kanso-radius-md);
+  color: var(--kanso-ink-2);
 }
 ```
 
-**⚠️ Important:** You must apply the `lightTheme` class to make CSS variables available.
+## Documentation
 
-## 🎨 Themes
-
-Kanso UI uses CSS-in-JS with Vanilla Extract. You need to apply a theme class to activate the color variables:
-
-```tsx
-import { lightTheme, darkTheme } from 'kanso-ui'
-
-// Apply to your root app
-<div className={lightTheme}>
-  {/* Your components */}
-</div>
-
-// Or for dark theme
-<div className={darkTheme}>
-  {/* Your components */}
-</div>
-```
-
-## 🎨 Color Palette
-
-| Color      | Description          |
-| ---------- | -------------------- |
-| `sky`      | Calm blue tones      |
-| `lavender` | Gentle purple hues   |
-| `sage`     | Natural green shades |
-| `amber`    | Warm orange tones    |
-| `coral`    | Vibrant red accents  |
-
-## 🛠 Development
+The full design system lives in Storybook. Run it locally:
 
 ```bash
-# Install dependencies
 npm install
-
-# Start Storybook
 npm run dev
-
-# Run tests
-npm test
-
-# Build library
-npm run build
-
-# Type check
-npm run typecheck
 ```
 
-## 📖 Documentation
+Then open <http://localhost:6006> to browse Getting Started, Foundations (Introduction, Theme, Color, Typography, Layout) and — as they land — the component pages.
 
-Visit our [Storybook documentation](https://kanso-ui.vercel.app/?path=/story/introduction--get-started) to explore all components and examples.
+## Stack
 
-## 🤝 Contributing
+- React 18 · TypeScript · Vite
+- `@vanilla-extract/css` + `@vanilla-extract/recipes`
+- Self-hosted fonts via `@fontsource/{noto-serif-jp,syne,dm-mono}`
+- `lucide-react` for icons
+- Storybook 8 (`@storybook/react-vite`) as the documentation surface
 
-We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
+## License
 
-## 📄 License
-
-MIT © [Pablo](https://github.com/pablofuentessanz)
-
----
-
-_Kanso (簡素) - Japanese aesthetic principle emphasizing simplicity and naturalness._
+MIT

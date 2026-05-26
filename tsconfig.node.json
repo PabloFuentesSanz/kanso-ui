@@ -5,9 +5,7 @@
     "module": "ESNext",
     "moduleResolution": "bundler",
     "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "declaration": true,
-    "outDir": "dist"
+    "strict": true
   },
-  "include": ["vite.config.ts", "vitest.config.ts", ".storybook"]
+  "include": ["vite.config.ts"]
 }
