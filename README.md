@@ -6,7 +6,7 @@ A React component library implementing **KansoUI**, a design system rooted in th
 
 ## Status
 
-`0.2.0` — first public release. The **token layer** and the **Foundations documentation** are stable. Components (Button, Input, Card, …) ship in subsequent releases.
+`2.0.0` — first release on the new design system. Major bump from the previous 1.0.x line, which was a different incarnation of the library. The **token layer** and the **Foundations documentation** are stable. Components (Button, Input, Card, …) ship in subsequent 2.x releases.
 
 ## Quick start
 

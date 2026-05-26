@@ -2,9 +2,11 @@
 
 All notable changes to **kanso-ui** are documented in this file. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## 0.2.0 — 2026-05-27
+## 2.0.0 — 2026-05-27
 
-First public release. Wipes the placeholder 0.1.4 component scaffolding and rebuilds the project as a token-first design system with its full documentation surface.
+First release on the new design system. **Major version bump (1.x → 2.x)** because this is a full rewrite of the package — every public export, file path and visual decision changes. The 1.0.x line on npm was the previous incarnation of the library and remains installable for projects still pinned to it.
+
+This 2.0.0 release ships only the **token layer** and the **documentation surface**. Components return in subsequent 2.x releases.
 
 ### Design system
 
