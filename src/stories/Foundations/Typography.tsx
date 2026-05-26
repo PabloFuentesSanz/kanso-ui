@@ -25,6 +25,15 @@ const SCALE: ScaleRow[] = [
   { name: 'fontSize.mono',    cssVar: '--kanso-font-size-mono',    size: '0.75rem', weight: '300', family: 'mono',  sample: '--kanso-space-4: 20px;' },
 ];
 
+type WeightRow = { name: string; cssVar: string; value: '200' | '300' | '400' | '500'; use: string };
+
+const WEIGHTS: WeightRow[] = [
+  { name: 'fontWeight.extralight', cssVar: '--kanso-font-weight-extralight', value: '200', use: 'Display titles, large kanji' },
+  { name: 'fontWeight.light',      cssVar: '--kanso-font-weight-light',      value: '300', use: 'Body text, tabs, inputs' },
+  { name: 'fontWeight.regular',    cssVar: '--kanso-font-weight-regular',    value: '400', use: 'Headings 1–2, form labels, micro' },
+  { name: 'fontWeight.medium',     cssVar: '--kanso-font-weight-medium',     value: '500', use: 'Heading 3, active emphasis — ceiling' },
+];
+
 const RULES: Array<[string, string]> = [
   ['Microcopy',           'uppercase, 0.15em letter-spacing'],
   ['Body line-height',    '1.7'],
@@ -54,7 +63,7 @@ export const Typography = () => (
         <div className={s.familyCell}>
           <span className={s.familyLabel}>Display · Noto Serif JP</span>
           <span className={s.familySerifSample}>静けさ</span>
-          <span className={s.familyWeights}>
+          <span className={s.familyJsName}>
             <CopyToken value="font.serif" />
           </span>
           <span className={s.familyWeights}>
@@ -65,7 +74,7 @@ export const Typography = () => (
         <div className={s.familyCell}>
           <span className={s.familyLabel}>UI · Syne</span>
           <span className={s.familySansSample}>Aa</span>
-          <span className={s.familyWeights}>
+          <span className={s.familyJsName}>
             <CopyToken value="font.sans" />
           </span>
           <span className={s.familyWeights}>
@@ -76,7 +85,7 @@ export const Typography = () => (
         <div className={s.familyCell}>
           <span className={s.familyLabel}>Mono · DM Mono</span>
           <span className={s.familyMonoSample}>{'{ }'}</span>
-          <span className={s.familyWeights}>
+          <span className={s.familyJsName}>
             <CopyToken value="font.mono" />
           </span>
           <span className={s.familyWeights}>
@@ -123,7 +132,40 @@ export const Typography = () => (
     </DocSection>
 
     <DocSection
-      num="03 · Rules"
+      num="03 · Weights"
+      heading="Four weights, ceiling at 500"
+      description="The system loads only the weights it allows. 600 and 700 are intentionally absent — anything heavier reads as shouting."
+    >
+      <div>
+        {WEIGHTS.map((w) => (
+          <div key={w.name} className={s.scaleRow}>
+            <div className={s.scaleMeta}>
+              <span className={s.scaleName}>
+                <CopyToken value={w.name} />
+              </span>
+              <span className={s.scaleVar}>
+                <CopyToken value={w.cssVar} />
+              </span>
+              <span className={s.scaleVar}>{w.value}</span>
+            </div>
+            <div
+              style={{
+                fontFamily: vars.font.sans,
+                fontWeight: w.value,
+                fontSize: '1.5rem',
+                lineHeight: vars.lineHeight.snug,
+              }}
+            >
+              Aa · 寛素 · the quiet system
+            </div>
+            <span className={s.scaleFamily}>{w.use}</span>
+          </div>
+        ))}
+      </div>
+    </DocSection>
+
+    <DocSection
+      num="04 · Rules"
       heading="Rules"
       description="The five constraints to memorise — they keep the system quiet."
     >

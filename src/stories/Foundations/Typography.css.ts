@@ -46,6 +46,12 @@ export const familyMonoSample = style({
   color: colorVars.color.ink,
 });
 
+export const familyJsName = style({
+  fontFamily: vars.font.mono,
+  fontSize: '12px',
+  color: colorVars.color.ink,
+});
+
 export const familyWeights = style({
   fontFamily: vars.font.mono,
   fontSize: '11px',
