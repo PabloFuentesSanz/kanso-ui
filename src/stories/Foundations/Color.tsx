@@ -1,4 +1,4 @@
-import { DocSection, DocsLayout, ScreenHeader } from '../_components';
+import { CopyToken, DocSection, DocsLayout, ScreenHeader } from '../_components';
 import { palette } from '../../tokens';
 import * as s from './Color.css';
 
@@ -45,10 +45,14 @@ const Swatch = ({ jsName, cssVar, hex, jp, romaji, use }: Slot) => (
     <div className={s.chip} style={{ background: hex }} />
     <div className={s.meta}>
       <div className={s.nameRow}>
-        <span className={s.jsName}>{jsName}</span>
+        <span className={s.jsName}>
+          <CopyToken value={jsName} />
+        </span>
         {jp ? <span className={s.jp}>{jp} {romaji}</span> : null}
       </div>
-      <span className={s.cssVar}>{cssVar}</span>
+      <span className={s.cssVar}>
+        <CopyToken value={cssVar} />
+      </span>
       <span className={s.hex}>{hex}</span>
       <span className={s.use}>{use}</span>
     </div>
