@@ -1,4 +1,4 @@
-import { DocSection, DocsLayout, ScreenHeader } from '../_components';
+import { CopyToken, DocSection, DocsLayout, ScreenHeader } from '../_components';
 import { colorVars, vars } from '../../tokens';
 import * as s from './Layout.css';
 
@@ -55,8 +55,12 @@ export const Layout = () => (
       <div>
         {SPACE.map((row) => (
           <div key={row.name} className={s.spaceRow}>
-            <span className={s.mono}>{row.name}</span>
-            <span className={s.monoMuted}>{row.cssVar}</span>
+            <span className={s.mono}>
+              <CopyToken value={row.name} />
+            </span>
+            <span className={s.monoMuted}>
+              <CopyToken value={row.cssVar} />
+            </span>
             <span className={s.monoMuted}>{row.px}px</span>
             <div className={s.bar} style={{ width: `${row.px}px` }} title={row.use} />
           </div>
@@ -73,8 +77,12 @@ export const Layout = () => (
         {RADII.map((r) => (
           <div key={r.name} className={s.radiusCell}>
             <div className={s.radiusSwatch} style={{ borderRadius: r.px }} />
-            <span className={s.mono}>{r.name}</span>
-            <span className={s.monoMuted}>{r.cssVar}</span>
+            <span className={s.mono}>
+              <CopyToken value={r.name} />
+            </span>
+            <span className={s.monoMuted}>
+              <CopyToken value={r.cssVar} />
+            </span>
             <span className={s.monoMuted}>{r.px >= 9999 ? '9999px' : `${r.px}px`}</span>
           </div>
         ))}
@@ -89,8 +97,12 @@ export const Layout = () => (
       <div>
         {BORDERS.map((b, i) => (
           <div key={`${b.name}-${i}`} className={s.borderRow}>
-            <span className={s.mono}>{b.name}</span>
-            <span className={s.monoMuted}>{b.cssVar}</span>
+            <span className={s.mono}>
+              <CopyToken value={b.name} />
+            </span>
+            <span className={s.monoMuted}>
+              <CopyToken value={b.cssVar} />
+            </span>
             <div className={s.borderLine} style={{ borderTop: `${b.width} solid ${b.color}` }} />
             <span className={s.desc} style={{ textAlign: 'right' }}>{b.use}</span>
           </div>
@@ -106,8 +118,12 @@ export const Layout = () => (
       <div>
         {MOTION.map((m) => (
           <div key={m.name} className={s.motionRow}>
-            <span className={s.mono}>{m.name}</span>
-            <span className={s.monoMuted}>{m.cssVar}</span>
+            <span className={s.mono}>
+              <CopyToken value={m.name} />
+            </span>
+            <span className={s.monoMuted}>
+              <CopyToken value={m.cssVar} />
+            </span>
             <span className={s.desc}>
               <span style={{ fontFamily: vars.font.mono, color: colorVars.color.ink }}>{m.value}</span>
               {' · '}
