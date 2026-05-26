@@ -1,5 +1,5 @@
 import type { CSSProperties } from 'react';
-import { DocSection, DocsLayout, ScreenHeader } from '../_components';
+import { CopyToken, DocSection, DocsLayout, ScreenHeader } from '../_components';
 import { vars } from '../../tokens';
 import * as s from './Typography.css';
 
@@ -54,17 +54,23 @@ export const Typography = () => (
         <div className={s.familyCell}>
           <span className={s.familyLabel}>Display · Noto Serif JP</span>
           <span className={s.familySerifSample}>静けさ</span>
-          <span className={s.familyWeights}>--kanso-serif · 200, 300</span>
+          <span className={s.familyWeights}>
+            <CopyToken value="--kanso-serif" /> · 200, 300
+          </span>
         </div>
         <div className={s.familyCell}>
           <span className={s.familyLabel}>UI · Syne</span>
           <span className={s.familySansSample}>Aa</span>
-          <span className={s.familyWeights}>--kanso-sans · 400, 500</span>
+          <span className={s.familyWeights}>
+            <CopyToken value="--kanso-sans" /> · 400, 500
+          </span>
         </div>
         <div className={s.familyCell}>
           <span className={s.familyLabel}>Mono · DM Mono</span>
           <span className={s.familyMonoSample}>{'{ }'}</span>
-          <span className={s.familyWeights}>--kanso-mono · 300, 400</span>
+          <span className={s.familyWeights}>
+            <CopyToken value="--kanso-mono" /> · 300, 400
+          </span>
         </div>
       </div>
     </DocSection>
@@ -88,8 +94,12 @@ export const Typography = () => (
           return (
             <div key={row.name} className={s.scaleRow}>
               <div className={s.scaleMeta}>
-                <span className={s.scaleName}>{row.name}</span>
-                <span className={s.scaleVar}>{row.cssVar}</span>
+                <span className={s.scaleName}>
+                  <CopyToken value={row.name} />
+                </span>
+                <span className={s.scaleVar}>
+                  <CopyToken value={row.cssVar} />
+                </span>
                 <span className={s.scaleVar}>{row.size} · {row.weight}</span>
               </div>
               <div style={sampleStyle}>{row.sample}</div>
