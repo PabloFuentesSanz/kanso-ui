@@ -7,7 +7,7 @@ type ScaleRow = {
   name: string;
   cssVar: string;
   size: string;
-  weight: string;
+  weight: '200' | '300' | '400' | '500';
   family: 'serif' | 'sans' | 'mono';
   sample: string;
   uppercase?: boolean;
@@ -15,14 +15,14 @@ type ScaleRow = {
 };
 
 const SCALE: ScaleRow[] = [
-  { name: 'size.display', cssVar: '--kanso-font-size-display', size: '2.8rem', weight: vars.fontWeight.extralight, family: 'serif', sample: '寛素の美' },
-  { name: 'size.h1',      cssVar: '--kanso-font-size-h1',      size: '1.75rem', weight: vars.fontWeight.regular,    family: 'sans',  sample: 'The quiet interface' },
-  { name: 'size.h2',      cssVar: '--kanso-font-size-h2',      size: '1.25rem', weight: vars.fontWeight.regular,    family: 'sans',  sample: 'A section, set apart' },
-  { name: 'size.h3',      cssVar: '--kanso-font-size-h3',      size: '1rem',    weight: vars.fontWeight.medium,     family: 'sans',  sample: 'A component title' },
-  { name: 'size.body',    cssVar: '--kanso-font-size-body',    size: '0.9rem',  weight: vars.fontWeight.light,      family: 'sans',  sample: 'Long-form prose lives here. The line-height stays generous so the eye has room to move.' },
-  { name: 'size.label',   cssVar: '--kanso-font-size-label',   size: '0.75rem', weight: vars.fontWeight.regular,    family: 'sans',  sample: 'Form label' },
-  { name: 'size.micro',   cssVar: '--kanso-font-size-micro',   size: '0.7rem',  weight: vars.fontWeight.regular,    family: 'sans',  sample: 'STATUS · 0.15em SPACING', uppercase: true, tracking: vars.letterSpacing.micro },
-  { name: 'size.mono',    cssVar: '--kanso-font-size-mono',    size: '0.75rem', weight: vars.fontWeight.light,      family: 'mono',  sample: '--kanso-space-4: 20px;' },
+  { name: 'fontSize.display', cssVar: '--kanso-font-size-display', size: '2.8rem',  weight: '200', family: 'serif', sample: '寛素の美' },
+  { name: 'fontSize.h1',      cssVar: '--kanso-font-size-h1',      size: '1.75rem', weight: '400', family: 'sans',  sample: 'The quiet interface' },
+  { name: 'fontSize.h2',      cssVar: '--kanso-font-size-h2',      size: '1.25rem', weight: '400', family: 'sans',  sample: 'A section, set apart' },
+  { name: 'fontSize.h3',      cssVar: '--kanso-font-size-h3',      size: '1rem',    weight: '500', family: 'sans',  sample: 'A component title' },
+  { name: 'fontSize.body',    cssVar: '--kanso-font-size-body',    size: '0.9rem',  weight: '300', family: 'sans',  sample: 'Long-form prose lives here. The line-height stays generous so the eye has room to move.' },
+  { name: 'fontSize.label',   cssVar: '--kanso-font-size-label',   size: '0.75rem', weight: '400', family: 'sans',  sample: 'Form label' },
+  { name: 'fontSize.micro',   cssVar: '--kanso-font-size-micro',   size: '0.7rem',  weight: '400', family: 'sans',  sample: 'STATUS · 0.15em SPACING', uppercase: true, tracking: vars.letterSpacing.micro },
+  { name: 'fontSize.mono',    cssVar: '--kanso-font-size-mono',    size: '0.75rem', weight: '300', family: 'mono',  sample: '--kanso-space-4: 20px;' },
 ];
 
 const RULES: Array<[string, string]> = [
@@ -55,22 +55,34 @@ export const Typography = () => (
           <span className={s.familyLabel}>Display · Noto Serif JP</span>
           <span className={s.familySerifSample}>静けさ</span>
           <span className={s.familyWeights}>
-            <CopyToken value="--kanso-serif" /> · 200, 300
+            <CopyToken value="font.serif" />
           </span>
+          <span className={s.familyWeights}>
+            <CopyToken value="--kanso-serif" />
+          </span>
+          <span className={s.familyWeights}>weights · 200, 300</span>
         </div>
         <div className={s.familyCell}>
           <span className={s.familyLabel}>UI · Syne</span>
           <span className={s.familySansSample}>Aa</span>
           <span className={s.familyWeights}>
-            <CopyToken value="--kanso-sans" /> · 400, 500
+            <CopyToken value="font.sans" />
           </span>
+          <span className={s.familyWeights}>
+            <CopyToken value="--kanso-sans" />
+          </span>
+          <span className={s.familyWeights}>weights · 400, 500</span>
         </div>
         <div className={s.familyCell}>
           <span className={s.familyLabel}>Mono · DM Mono</span>
           <span className={s.familyMonoSample}>{'{ }'}</span>
           <span className={s.familyWeights}>
-            <CopyToken value="--kanso-mono" /> · 300, 400
+            <CopyToken value="font.mono" />
           </span>
+          <span className={s.familyWeights}>
+            <CopyToken value="--kanso-mono" />
+          </span>
+          <span className={s.familyWeights}>weights · 300, 400</span>
         </div>
       </div>
     </DocSection>
