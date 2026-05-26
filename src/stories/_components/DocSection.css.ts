@@ -34,7 +34,9 @@ export const num = style({
   fontWeight: vars.fontWeight.regular,
   letterSpacing: vars.letterSpacing.micro,
   textTransform: 'uppercase',
-  color: colorVars.color.ink4,
+  // .k-micro in the spec maps to ink-3, not ink-4. The .k-section-head-num
+  // class (ink-4) is defined but never applied in the prototype JSX.
+  color: colorVars.color.ink3,
 });
 
 export const heading = style({
