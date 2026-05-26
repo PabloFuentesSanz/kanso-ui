@@ -1,11 +1,8 @@
 import type { Preview } from '@storybook/react';
-import { lightTheme } from '../src/tokens';
+import { withThemeByClassName } from '@storybook/addon-themes';
+import { darkTheme, lightTheme } from '../src/tokens';
 import '../src/tokens/fonts';
 import '../src/tokens/reset.css';
-
-if (typeof document !== 'undefined') {
-  document.documentElement.classList.add(lightTheme);
-}
 
 const preview: Preview = {
   parameters: {
@@ -17,6 +14,16 @@ const preview: Preview = {
       },
     },
   },
+  decorators: [
+    withThemeByClassName({
+      themes: {
+        Light: lightTheme,
+        Dark: darkTheme,
+      },
+      defaultTheme: 'Light',
+      parentSelector: 'html',
+    }),
+  ],
 };
 
 export default preview;
