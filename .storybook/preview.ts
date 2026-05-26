@@ -1,6 +1,6 @@
 import type { Preview } from '@storybook/react';
 import { lightTheme } from '../src/tokens';
-import '../src/tokens/fonts.css';
+import '../src/tokens/fonts';
 import '../src/tokens/reset.css';
 
 if (typeof document !== 'undefined') {
