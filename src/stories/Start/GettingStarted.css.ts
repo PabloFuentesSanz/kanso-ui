@@ -25,16 +25,37 @@ export const para = style({
   maxWidth: '56ch',
 });
 
+export const subhead = style({
+  fontFamily: vars.font.sans,
+  fontSize: vars.fontSize.micro,
+  fontWeight: vars.fontWeight.regular,
+  letterSpacing: vars.letterSpacing.micro,
+  textTransform: 'uppercase',
+  color: colorVars.color.ink3,
+  margin: `${vars.space[4]} 0 ${vars.space[2]}`,
+});
+
+export const tokenHeader = style({
+  display: 'grid',
+  gridTemplateColumns: '200px 220px 80px 1fr',
+  gap: vars.space[4],
+  alignItems: 'baseline',
+  padding: `${vars.space[3]} 0`,
+  fontFamily: vars.font.sans,
+  fontSize: vars.fontSize.micro,
+  fontWeight: vars.fontWeight.regular,
+  letterSpacing: vars.letterSpacing.micro,
+  textTransform: 'uppercase',
+  color: colorVars.color.ink4,
+});
+
 export const tokenRow = style({
   display: 'grid',
-  gridTemplateColumns: '220px 80px 1fr',
+  gridTemplateColumns: '200px 220px 80px 1fr',
   gap: vars.space[4],
   alignItems: 'baseline',
   padding: `${vars.space[3]} 0`,
   borderTop: `${vars.borderWidth.hair} solid ${colorVars.color.paper3}`,
-  selectors: {
-    '&:first-of-type': { borderTop: 'none' },
-  },
 });
 
 export const tokenName = style({

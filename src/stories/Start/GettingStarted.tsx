@@ -7,7 +7,7 @@ import { lightTheme } from 'kanso-ui';
 
 document.documentElement.classList.add(lightTheme);`;
 
-const TOKENS_CODE = `// your-component.css.ts
+const TOKENS_VE_CODE = `// your-component.css.ts
 import { style } from '@vanilla-extract/css';
 import { vars, colorVars } from 'kanso-ui';
 
@@ -20,6 +20,16 @@ export const card = style({
   fontSize: vars.fontSize.body,
 });`;
 
+const TOKENS_CSS_CODE = `/* your-component.css — no build step, no extra dependency */
+.card {
+  padding: var(--kanso-space-4);
+  border: var(--kanso-border-width-hair) solid var(--kanso-paper-3);
+  border-radius: var(--kanso-radius-md);
+  color: var(--kanso-ink-2);
+  font-family: var(--kanso-sans);
+  font-size: var(--kanso-font-size-body);
+}`;
+
 const DARK_CODE = `import { lightTheme, darkTheme } from 'kanso-ui';
 
 const apply = (mode: 'light' | 'dark') => {
@@ -30,15 +40,16 @@ const apply = (mode: 'light' | 'dark') => {
 // Honour the system preference once on boot
 apply(matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');`;
 
+// [vanilla-extract path, CSS variable, value, purpose]
 const TOKEN_ROWS = [
-  ['vars.space[1]', '4px', 'Internal gap inside micro components'],
-  ['vars.space[4]', '20px', 'Card and panel padding'],
-  ['vars.space[7]', '80px', 'Page margins'],
-  ['vars.radius.md', '4px', 'Cards · panels'],
-  ['vars.borderWidth.hair', '0.5px', 'Default border thickness'],
-  ['colorVars.color.ink', '#1a1a18', 'Primary text · icons'],
-  ['colorVars.color.paper', '#fafaf7', 'Page background'],
-  ['colorVars.color.accent', '#2d5a3d', 'Primary CTA (matcha)'],
+  ['vars.space[1]', '--kanso-space-1', '4px', 'Internal gap inside micro components'],
+  ['vars.space[4]', '--kanso-space-4', '20px', 'Card and panel padding'],
+  ['vars.space[7]', '--kanso-space-7', '80px', 'Page margins'],
+  ['vars.radius.md', '--kanso-radius-md', '4px', 'Cards · panels'],
+  ['vars.borderWidth.hair', '--kanso-border-width-hair', '0.5px', 'Default border thickness'],
+  ['colorVars.color.ink', '--kanso-ink', '#1a1a18', 'Primary text · icons'],
+  ['colorVars.color.paper', '--kanso-paper', '#fafaf7', 'Page background'],
+  ['colorVars.color.accent', '--kanso-accent', '#2d5a3d', 'Primary CTA (matcha)'],
 ] as const;
 
 export const GettingStarted = () => (
@@ -84,17 +95,27 @@ export const GettingStarted = () => (
     <DocSection
       num="03 · Tokens"
       heading="Reach for tokens, never hex"
-      description="Every value in the system is exposed as a typed CSS variable. Reference the contract from your own vanilla-extract styles instead of inlining hex or px — your work stays inside the system."
+      description="Every value in the system ships as a stable CSS variable named exactly as the spec defines it. Use the typed vanilla-extract paths from JS, or the raw CSS variable from any other stylesheet — both resolve to the same value at runtime."
     >
-      <CodeBlock label="ts" language="tsx">{TOKENS_CODE}</CodeBlock>
+      <p className={s.subhead}>With vanilla-extract</p>
+      <CodeBlock label="css.ts" language="tsx">{TOKENS_VE_CODE}</CodeBlock>
+      <p className={s.subhead}>Or in plain CSS</p>
+      <CodeBlock label="css" language="css">{TOKENS_CSS_CODE}</CodeBlock>
       <p className={s.para}>
         The tokens you'll reach for most. See <strong>Foundations / Tokens</strong> for the full
         set.
       </p>
       <div>
-        {TOKEN_ROWS.map(([tok, val, use]) => (
-          <div key={tok} className={s.tokenRow}>
-            <span className={s.tokenName}>{tok}</span>
+        <div className={s.tokenHeader}>
+          <span>vanilla-extract</span>
+          <span>CSS variable</span>
+          <span>value</span>
+          <span>purpose</span>
+        </div>
+        {TOKEN_ROWS.map(([js, css, val, use]) => (
+          <div key={js} className={s.tokenRow}>
+            <span className={s.tokenName}>{js}</span>
+            <span className={s.tokenValue}>{css}</span>
             <span className={s.tokenValue}>{val}</span>
             <span className={s.tokenUse}>{use}</span>
           </div>
