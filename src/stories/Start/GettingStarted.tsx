@@ -62,9 +62,9 @@ export const GettingStarted = () => (
       }
     >
       <div className={s.codeStack}>
-        <CodeBlock lang="npm">{`npm install kanso-ui`}</CodeBlock>
-        <CodeBlock lang="pnpm">{`pnpm add kanso-ui`}</CodeBlock>
-        <CodeBlock lang="yarn">{`yarn add kanso-ui`}</CodeBlock>
+        <CodeBlock label="npm" language="bash">{`npm install kanso-ui`}</CodeBlock>
+        <CodeBlock label="pnpm" language="bash">{`pnpm add kanso-ui`}</CodeBlock>
+        <CodeBlock label="yarn" language="bash">{`yarn add kanso-ui`}</CodeBlock>
       </div>
     </DocSection>
 
@@ -73,7 +73,7 @@ export const GettingStarted = () => (
       heading="Apply the theme, once"
       description="Import the side-effect entry that loads the reset and the three self-hosted font families, then put a theme class on the document root. There is no separate stylesheet to wire — the styles travel with the components."
     >
-      <CodeBlock lang="ts">{SETUP_CODE}</CodeBlock>
+      <CodeBlock label="ts" language="tsx">{SETUP_CODE}</CodeBlock>
       <p className={s.para}>
         Fonts ship with the package as <code className={s.inlineCode}>@fontsource</code> imports.
         No <code className={s.inlineCode}>{'<link>'}</code> tags to Google Fonts and no network
@@ -86,7 +86,7 @@ export const GettingStarted = () => (
       heading="Reach for tokens, never hex"
       description="Every value in the system is exposed as a typed CSS variable. Reference the contract from your own vanilla-extract styles instead of inlining hex or px — your work stays inside the system."
     >
-      <CodeBlock lang="ts">{TOKENS_CODE}</CodeBlock>
+      <CodeBlock label="ts" language="tsx">{TOKENS_CODE}</CodeBlock>
       <p className={s.para}>
         The tokens you'll reach for most. See <strong>Foundations / Tokens</strong> for the full
         set.
@@ -107,7 +107,7 @@ export const GettingStarted = () => (
       heading="Swap the theme class"
       description="Dark mode inverts the paper/ink scales and darkens the pales while keeping matcha, kogane and beni intact. Swap the class on the document root — there is no provider, no context."
     >
-      <CodeBlock lang="ts">{DARK_CODE}</CodeBlock>
+      <CodeBlock label="ts" language="tsx">{DARK_CODE}</CodeBlock>
     </DocSection>
 
     <DocSection
