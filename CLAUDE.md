@@ -95,19 +95,18 @@ These come from "Lo que KansoUI nunca hace" — verify any new component against
 - [x] Greenfield scaffold (Storybook + React + TS + Vite + vanilla-extract)
 - [x] Agent skills installed (`.agents/skills/`)
 - [x] Design spec copied into `design/`
-
-### In progress — Phase 1: Foundation
-- [ ] Install `@vanilla-extract/recipes`, `lucide-react`, `@fontsource/*` (3 fonts)
-- [ ] `src/tokens/base.css.ts` — primitive palette + scale (createGlobalTheme on a `base` namespace)
-- [ ] `src/tokens/contract.css.ts` — `createThemeContract` defining the semantic shape
-- [ ] `src/tokens/light.css.ts` — `createTheme(contract, lightValues)` exports `lightTheme`
-- [ ] `src/tokens/dark.css.ts` — `createTheme(contract, darkValues)` exports `darkTheme`
-- [ ] `src/tokens/reset.css.ts` — minimal globalStyle (box-sizing, body bg/color/font-smoothing)
-- [ ] `src/tokens/fonts.css.ts` — `@fontsource` side-effect imports
-- [ ] `src/index.ts` — exports `vars`, `lightTheme`, `darkTheme` from tokens
-- [ ] `.storybook/preview.ts` — apply `lightTheme` class on root, import reset + fonts
-- [ ] `.storybook/main.ts` — `stories: ['../src/**/*.{stories.tsx,mdx}']`
-- [ ] Smoke story (replace `src/Welcome.stories.tsx`) to confirm tokens + fonts load
+- [x] **Phase 1 — Foundation**
+  - [x] Deps: `@vanilla-extract/recipes`, `lucide-react`, `clsx`, `@fontsource/{noto-serif-jp,syne,dm-mono}`
+  - [x] `src/tokens/palette.ts` — primitive Japanese-named palette (JS only)
+  - [x] `src/tokens/global.css.ts` — `createGlobalTheme` non-themed tokens (space, type, radii, borders, motion)
+  - [x] `src/tokens/contract.css.ts` — `createThemeContract` for color
+  - [x] `src/tokens/light.css.ts` / `dark.css.ts` — theme implementations
+  - [x] `src/tokens/reset.css.ts` — minimal box-sizing + body styles via `globalStyle`
+  - [x] `src/tokens/fonts.css.ts` — fontsource side-effect imports
+  - [x] `src/index.ts` re-exports `palette`, `vars`, `colorVars`, `lightTheme`, `darkTheme`
+  - [x] `.storybook/preview.ts` applies `lightTheme` to `<html>` + side-effect imports reset + fonts
+  - [x] `.storybook/main.ts` directory-based stories config (`src/stories/` + `src/components/`, both with `titlePrefix: ''`)
+  - [x] `src/stories/Foundations/Tokens.stories.tsx` — smoke story (Light + Dark) exercising every token
 
 ### Pending — Phase 2: Foundations docs pages
 - [ ] Color page (swatches with token name, hex, Japanese name, usage)
