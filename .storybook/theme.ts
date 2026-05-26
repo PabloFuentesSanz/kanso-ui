@@ -11,15 +11,14 @@ import { create } from '@storybook/theming/create';
 export const kansoTheme = create({
   base: 'light',
 
-  // Branding — replaces the default Storybook wordmark in the top-left
-  brandTitle: `
-    <div style="display:flex;flex-direction:column;gap:2px;padding:6px 0;">
-      <span style="font-family:'Syne',sans-serif;font-weight:500;font-size:14px;color:#1a1a18;line-height:1.1;">KansoUI</span>
-      <span style="font-family:'Syne',sans-serif;font-weight:300;font-size:10px;color:#8a8a82;line-height:1.2;letter-spacing:0.03em;">
-        <span style="font-family:'Noto Serif JP',serif;font-weight:200;">寛素</span> · the quiet system
-      </span>
-    </div>
-  `,
+  // Branding — replaces the default Storybook wordmark in the top-left.
+  // Use Storybook's native brandImage API rather than stuffing an <img>
+  // inside brandTitle HTML, which forces a flat fixed height and squashes
+  // wider logos. brandImage respects the source aspect ratio and lets the
+  // theme's brandImage CSS resize cleanly. The lives in public/assets and
+  // is served from /assets/* via staticDirs in main.ts.
+  brandTitle: 'KansoUI',
+  brandImage: '/assets/kansoLogo.png',
   brandUrl: './',
   brandTarget: '_self',
 
