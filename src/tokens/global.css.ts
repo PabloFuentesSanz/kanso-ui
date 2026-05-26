@@ -1,15 +1,98 @@
-import { createGlobalTheme } from '@vanilla-extract/css';
+import { createGlobalTheme, createGlobalThemeContract } from '@vanilla-extract/css';
+import { tokenName } from './formatter';
 
 /**
  * Non-themed design tokens — never swap between light/dark.
  *
- * Spacing, type, radii, borders, motion. Anything that depends on the active
- * theme (i.e. colors) belongs in the theme contract instead.
+ * Two-step setup using the stable-name formatter:
+ *   1. `createGlobalThemeContract` defines the CSS variable NAMES
+ *      (e.g. --kanso-space-1, --kanso-serif). Names are stable across
+ *      builds and match the design spec, so a consumer can reference them
+ *      directly from plain CSS or any other styling stack.
+ *   2. `createGlobalTheme(':root', vars, values)` assigns the values to
+ *      those variables at the document root.
  *
- * Components must reference these vars exclusively; never inline a px/rem
+ * Components must reference `vars` exclusively — never inline a px/rem
  * literal in a `.css.ts` file.
  */
-export const vars = createGlobalTheme(':root', {
+export const vars = createGlobalThemeContract(
+  {
+    space: {
+      1: null,
+      2: null,
+      3: null,
+      4: null,
+      5: null,
+      6: null,
+      7: null,
+    },
+
+    radius: {
+      sm: null,
+      md: null,
+      full: null,
+    },
+
+    borderWidth: {
+      hair: null,
+      emphasis: null,
+      tab: null,
+    },
+
+    font: {
+      serif: null,
+      sans: null,
+      mono: null,
+    },
+
+    fontSize: {
+      display: null,
+      h1: null,
+      h2: null,
+      h3: null,
+      body: null,
+      label: null,
+      micro: null,
+      mono: null,
+    },
+
+    fontWeight: {
+      extralight: null,
+      light: null,
+      regular: null,
+      medium: null,
+    },
+
+    lineHeight: {
+      none: null,
+      tight: null,
+      snug: null,
+      body: null,
+    },
+
+    letterSpacing: {
+      tight: null,
+      normal: null,
+      wide: null,
+      label: null,
+      micro: null,
+    },
+
+    duration: {
+      fast: null,
+      base: null,
+      slow: null,
+    },
+
+    easing: {
+      standard: null,
+      out: null,
+    },
+  },
+  tokenName,
+);
+
+createGlobalTheme(':root', vars, {
   space: {
     1: '4px',
     2: '8px',
