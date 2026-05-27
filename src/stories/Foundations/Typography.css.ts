@@ -1,9 +1,10 @@
 import { style } from '@vanilla-extract/css';
+import { bp } from '../../tokens/breakpoints';
 import { colorVars, vars } from '../../tokens';
 
 export const familyGrid = style({
   display: 'grid',
-  gridTemplateColumns: 'repeat(3, 1fr)',
+  gridTemplateColumns: 'repeat(auto-fill, minmax(min(220px, 100%), 1fr))',
   gap: vars.space[5],
 });
 
@@ -68,6 +69,12 @@ export const scaleRow = style({
   selectors: {
     '&:first-of-type': { borderTop: 'none' },
   },
+  '@media': {
+    [`screen and (max-width: ${bp.mobile})`]: {
+      gridTemplateColumns: '1fr',
+      gap: vars.space[2],
+    },
+  },
 });
 
 export const scaleMeta = style({
@@ -93,6 +100,11 @@ export const scaleFamily = style({
   fontSize: '11px',
   color: colorVars.color.ink3,
   textAlign: 'right',
+  '@media': {
+    [`screen and (max-width: ${bp.mobile})`]: {
+      textAlign: 'left',
+    },
+  },
 });
 
 export const ruleRow = style({
@@ -103,6 +115,12 @@ export const ruleRow = style({
   borderTop: `${vars.borderWidth.hair} solid ${colorVars.color.paper3}`,
   selectors: {
     '&:first-of-type': { borderTop: 'none' },
+  },
+  '@media': {
+    [`screen and (max-width: ${bp.mobile})`]: {
+      gridTemplateColumns: '1fr',
+      gap: vars.space[1],
+    },
   },
 });
 

@@ -1,4 +1,5 @@
 import { style } from '@vanilla-extract/css';
+import { bp } from '../../tokens/breakpoints';
 import { colorVars, vars } from '../../tokens';
 
 export const section = style({
@@ -20,6 +21,12 @@ export const head = style({
   gridTemplateColumns: '200px 1fr',
   gap: vars.space[5],
   marginBottom: vars.space[3],
+  '@media': {
+    [`screen and (max-width: ${bp.mobile})`]: {
+      gridTemplateColumns: '1fr',
+      gap: vars.space[2],
+    },
+  },
 });
 
 export const label = style({

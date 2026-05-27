@@ -1,4 +1,5 @@
 import { style } from '@vanilla-extract/css';
+import { bp } from '../../tokens/breakpoints';
 import { colorVars, vars } from '../../tokens';
 
 export const codeStack = style({
@@ -47,6 +48,11 @@ export const tokenHeader = style({
   letterSpacing: vars.letterSpacing.micro,
   textTransform: 'uppercase',
   color: colorVars.color.ink4,
+  '@media': {
+    [`screen and (max-width: ${bp.mobile})`]: {
+      display: 'none',
+    },
+  },
 });
 
 export const tokenRow = style({
@@ -56,6 +62,12 @@ export const tokenRow = style({
   alignItems: 'baseline',
   padding: `${vars.space[3]} 0`,
   borderTop: `${vars.borderWidth.hair} solid ${colorVars.color.paper3}`,
+  '@media': {
+    [`screen and (max-width: ${bp.mobile})`]: {
+      gridTemplateColumns: '1fr',
+      gap: vars.space[1],
+    },
+  },
 });
 
 export const tokenName = style({
