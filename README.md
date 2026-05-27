@@ -86,16 +86,16 @@ More components land in subsequent releases on the `next` tag. The full taxonomy
 
 ## Documentation
 
-The full design system — every token in light and dark, the typographic scale, the spacing system, the philosophy and every shipped component — lives in Storybook.
+The full design system — every token in light and dark, the typographic scale, the spacing system, the philosophy and every shipped component — lives at <https://kanso-ui.vercel.app>.
+
+To run the docs locally for development:
 
 ```
 npm install
 npm run dev
 ```
 
-Open <http://localhost:6006>.
-
-A hosted version of the docs will follow on the first stable `2.0.0` release.
+Then open <http://localhost:6006>.
 
 ## Philosophy in three rules
 
