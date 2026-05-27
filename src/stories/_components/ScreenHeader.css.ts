@@ -1,4 +1,5 @@
 import { style } from '@vanilla-extract/css';
+import { bp } from '../../tokens/breakpoints';
 import { colorVars, vars } from '../../tokens';
 
 export const header = style({
@@ -9,6 +10,13 @@ export const header = style({
   paddingBottom: vars.space[5],
   borderBottom: `${vars.borderWidth.hair} solid ${colorVars.color.paper3}`,
   marginBottom: vars.space[6],
+  '@media': {
+    [`screen and (max-width: ${bp.mobile})`]: {
+      gridTemplateColumns: '1fr',
+      gap: vars.space[3],
+      alignItems: 'start',
+    },
+  },
 });
 
 export const text = style({
@@ -53,4 +61,12 @@ export const kanji = style({
   lineHeight: '0.8',
   color: colorVars.color.ink4,
   alignSelf: 'end',
+  '@media': {
+    [`screen and (max-width: ${bp.mobile})`]: {
+      // Drops to 3rem and sits inline (above title) once stacked.
+      fontSize: '3rem',
+      alignSelf: 'start',
+      gridRow: '1',
+    },
+  },
 });

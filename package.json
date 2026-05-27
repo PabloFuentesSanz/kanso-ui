@@ -1,25 +1,77 @@
 {
   "name": "kanso-ui",
-  "version": "2.0.0",
-  "private": true,
+  "version": "2.0.0-next.0",
+  "description": "寛素 — the quiet system. A React component library built on three principles of Japanese aesthetics: ma (space), wabi (humility), sabi (austerity).",
+  "keywords": [
+    "react",
+    "design-system",
+    "components",
+    "ui-library",
+    "vanilla-extract",
+    "typescript",
+    "minimalist",
+    "kanso",
+    "wabi-sabi",
+    "japanese-design"
+  ],
+  "license": "MIT",
+  "author": "Pablo Fuentes",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PabloFuentesSanz/kanso-ui.git"
+  },
+  "homepage": "https://github.com/PabloFuentesSanz/kanso-ui#readme",
+  "bugs": {
+    "url": "https://github.com/PabloFuentesSanz/kanso-ui/issues"
+  },
   "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./styles": {
+      "types": "./dist/styles.d.ts",
+      "import": "./dist/styles.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "sideEffects": [
+    "**/*.css",
+    "**/*.css.ts",
+    "**/styles.*",
+    "**/fonts.*",
+    "**/reset.*"
+  ],
   "scripts": {
     "dev": "storybook dev -p 6006",
+    "build": "tsup",
     "build-storybook": "storybook build",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run typecheck && npm run build"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
   },
   "dependencies": {
-    "@vanilla-extract/css": "^1.15.5",
-    "@vanilla-extract/recipes": "^0.5.7",
-    "clsx": "^2.1.1",
-    "lucide-react": "^1.16.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
-  },
-  "devDependencies": {
     "@fontsource/dm-mono": "^5.2.7",
     "@fontsource/noto-serif-jp": "^5.2.8",
     "@fontsource/syne": "^5.2.7",
+    "@vanilla-extract/css": "^1.15.5",
+    "@vanilla-extract/recipes": "^0.5.7",
+    "clsx": "^2.1.1"
+  },
+  "devDependencies": {
     "@storybook/addon-essentials": "^8.4.7",
     "@storybook/addon-interactions": "^8.4.7",
     "@storybook/addon-links": "^8.4.7",
@@ -30,10 +82,15 @@
     "@storybook/test": "^8.4.7",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
+    "@vanilla-extract/esbuild-plugin": "^2.3.22",
     "@vanilla-extract/vite-plugin": "^4.0.19",
     "@vitejs/plugin-react": "^4.3.4",
+    "lucide-react": "^1.16.0",
     "prism-react-renderer": "^2.4.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "storybook": "^8.4.7",
+    "tsup": "^8.5.1",
     "typescript": "^5.6.3",
     "vite": "^5.4.11"
   },

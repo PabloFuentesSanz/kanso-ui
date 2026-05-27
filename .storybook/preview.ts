@@ -13,6 +13,25 @@ const preview: Preview = {
         date: /Date$/i,
       },
     },
+    options: {
+      // Override Storybook's default alphabetical sorting so pages follow
+      // a reading order — Introduction first, then Theme as the lens for
+      // everything that follows, then the three foundation surfaces in
+      // increasing scope (Color → Typography → Layout).
+      storySort: {
+        order: [
+          'Start', ['Getting Started'],
+          'Foundations', ['Introduction', 'Theme', 'Color', 'Typography', 'Layout'],
+          'Actions',
+          'Inputs',
+          'Display',
+          'Feedback',
+          'Navigation',
+          'Overlay',
+          'Recipes',
+        ],
+      },
+    },
   },
   decorators: [
     withThemeByClassName({

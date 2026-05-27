@@ -104,43 +104,50 @@ export const Theme = () => (
   </DocsLayout>
 );
 
+const swatchSwatchStyle: React.CSSProperties = {
+  width: 16,
+  height: 16,
+  borderRadius: 'var(--kanso-radius-sm)',
+  border: `var(--kanso-border-width-hair) solid ${colorVars.color.paper3}`,
+};
+
+const swatchPairStyle: React.CSSProperties = {
+  display: 'flex',
+  alignItems: 'center',
+  gap: 8,
+};
+
+const monoNameStyle: React.CSSProperties = {
+  fontFamily: 'var(--kanso-mono)',
+  fontSize: '12px',
+  color: colorVars.color.ink,
+};
+
+const monoMutedStyle: React.CSSProperties = {
+  fontFamily: 'var(--kanso-mono)',
+  fontSize: '11px',
+  color: colorVars.color.ink3,
+};
+
 const SwapTable = ({ rows, caption }: { rows: SwapRow[]; caption: string }) => (
   <div>
-    <div style={{
-      display: 'grid',
-      gridTemplateColumns: '180px 200px 100px 100px',
-      gap: '20px',
-      padding: '12px 0',
-      fontFamily: 'var(--kanso-sans)',
-      fontSize: 'var(--kanso-font-size-micro)',
-      fontWeight: 400,
-      letterSpacing: 'var(--kanso-letter-spacing-micro)',
-      textTransform: 'uppercase',
-      color: colorVars.color.ink4,
-    }}>
+    <div className={s.swapTableHeader}>
       <span>{caption}</span>
       <span>CSS variable</span>
       <span>Light</span>
       <span>Dark</span>
     </div>
     {rows.map((r) => (
-      <div key={r.cssVar} style={{
-        display: 'grid',
-        gridTemplateColumns: '180px 200px 100px 100px',
-        gap: '20px',
-        padding: '12px 0',
-        alignItems: 'center',
-        borderTop: `var(--kanso-border-width-hair) solid ${colorVars.color.paper3}`,
-      }}>
-        <span style={{ fontFamily: 'var(--kanso-mono)', fontSize: '12px', color: colorVars.color.ink }}>{r.jsName}</span>
-        <span style={{ fontFamily: 'var(--kanso-mono)', fontSize: '11px', color: colorVars.color.ink3 }}>{r.cssVar}</span>
-        <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          <span style={{ width: 16, height: 16, background: r.light, borderRadius: 'var(--kanso-radius-sm)', border: `var(--kanso-border-width-hair) solid ${colorVars.color.paper3}` }} />
-          <span style={{ fontFamily: 'var(--kanso-mono)', fontSize: '11px', color: colorVars.color.ink3 }}>{r.light}</span>
+      <div key={r.cssVar} className={s.swapTableRow}>
+        <span style={monoNameStyle}>{r.jsName}</span>
+        <span style={monoMutedStyle}>{r.cssVar}</span>
+        <span style={swatchPairStyle}>
+          <span style={{ ...swatchSwatchStyle, background: r.light }} />
+          <span style={monoMutedStyle}>{r.light}</span>
         </span>
-        <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          <span style={{ width: 16, height: 16, background: r.dark, borderRadius: 'var(--kanso-radius-sm)', border: `var(--kanso-border-width-hair) solid ${colorVars.color.paper3}` }} />
-          <span style={{ fontFamily: 'var(--kanso-mono)', fontSize: '11px', color: colorVars.color.ink3 }}>{r.dark}</span>
+        <span style={swatchPairStyle}>
+          <span style={{ ...swatchSwatchStyle, background: r.dark }} />
+          <span style={monoMutedStyle}>{r.dark}</span>
         </span>
       </div>
     ))}

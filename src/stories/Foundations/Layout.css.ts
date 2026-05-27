@@ -1,4 +1,5 @@
 import { style } from '@vanilla-extract/css';
+import { bp } from '../../tokens/breakpoints';
 import { colorVars, vars } from '../../tokens';
 
 export const spaceRow = style({
@@ -10,6 +11,13 @@ export const spaceRow = style({
   borderTop: `${vars.borderWidth.hair} solid ${colorVars.color.paper3}`,
   selectors: {
     '&:first-of-type': { borderTop: 'none' },
+  },
+  '@media': {
+    [`screen and (max-width: ${bp.mobile})`]: {
+      gridTemplateColumns: '1fr',
+      gap: vars.space[2],
+      padding: `${vars.space[3]} 0`,
+    },
   },
 });
 
@@ -33,7 +41,7 @@ export const bar = style({
 
 export const radiusGrid = style({
   display: 'grid',
-  gridTemplateColumns: 'repeat(3, 1fr)',
+  gridTemplateColumns: 'repeat(auto-fill, minmax(min(220px, 100%), 1fr))',
   gap: vars.space[5],
 });
 
@@ -55,6 +63,12 @@ export const borderRow = style({
   gap: vars.space[4],
   alignItems: 'center',
   padding: `${vars.space[3]} 0`,
+  '@media': {
+    [`screen and (max-width: ${bp.mobile})`]: {
+      gridTemplateColumns: '1fr',
+      gap: vars.space[2],
+    },
+  },
 });
 
 export const borderLine = style({
@@ -71,6 +85,12 @@ export const motionRow = style({
   borderTop: `${vars.borderWidth.hair} solid ${colorVars.color.paper3}`,
   selectors: {
     '&:first-of-type': { borderTop: 'none' },
+  },
+  '@media': {
+    [`screen and (max-width: ${bp.mobile})`]: {
+      gridTemplateColumns: '1fr',
+      gap: vars.space[2],
+    },
   },
 });
 

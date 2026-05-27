@@ -1,21 +1,24 @@
 import { style } from '@vanilla-extract/css';
 import { colorVars, vars } from '../../tokens';
 
+// Intrinsic grids — each cell is ~200px wide, so the swatch row fits
+// 4-on-desktop and reflows down to 2 or 1 on narrow viewports without
+// any media query. minmax(0, …) prevents content from blowing the cell.
 export const grid4 = style({
   display: 'grid',
-  gridTemplateColumns: 'repeat(4, 1fr)',
+  gridTemplateColumns: 'repeat(auto-fill, minmax(min(200px, 100%), 1fr))',
   gap: vars.space[4],
 });
 
 export const grid3 = style({
   display: 'grid',
-  gridTemplateColumns: 'repeat(3, 1fr)',
+  gridTemplateColumns: 'repeat(auto-fill, minmax(min(220px, 100%), 1fr))',
   gap: vars.space[4],
 });
 
 export const grid2 = style({
   display: 'grid',
-  gridTemplateColumns: 'repeat(2, 1fr)',
+  gridTemplateColumns: 'repeat(auto-fill, minmax(min(260px, 100%), 1fr))',
   gap: vars.space[4],
 });
 

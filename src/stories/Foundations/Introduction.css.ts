@@ -3,7 +3,7 @@ import { colorVars, vars } from '../../tokens';
 
 export const principleGrid = style({
   display: 'grid',
-  gridTemplateColumns: 'repeat(3, 1fr)',
+  gridTemplateColumns: 'repeat(auto-fill, minmax(min(260px, 100%), 1fr))',
   gap: vars.space[4],
 });
 
