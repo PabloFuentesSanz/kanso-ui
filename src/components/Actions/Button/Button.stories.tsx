@@ -8,76 +8,9 @@ import {
   Example,
   ScreenHeader,
 } from '../../../stories/_components';
-import { colorVars, vars } from '../../../tokens';
+import { vars } from '../../../tokens';
 import { Button } from './Button';
-
-const importBlock: React.CSSProperties = {
-  marginBottom: vars.space[6],
-};
-
-const stateRow: React.CSSProperties = {
-  display: 'flex',
-  gap: vars.space[5],
-  alignItems: 'flex-start',
-  flexWrap: 'wrap',
-};
-
-const stateCell: React.CSSProperties = {
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  gap: vars.space[2],
-};
-
-const stateLabel: React.CSSProperties = {
-  fontFamily: vars.font.mono,
-  fontSize: '11px',
-  color: colorVars.color.ink3,
-};
-
-const propRow: React.CSSProperties = {
-  display: 'grid',
-  gridTemplateColumns: '160px 240px 1fr',
-  gap: vars.space[4],
-  alignItems: 'baseline',
-  padding: `${vars.space[3]} 0`,
-  borderTop: `${vars.borderWidth.hair} solid ${colorVars.color.paper3}`,
-};
-
-const propHeader: React.CSSProperties = {
-  ...propRow,
-  borderTop: 'none',
-  fontFamily: vars.font.sans,
-  fontSize: vars.fontSize.micro,
-  fontWeight: vars.fontWeight.regular,
-  letterSpacing: vars.letterSpacing.micro,
-  textTransform: 'uppercase',
-  color: colorVars.color.ink4,
-};
-
-const propName: React.CSSProperties = {
-  fontFamily: vars.font.mono,
-  fontSize: '12px',
-  color: colorVars.color.ink,
-};
-
-const propType: React.CSSProperties = {
-  fontFamily: vars.font.mono,
-  fontSize: '11px',
-  color: colorVars.color.ink3,
-};
-
-const propDesc: React.CSSProperties = {
-  fontFamily: vars.font.sans,
-  fontWeight: vars.fontWeight.light,
-  fontSize: vars.fontSize.body,
-  color: colorVars.color.ink2,
-};
-
-const inlineCode: React.CSSProperties = {
-  fontFamily: vars.font.mono,
-  fontSize: '12px',
-};
+import * as s from './Button.stories.css';
 
 const ButtonOverview = () => (
   <DocsLayout>
@@ -88,7 +21,7 @@ const ButtonOverview = () => (
       kanji="押"
     />
 
-    <div style={importBlock}>
+    <div className={s.importBlock}>
       <CodeBlock label="ts" language="tsx">{`import { Button } from 'kanso-ui';`}</CodeBlock>
     </div>
 
@@ -189,24 +122,24 @@ const ButtonOverview = () => (
       heading="States"
       description="Hover dims to 75% opacity. Active scales to 0.98. Disabled drops to 35% and ignores pointer events. Focus uses a 1px outline at 2px offset — no glow."
     >
-      <div style={stateRow}>
-        <span style={stateCell}>
+      <div className={s.stateRow}>
+        <span className={s.stateCell}>
           <Button>Save</Button>
-          <span style={stateLabel}>default</span>
+          <span className={s.stateLabel}>default</span>
         </span>
-        <span style={stateCell}>
+        <span className={s.stateCell}>
           <Button disabled>Save</Button>
-          <span style={stateLabel}>disabled</span>
+          <span className={s.stateLabel}>disabled</span>
         </span>
-        <span style={stateCell}>
+        <span className={s.stateCell}>
           <Button variant="secondary">Cancel</Button>
-          <span style={stateLabel}>secondary</span>
+          <span className={s.stateLabel}>secondary</span>
         </span>
-        <span style={stateCell}>
+        <span className={s.stateCell}>
           <Button variant="secondary" disabled>
             Cancel
           </Button>
-          <span style={stateLabel}>secondary, disabled</span>
+          <span className={s.stateLabel}>secondary, disabled</span>
         </span>
       </div>
 
@@ -221,45 +154,45 @@ const ButtonOverview = () => (
       description="Button forwards every standard <button> attribute. The only kanso-specific prop is the variant."
     >
       <div>
-        <div style={propHeader}>
+        <div className={s.propHeader}>
           <span>Prop</span>
           <span>Type</span>
           <span>Description</span>
         </div>
-        <div style={propRow}>
-          <span style={propName}>
+        <div className={s.propRow}>
+          <span className={s.propName}>
             <CopyToken value="variant" />
           </span>
-          <span style={propType}>
+          <span className={s.propType}>
             'primary' | 'accent' | 'secondary' | 'ghost' | 'destructive'
           </span>
-          <span style={propDesc}>
-            Visual hierarchy. Defaults to <code style={inlineCode}>primary</code>.
+          <span className={s.propDesc}>
+            Visual hierarchy. Defaults to <code className={s.inlineCode}>primary</code>.
           </span>
         </div>
-        <div style={propRow}>
-          <span style={propName}>
+        <div className={s.propRow}>
+          <span className={s.propName}>
             <CopyToken value="disabled" />
           </span>
-          <span style={propType}>boolean</span>
-          <span style={propDesc}>
+          <span className={s.propType}>boolean</span>
+          <span className={s.propDesc}>
             Standard. Drops opacity to 35% and disables pointer events.
           </span>
         </div>
-        <div style={propRow}>
-          <span style={propName}>
+        <div className={s.propRow}>
+          <span className={s.propName}>
             <CopyToken value="type" />
           </span>
-          <span style={propType}>'button' | 'submit' | 'reset'</span>
-          <span style={propDesc}>
-            Defaults to <code style={inlineCode}>button</code> so the component never accidentally submits a parent form.
+          <span className={s.propType}>'button' | 'submit' | 'reset'</span>
+          <span className={s.propDesc}>
+            Defaults to <code className={s.inlineCode}>button</code> so the component never accidentally submits a parent form.
           </span>
         </div>
-        <div style={propRow}>
-          <span style={propName}>...rest</span>
-          <span style={propType}>ButtonHTMLAttributes</span>
-          <span style={propDesc}>
-            Every standard <code style={inlineCode}>&lt;button&gt;</code> attribute (onClick, aria-*, form, name, …) is forwarded.
+        <div className={s.propRow}>
+          <span className={s.propName}>...rest</span>
+          <span className={s.propType}>ButtonHTMLAttributes</span>
+          <span className={s.propDesc}>
+            Every standard <code className={s.inlineCode}>&lt;button&gt;</code> attribute (onClick, aria-*, form, name, …) is forwarded.
           </span>
         </div>
       </div>
