@@ -1,14 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ArrowRight, Check, Plus } from 'lucide-react';
-import { CopyToken, DocSection, DocsLayout, ScreenHeader } from '../../../stories/_components';
+import {
+  CodeBlock,
+  CopyToken,
+  DocSection,
+  DocsLayout,
+  Example,
+  ScreenHeader,
+} from '../../../stories/_components';
 import { colorVars, vars } from '../../../tokens';
 import { Button } from './Button';
 
-const row: React.CSSProperties = {
-  display: 'flex',
-  gap: vars.space[3],
-  alignItems: 'center',
-  flexWrap: 'wrap',
+const importBlock: React.CSSProperties = {
+  marginBottom: vars.space[6],
 };
 
 const stateRow: React.CSSProperties = {
@@ -70,6 +74,11 @@ const propDesc: React.CSSProperties = {
   color: colorVars.color.ink2,
 };
 
+const inlineCode: React.CSSProperties = {
+  fontFamily: vars.font.mono,
+  fontSize: '12px',
+};
+
 const ButtonOverview = () => (
   <DocsLayout>
     <ScreenHeader
@@ -79,17 +88,36 @@ const ButtonOverview = () => (
       kanji="押"
     />
 
+    <div style={importBlock}>
+      <CodeBlock label="ts" language="tsx">{`import { Button } from 'kanso-ui';`}</CodeBlock>
+    </div>
+
     <DocSection
       num="01 · Primary"
       heading="Primary — one per screen"
       description="The single most important action on the surface. Ink on paper. Never repeated within a single view — if you find yourself reaching for a second, one of them is not actually primary."
     >
-      <div style={row}>
-        <Button variant="primary">Save changes</Button>
-        <Button variant="primary">
+      <Example
+        title="Default"
+        description="A plain primary button — variant defaults to 'primary' so it can be omitted."
+        code={`<Button>Save changes</Button>`}
+      >
+        <Button>Save changes</Button>
+      </Example>
+
+      <Example
+        title="With trailing icon"
+        description="Lucide outline at 16px and 1.5px stroke. Icon inherits currentColor; gap between label and icon is space[2] (8px)."
+        code={`import { ArrowRight } from 'lucide-react';
+
+<Button>
+  Continue <ArrowRight size={16} strokeWidth={1.5} />
+</Button>`}
+      >
+        <Button>
           Continue <ArrowRight size={16} strokeWidth={1.5} />
         </Button>
-      </div>
+      </Example>
     </DocSection>
 
     <DocSection
@@ -97,12 +125,25 @@ const ButtonOverview = () => (
       heading="Accent — affirmative confirmations"
       description="Matcha background. Reserved for confirmations — approving, signing, sending. The accent token swaps with the active theme so every accent surface tints together."
     >
-      <div style={row}>
+      <Example
+        title="Confirm action"
+        code={`<Button variant="accent">Confirm</Button>`}
+      >
         <Button variant="accent">Confirm</Button>
+      </Example>
+
+      <Example
+        title="With leading icon"
+        code={`import { Check } from 'lucide-react';
+
+<Button variant="accent">
+  <Check size={16} strokeWidth={1.5} /> Approve
+</Button>`}
+      >
         <Button variant="accent">
           <Check size={16} strokeWidth={1.5} /> Approve
         </Button>
-      </div>
+      </Example>
     </DocSection>
 
     <DocSection
@@ -110,14 +151,37 @@ const ButtonOverview = () => (
       heading="Secondary, ghost and destructive"
       description="Secondary carries the supporting action — Cancel beside Save. Ghost is for tertiary moments that should feel optional. Destructive renders in beni and uses the smaller ghost-sized box — never as a primary."
     >
-      <div style={row}>
+      <Example
+        title="Secondary"
+        description="Transparent background with a 0.5px ink-4 border; hover darkens the border instead of fading."
+        code={`import { Plus } from 'lucide-react';
+
+<Button variant="secondary">Cancel</Button>
+<Button variant="secondary">
+  <Plus size={16} strokeWidth={1.5} /> Add another
+</Button>`}
+      >
         <Button variant="secondary">Cancel</Button>
         <Button variant="secondary">
           <Plus size={16} strokeWidth={1.5} /> Add another
         </Button>
+      </Example>
+
+      <Example
+        title="Ghost"
+        description="No border. Smaller padding and 12px text — fits in lists and table rows without dominating the row."
+        code={`<Button variant="ghost">Skip for now</Button>`}
+      >
         <Button variant="ghost">Skip for now</Button>
+      </Example>
+
+      <Example
+        title="Destructive"
+        description="Beni red, same compact box as ghost. Used for irreversible actions; never the only action on the surface."
+        code={`<Button variant="destructive">Delete account</Button>`}
+      >
         <Button variant="destructive">Delete account</Button>
-      </div>
+      </Example>
     </DocSection>
 
     <DocSection
@@ -127,13 +191,11 @@ const ButtonOverview = () => (
     >
       <div style={stateRow}>
         <span style={stateCell}>
-          <Button variant="primary">Save</Button>
+          <Button>Save</Button>
           <span style={stateLabel}>default</span>
         </span>
         <span style={stateCell}>
-          <Button variant="primary" disabled>
-            Save
-          </Button>
+          <Button disabled>Save</Button>
           <span style={stateLabel}>disabled</span>
         </span>
         <span style={stateCell}>
@@ -146,6 +208,10 @@ const ButtonOverview = () => (
           </Button>
           <span style={stateLabel}>secondary, disabled</span>
         </span>
+      </div>
+
+      <div style={{ marginTop: vars.space[4] }}>
+        <CodeBlock label="ts" language="tsx">{`<Button disabled>Save</Button>`}</CodeBlock>
       </div>
     </DocSection>
 
@@ -167,26 +233,34 @@ const ButtonOverview = () => (
           <span style={propType}>
             'primary' | 'accent' | 'secondary' | 'ghost' | 'destructive'
           </span>
-          <span style={propDesc}>Visual hierarchy. Defaults to <code style={{ fontFamily: vars.font.mono, fontSize: '12px' }}>primary</code>.</span>
+          <span style={propDesc}>
+            Visual hierarchy. Defaults to <code style={inlineCode}>primary</code>.
+          </span>
         </div>
         <div style={propRow}>
           <span style={propName}>
             <CopyToken value="disabled" />
           </span>
           <span style={propType}>boolean</span>
-          <span style={propDesc}>Standard. Drops opacity to 35% and disables pointer events.</span>
+          <span style={propDesc}>
+            Standard. Drops opacity to 35% and disables pointer events.
+          </span>
         </div>
         <div style={propRow}>
           <span style={propName}>
             <CopyToken value="type" />
           </span>
           <span style={propType}>'button' | 'submit' | 'reset'</span>
-          <span style={propDesc}>Defaults to <code style={{ fontFamily: vars.font.mono, fontSize: '12px' }}>button</code> so the component never accidentally submits a parent form.</span>
+          <span style={propDesc}>
+            Defaults to <code style={inlineCode}>button</code> so the component never accidentally submits a parent form.
+          </span>
         </div>
         <div style={propRow}>
           <span style={propName}>...rest</span>
           <span style={propType}>ButtonHTMLAttributes</span>
-          <span style={propDesc}>Every standard <code style={{ fontFamily: vars.font.mono, fontSize: '12px' }}>&lt;button&gt;</code> attribute (onClick, aria-*, form, name, …) is forwarded.</span>
+          <span style={propDesc}>
+            Every standard <code style={inlineCode}>&lt;button&gt;</code> attribute (onClick, aria-*, form, name, …) is forwarded.
+          </span>
         </div>
       </div>
     </DocSection>
