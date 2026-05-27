@@ -30,16 +30,6 @@ const TOKENS_CSS_CODE = `/* your-component.css — no build step, no extra depen
   font-size: var(--kanso-font-size-body);
 }`;
 
-const DARK_CODE = `import { lightTheme, darkTheme } from 'kanso-ui';
-
-const apply = (mode: 'light' | 'dark') => {
-  document.documentElement.classList.remove(lightTheme, darkTheme);
-  document.documentElement.classList.add(mode === 'dark' ? darkTheme : lightTheme);
-};
-
-// Honour the system preference once on boot
-apply(matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');`;
-
 // [vanilla-extract path, CSS variable, value, purpose]
 const TOKEN_ROWS = [
   ['vars.space[1]', '--kanso-space-1', '4px', 'Internal gap inside micro components'],
@@ -102,8 +92,9 @@ export const GettingStarted = () => (
       <p className={s.subhead}>Or in plain CSS</p>
       <CodeBlock label="css" language="css">{TOKENS_CSS_CODE}</CodeBlock>
       <p className={s.para}>
-        The tokens you'll reach for most. See <strong>Foundations / Tokens</strong> for the full
-        set.
+        The tokens you'll reach for most. Browse the <strong>Foundations</strong> section for the
+        full set — Color, Typography and Layout each list every token with its CSS variable name
+        and its vanilla-extract path side by side.
       </p>
       <div>
         <div className={s.tokenHeader}>
@@ -123,24 +114,5 @@ export const GettingStarted = () => (
       </div>
     </DocSection>
 
-    <DocSection
-      num="04 · Dark mode"
-      heading="Swap the theme class"
-      description="Dark mode inverts the paper/ink scales and darkens the pales while keeping matcha, kogane and beni intact. Swap the class on the document root — there is no provider, no context."
-    >
-      <CodeBlock label="ts" language="tsx">{DARK_CODE}</CodeBlock>
-    </DocSection>
-
-    <DocSection
-      num="05 · Components"
-      heading="What's available"
-      description="Components ship one at a time. As each lands, a story page appears in the sidebar under its category — Actions, Inputs, Display, Feedback, Navigation, Overlay."
-    >
-      <p className={s.para}>
-        Today the library exposes the token layer only — explore{' '}
-        <strong>Foundations / Tokens</strong> to see every color, font and space step in light and
-        dark themes. Component pages will fill in as each component is built.
-      </p>
-    </DocSection>
   </DocsLayout>
 );
