@@ -2,11 +2,9 @@
 
 All notable changes to **kanso-ui** are documented in this file. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## 2.0.0-next.0 — 2026-05-27
+## 2.0.0 — 2026-06-02
 
-First public preview of the rewritten library. Published under the `next` npm tag — the `latest` tag still points at the legacy 1.0.2 release, so existing consumers are not disrupted. Install with `npm install kanso-ui@next`.
-
-The 2.x line is a full rewrite of the package on top of the **KansoUI** design system — a React component library built on the Japanese aesthetic principles of *ma* (space), *wabi* (humility) and *sabi* (austerity).
+First stable release of the rewritten library, replacing the legacy 1.x line under the `latest` npm tag. The 2.x line is a full rewrite of the package on top of the **KansoUI** design system — a React component library built on the Japanese aesthetic principles of *ma* (space), *wabi* (humility) and *sabi* (austerity).
 
 ### Build & distribution
 
@@ -56,4 +54,3 @@ Single mobile breakpoint at 768px (`tokens/breakpoints.ts`). Card grids use intr
 - Overlay (`Dialog`, `Drawer`, `Popover`)
 - Recipes (`Settings panel`)
 - Test suite
-- Hosted documentation site (planned for the stable `2.0.0` release)
