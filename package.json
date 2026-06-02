@@ -1,6 +1,6 @@
 {
   "name": "kanso-ui",
-  "version": "2.0.0-next.0",
+  "version": "2.0.0",
   "description": "寛素 — the quiet system. A React component library built on three principles of Japanese aesthetics: ma (space), wabi (humility), sabi (austerity).",
   "keywords": [
     "react",
